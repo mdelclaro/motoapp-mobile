@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_btn_checkable.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/design_tint_password_toggle.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/res/color-v23/design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_text_material.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_track.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_spinner.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_seek_thumb.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_default.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/color-v23/abc_tint_default.xml"
+    }
+]

@@ -1,0 +1,122 @@
+[
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_scale_down.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_scale_down.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_slide_in_from_left.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_slide_in_from_left.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/slide_down.xml",
+        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/anim/slide_down.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/res/anim/design_snackbar_in.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_in.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_fade_in.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/res/anim/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_slide_out_to_right.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_slide_out_to_right.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_scale_up.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_scale_up.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/slide_up.xml",
+        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/anim/slide_up.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_out.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_fade_out.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_push_up_in.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_slide_in_from_right.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_slide_in_from_right.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/fab_slide_out_to_left.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/res/anim/fab_slide_out_to_left.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_slide_up.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/res/anim/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/tooltip_enter.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/tooltip_enter.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/tooltip_exit.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/tooltip_exit.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_down.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/anim/catalyst_slide_down.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/anim/abc_popup_enter.xml"
+    }
+]

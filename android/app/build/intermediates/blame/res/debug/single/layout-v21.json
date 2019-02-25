@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/bottom_navigation_item.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/res/layout-v21/bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/place_autocomplete_fragment.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-places-11.6.2.aar/b77343aabcbd0303c050971c0170636a/res/layout-v21/place_autocomplete_fragment.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout-v21/bottom_navigation_small_item.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/res/layout-v21/bottom_navigation_small_item.xml"
+    }
+]
