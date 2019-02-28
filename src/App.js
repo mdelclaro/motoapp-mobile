@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
-
+console.disableYellowBox = true;
 const startApp = () => {
   Promise.all([
     getImageSource(

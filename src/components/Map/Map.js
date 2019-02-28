@@ -12,6 +12,7 @@ import { addCorrida, cancelCorrida } from "../../store/actions/index";
 import Search from "../Search/Search";
 import Directions from "../Directions/Directions";
 import Details from "../Details/Details";
+import DetailsMotoqueiro from "../DetailsMotoqueiro/DetailsMotoqueiro";
 
 import { getPixelSize } from "../../utils";
 
@@ -33,7 +34,8 @@ class Localizacao extends Component {
     destination: null, // destino
     duration: null, // duracao
     location: null, // nome da rua destino
-    distance: null
+    distance: null, // distancia origem -> destino
+    motoqueiro: false // se corrida foi aceita ou nao
   };
 
   // pedir permissao de localizacao
@@ -238,8 +240,15 @@ class Localizacao extends Component {
     });
   };
 
+  handleAcceptCorrida = async motoqueiro => {
+    this.setState({
+      destination: null,
+      motoqueiro
+    });
+  };
+
   render() {
-    const { region, destination, duration, location } = this.state;
+    const { region, destination, duration, location, motoqueiro } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {/* mapa */}
@@ -290,10 +299,13 @@ class Localizacao extends Component {
             tempo={duration}
             request={this.handleAddCorrida}
             cancel={this.handleCancelCorrida}
+            accept={this.handleAcceptCorrida}
           />
         ) : (
+          // <DetailsMotoqueiro />
           <Search onLocationSelected={this.handleLocationSelected} />
         )}
+        {motoqueiro ? <DetailsMotoqueiro motoqueiro={motoqueiro} /> : null}
       </View>
     );
   }

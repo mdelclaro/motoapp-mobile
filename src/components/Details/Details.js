@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Image, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
+import openSocket from "socket.io-client";
 
 import {
   Container,
@@ -14,6 +15,14 @@ import {
 import flags from "../../assets/flags/flags.png";
 
 class Details extends Component {
+  componentDidMount() {
+    const socket = openSocket("http://192.168.2.107:8080");
+    socket.emit("join", { id: "123" }); //TODO: colocar idCliente apos auth
+    socket.on("acceptCorrida", data => {
+      this.props.accept(data.motoqueiro);
+    });
+  }
+
   handleRequestOnPress = () => {
     this.props.request();
   };
@@ -37,7 +46,8 @@ class Details extends Component {
             paddingBottom: 3,
             width: 60,
             height: 60,
-            resizeMode: "center"
+            resizeMode: "center",
+            borderRadius: 100
           }}
         />
         <Description>
