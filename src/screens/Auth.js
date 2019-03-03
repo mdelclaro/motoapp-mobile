@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet, ImageBackground } from 'react-native';
+import React, { Component } from "react";
+import { View, StyleSheet, ImageBackground } from "react-native";
+import { connect } from "react-redux";
 
-import startApp from '../App';
+import startApp from "../App";
+import { tryAuth, authAutoSignIn } from "../store/actions/index";
 
-import backgroundImage from '../assets/background.png';
-import SignupForm from '../components/SignupForm';
-import LoginForm from '../components/LoginForm';
+import backgroundImage from "../assets/background.png";
+import SignupForm from "../components/SignupForm";
+import LoginForm from "../components/LoginForm";
 
 class Auth extends Component {
   // static get options() {
@@ -13,65 +15,62 @@ class Auth extends Component {
   // }
 
   state = {
-    authMode: 'login'
-  }
+    authMode: "login"
+  };
 
   componentDidMount() {
-    //this.props.onAutoSignIn();
+    this.props.onAutoSignIn();
+    //this.props.onTryAuth("tiaozola@gmail.com.br", "1234");
   }
 
   switchAuthModeHandler = () => {
     this.setState(prevState => {
       return {
-        authMode: prevState.authMode === 'login'
-          ? 'signup'
-          : 'login'
+        authMode: prevState.authMode === "login" ? "signup" : "login"
       };
     });
-  }
+  };
 
-  submitHandler = (values) => {
-    //this.props.onTryAuth(values, this.state.authMode);
-    console.log(values);
-    // Navigation.push(this.props.componentId, {
-    //   component: {
-    //     name: 'motoapp.Screen1',
-    //     options: {
-    //       topBar: {
-    //         title: {
-    //           text: 'Screen1',
-    //         }
-    //       }
-    //     }
-    //   }
-    // });
-    startApp();
-  }
+  submitHandler = values => {
+    this.props.onTryAuth(values.email, values.senha);
+  };
 
   render() {
-    startApp();
     return (
-      <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-        {this.state.authMode === 'login'
-          ? <LoginForm
+      // <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+      <View style={styles.backgroundImage}>
+        {this.state.authMode === "login" ? (
+          <LoginForm
             onSwitchAuthMode={this.switchAuthModeHandler}
             submitHandler={this.submitHandler}
           />
-          : <SignupForm
+        ) : (
+          <SignupForm
             onSwitchAuthMode={this.switchAuthModeHandler}
             submitHandler={this.submitHandler}
           />
-        }
-      </ImageBackground>
+        )}
+      </View>
+      // </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    width: '100%',
+    width: "100%",
     flex: 1
   }
 });
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAuth: (email, senha) => dispatch(tryAuth(email, senha)),
+    onAutoSignIn: () => dispatch(authAutoSignIn())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Auth);

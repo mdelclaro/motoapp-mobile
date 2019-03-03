@@ -1,30 +1,26 @@
 import { CORRIDA_ADDED, CORRIDA_CANCELLED } from "./types";
-import { uiStartLoading, uiStopLoading } from "../actions/UIAction";
-
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpYW96b2xhQGdtYWlsLmNvbS5iciIsInVzZXJJZCI6IjVjNmI1Zjg5MTI1Y2FmNzMwNGZjZGMzOCIsImlhdCI6MTU1MTMxMDg3NCwiZXhwIjoxNTY5MzEwODc0fQ.ohA7kQjaeaM_kNzmF8AC7Eu0DVPXualmzFpFLesjat8";
+import { uiStartLoading, uiStopLoading, authGetToken } from "./index";
+import { baseUrl } from "../../config";
 
 export const addCorrida = (origem, destino, distancia, tempo) => {
   return async dispatch => {
     dispatch(uiStartLoading());
+    const token = await dispatch(authGetToken());
     try {
-      const result = await fetch(
-        "http://192.168.2.107:8080/motoapp/v1/corrida/",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            origem,
-            destino,
-            distancia,
-            tempo,
-            status: "0"
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token
-          }
+      const result = await fetch(`${baseUrl}corrida/`, {
+        method: "POST",
+        body: JSON.stringify({
+          origem,
+          destino,
+          distancia,
+          tempo,
+          status: "0"
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
         }
-      );
+      });
 
       if (result.ok) {
         let res = await result.json();
@@ -53,32 +49,27 @@ export const corridaAdded = corrida => {
 export const cancelCorrida = id => {
   return async dispatch => {
     dispatch(uiStartLoading());
+    const token = await dispatch(authGetToken());
     try {
-      const corrida = await fetch(
-        "http://192.168.2.107:8080/motoapp/v1/corrida/" + id,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token
-          }
+      const corrida = await fetch(`${baseUrl}corrida/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
         }
-      );
+      });
       if (corrida.ok) {
         let res = await corrida.json();
 
         // Nenhum motoqueiro aceitou ainda
         if (!res.corrida.idMotoqueiro) {
-          const result = await fetch(
-            "http://192.168.2.107:8080/motoapp/v1/corrida/" + id,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token
-              }
+          const result = await fetch(`${baseUrl}corrida/${id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token
             }
-          );
+          });
 
           if (result.ok) {
             let res = await result.json();

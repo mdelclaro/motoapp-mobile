@@ -4,11 +4,15 @@ import thunk from "redux-thunk";
 import RequestReducer from "./reducers/RequestReducer";
 import UIReducer from "./reducers/UIReducer";
 import MotoqueiroReducer from "./reducers/MotoqueiroReducer";
+import AuthReducer from "./reducers/AuthReducer";
+import FormReducer from "./reducers/FormReducer";
 
 const rootReducer = combineReducers({
   corrida: RequestReducer,
   ui: UIReducer,
-  motoqueiro: MotoqueiroReducer
+  motoqueiro: MotoqueiroReducer,
+  auth: AuthReducer,
+  form: FormReducer
 });
 
 let composeEnhancers = compose;

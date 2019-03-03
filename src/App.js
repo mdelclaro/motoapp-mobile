@@ -7,17 +7,18 @@ const startApp = () => {
     getImageSource(
       Platform.OS === "android" ? "md-pin" : "ios-pin",
       35,
-      "#425cf4"
+      //"#425cf4"
+      "#29aaf4"
     ),
     getImageSource(
       Platform.OS === "android" ? "md-paper-plane" : "ios-paper-plane",
       35,
-      "#425cf4"
+      "#29aaf4"
     ),
     getImageSource(
       Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       35,
-      "#425cf4"
+      "#29aaf4"
     )
   ]).then(icons => {
     Navigation.setRoot({
