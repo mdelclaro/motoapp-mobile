@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 50,
     height: 50,
-    // backgroundColor: '#29aaf4',
+    // backgroundColor: '#425cf4',
     borderRadius: 100
   }
 });

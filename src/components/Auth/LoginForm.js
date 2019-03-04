@@ -13,10 +13,10 @@ import { connect } from "react-redux";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import ButtonWithBackground from "./UI/ButtonWithBackground";
-import InputValidation from "./UI/InputValidation";
-import HeadingText from "./UI/HeadingText";
-import MainText from "./UI/MainText";
+import ButtonWithBackground from "../UI/ButtonWithBackground";
+import InputValidation from "../UI/InputValidation";
+import HeadingText from "../UI/HeadingText";
+import MainText from "../UI/MainText";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class LoginForm extends Component {
     if (this.state.viewMode === "portrait") {
       headingText = (
         <MainText>
-          <HeadingText style={{ color: "#29aaf4" }}>Fazer login</HeadingText>
+          <HeadingText style={{ color: "#425cf4" }}>Fazer login</HeadingText>
         </MainText>
       );
     }
@@ -134,7 +134,7 @@ class LoginForm extends Component {
               !this.props.isLoading ? (
                 <View style={{ width: "80%" }}>
                   <ButtonWithBackground
-                    color="#29aaf4"
+                    color="#425cf4"
                     onPress={handleSubmit}
                     isDisabled={!isValid}
                   >
@@ -148,7 +148,7 @@ class LoginForm extends Component {
               !this.props.isLoading ? (
                 <ButtonWithBackground
                   onPress={this.props.onSwitchAuthMode}
-                  textColor="#29aaf4"
+                  textColor="#425cf4"
                 >
                   Não tem uma conta? Crie agora
                 </ButtonWithBackground>

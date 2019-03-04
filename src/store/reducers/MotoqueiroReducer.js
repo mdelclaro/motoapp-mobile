@@ -1,7 +1,8 @@
-import { MOTOQUEIRO_FETCHED } from "../actions/types";
+import { MOTOQUEIRO_FETCHED, MOTOQUEIRO_DISTANCIA } from "../actions/types";
 
 const INITIAL_STATE = {
-  motoqueiro: null
+  motoqueiro: null,
+  distancia: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         motoqueiro: action.payload.motoqueiro
+      };
+    case MOTOQUEIRO_DISTANCIA:
+      return {
+        ...state,
+        distancia: action.payload.distancia
       };
     default:
       return state;

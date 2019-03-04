@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { View, Dimensions, Platform, PermissionsAndroid } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, AnimatedRegion } from "react-native-maps";
 import { Navigation } from "react-native-navigation";
 import GeoCoder from "react-native-geocoding";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
@@ -35,7 +35,13 @@ class Localizacao extends Component {
     duration: null, // duracao
     location: null, // nome da rua destino
     distance: null, // distancia origem -> destino
-    motoqueiro: false // se corrida foi aceita ou nao
+    motoqueiro: false, // se corrida foi aceita ou nao
+    motoqueiroLocation: new AnimatedRegion({
+      // localizacao do motoqueiro
+      latitude: null,
+      longitude: null
+    }),
+    motoqueiroMarker: false
   };
 
   // pedir permissao de localizacao
@@ -64,6 +70,17 @@ class Localizacao extends Component {
     } else {
       this.getCurrentLocation();
       // this.handleLocationChanged();
+    }
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === "backButton") {
+      Navigation.mergeOptions("Main", {
+        topBar: {
+          leftButtons: []
+        }
+      });
+      this.handleBack();
     }
   }
 
@@ -138,17 +155,6 @@ class Localizacao extends Component {
       });
     });
   };
-
-  navigationButtonPressed({ buttonId }) {
-    if (buttonId === "backButton") {
-      Navigation.mergeOptions("Main", {
-        topBar: {
-          leftButtons: []
-        }
-      });
-      this.handleBack();
-    }
-  }
 
   // pedir corrida
   handleAddCorrida = () => {
@@ -240,15 +246,67 @@ class Localizacao extends Component {
     });
   };
 
-  handleAcceptCorrida = async motoqueiro => {
+  handleAcceptCorrida = async (motoqueiro, coords, duration) => {
+    motoqueiro = {
+      ...motoqueiro,
+      duracao: duration
+    };
     this.setState({
-      destination: null,
+      // destination: null,
       motoqueiro
+    });
+    const coordinates = {
+      latitude: parseFloat(coords.lat),
+      longitude: parseFloat(coords.long)
+    };
+    this.setState(prevState => {
+      return {
+        motoqueiroLocation: {
+          ...prevState.motoqueiroLocation,
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude
+        },
+        motoqueiroMarker: true
+      };
+    });
+    this.handleLocationChanged(coords);
+    this.mapView.fitToCoordinates([coordinates, this.state.region], {
+      edgePadding: {
+        right: getPixelSize(60),
+        left: getPixelSize(60),
+        top: getPixelSize(60),
+        bottom: getPixelSize(260)
+      },
+      animated: true
     });
   };
 
+  handleLocationChanged = coords => {
+    const coordinates = {
+      latitude: parseFloat(coords.lat),
+      longitude: parseFloat(coords.long)
+    };
+
+    if (Platform.OS === "android") {
+      this.motoqueiroMarker._component.animateMarkerToCoordinate(
+        coordinates,
+        500
+      );
+    } else {
+      this.state.motoqueiroLocation.timing(coordinates).start();
+    }
+  };
+
   render() {
-    const { region, destination, duration, location, motoqueiro } = this.state;
+    const {
+      region,
+      destination,
+      duration,
+      location,
+      motoqueiro,
+      motoqueiroLocation,
+      motoqueiroMarker
+    } = this.state;
     return (
       <View style={{ flex: 1 }}>
         {/* mapa */}
@@ -279,7 +337,8 @@ class Localizacao extends Component {
                       left: getPixelSize(60),
                       top: getPixelSize(60),
                       bottom: getPixelSize(260)
-                    }
+                    },
+                    animated: true
                   });
                 }}
               />
@@ -288,6 +347,14 @@ class Localizacao extends Component {
                 coordinate={destination}
                 image={pin}
               />
+              {motoqueiroMarker ? (
+                <Marker.Animated
+                  ref={marker => {
+                    this.motoqueiroMarker = marker;
+                  }}
+                  coordinate={motoqueiroLocation}
+                />
+              ) : null}
             </Fragment>
           )}
         </MapView>
@@ -305,7 +372,12 @@ class Localizacao extends Component {
           // <DetailsMotoqueiro />
           <Search onLocationSelected={this.handleLocationSelected} />
         )}
-        {motoqueiro ? <DetailsMotoqueiro motoqueiro={motoqueiro} /> : null}
+        {motoqueiro ? (
+          <DetailsMotoqueiro
+            handleLocationChanged={this.handleLocationChanged}
+            motoqueiro={motoqueiro}
+          />
+        ) : null}
       </View>
     );
   }

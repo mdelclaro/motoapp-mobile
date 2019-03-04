@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Image, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
 import openSocket from "socket.io-client";
+import { socketUrl } from "../../config";
 
 import {
   Container,
@@ -16,10 +17,16 @@ import flags from "../../assets/flags/flags.png";
 
 class Details extends Component {
   componentDidMount() {
-    const socket = openSocket("http://192.168.2.107:8080");
-    socket.emit("join", { id: "123" }); //TODO: colocar idCliente apos auth
+    const socket = openSocket(socketUrl);
+    socket.emit("join", { id: this.props.idCliente });
+
     socket.on("acceptCorrida", data => {
-      this.props.accept(data.motoqueiro);
+      this.props.accept(data.motoqueiro, data.coords, data.duration);
+      socket.disconnect();
+    });
+
+    socket.on("reconnect", () => {
+      socket.emit("join", { id: this.props.idCliente });
     });
   }
 
@@ -80,7 +87,8 @@ class Details extends Component {
 const mapStateToProps = state => {
   return {
     isLoading: state.ui.isLoading,
-    corrida: state.corrida.corrida
+    corrida: state.corrida.corrida,
+    idCliente: state.auth.userId
   };
 };
 

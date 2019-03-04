@@ -12,8 +12,8 @@ import {
 } from "../store/actions/index";
 
 import backgroundImage from "../assets/background.png";
-import SignupForm from "../components/SignupForm";
-import LoginForm from "../components/LoginForm";
+import SignupForm from "../components/Auth/SignupForm";
+import LoginForm from "../components/Auth/LoginForm";
 
 class Auth extends Component {
   // static get options() {

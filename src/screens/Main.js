@@ -26,7 +26,7 @@ class Main extends Component {
     getImageSource(
       Platform.OS === "android" ? "md-menu" : "ios-menu",
       30,
-      "#29aaf4"
+      "#425cf4"
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {
@@ -41,9 +41,9 @@ class Main extends Component {
         //   backgroundColor: "#425cf4"
         // },
         bottomTab: {
-          selectedIconColor: "#29aaf4",
-          textColor: "#29aaf4",
-          selectedTextColor: "#29aaf4"
+          selectedIconColor: "#425cf4",
+          textColor: "#425cf4",
+          selectedTextColor: "#425cf4"
         }
       });
     });
