@@ -4,6 +4,8 @@ export { fetchMotoqueiro } from "./MotoqueiroAction";
 
 export { uiStartLoading, uiStopLoading } from "./UIAction";
 
+export { signUp } from "./SignUpAction";
+
 export {
   tryAuth,
   authGetToken,
@@ -11,4 +13,10 @@ export {
   authAutoSignIn
 } from "./AuthAction";
 
-export { emailChanged, senhaChanged } from "./FormAction";
+export {
+  emailChanged,
+  senhaChanged,
+  nomeChanged,
+  sobrenomeChanged,
+  clearForm
+} from "./FormAction";

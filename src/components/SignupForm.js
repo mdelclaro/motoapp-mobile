@@ -70,17 +70,25 @@ class SignupForm extends Component {
       <Formik
         ref={el => (this.form = el)}
         initialValues={{
+          nome: this.props.nome,
+          sobrenome: this.props.sobrenome,
           email: this.props.email,
           senha: this.props.senha,
           confirmPassword: ""
         }}
         onSubmit={this.props.submitHandler}
         validationSchema={Yup.object().shape({
+          nome: Yup.string()
+            .required("Preencha o nome")
+            .min(2, "Nome deve conter 2 caracteres ou mais"),
+          sobrenome: Yup.string()
+            .required("Preencha o sobrenome")
+            .min(2, "Sobrenome deve conter 2 caracteres ou mais"),
           email: Yup.string()
             .email("Email inválido")
             .required("Preencha o email"),
           senha: Yup.string()
-            .min(6, "Senha deve conter 6 caracteres")
+            .min(6, "Senha deve conter 6 caracteres ou mais")
             .required("Preencha a senha"),
           confirmPassword: Yup.string()
             .oneOf([Yup.ref("senha", null)], "As senhas devem ser iguais")
@@ -98,16 +106,41 @@ class SignupForm extends Component {
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView style={styles.container} behavior="padding">
               {headingText}
-
-              {/* Inputs Container */}
-
               <View style={styles.inputContainer}>
-                {/* Email Input */}
-
                 <InputValidation
+                  placeholder="Nome"
+                  autoCapitalize="words"
+                  returnKeyType="next"
+                  onSubmitEditing={() => this.sobrenomeInput.focus()}
+                  autoCorrect={false}
+                  value={this.props.nome}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="nome"
+                  error={touched.nome && errors.nome}
+                  style={styles.input}
+                />
+                <InputValidation
+                  myRef={ref => (this.sobrenomeInput = ref)}
+                  placeholder="Sobrenome"
+                  autoCapitalize="words"
+                  returnKeyType="next"
+                  onSubmitEditing={() => this.emailInput.focus()}
+                  autoCorrect={false}
+                  value={this.props.sobrenome}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="sobrenome"
+                  error={touched.sobrenome && errors.sobrenome}
+                  style={styles.input}
+                />
+                <InputValidation
+                  myRef={ref => (this.emailInput = ref)}
                   placeholder="Email"
                   keyboardType="email-address"
                   autoCapitalize="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => this.senhaInput.focus()}
                   autoCorrect={false}
                   value={this.props.email}
                   onChange={setFieldValue}
@@ -116,9 +149,6 @@ class SignupForm extends Component {
                   error={touched.email && errors.email}
                   style={styles.input}
                 />
-
-                {/* Password, ConfirmPassword container */}
-
                 <View
                   style={
                     this.state.viewMode === "portrait" ||
@@ -127,8 +157,6 @@ class SignupForm extends Component {
                       : styles.landscapePasswordContainer
                   }
                 >
-                  {/* Password Input */}
-
                   <View
                     style={
                       this.state.viewMode === "portrait" ||
@@ -138,8 +166,11 @@ class SignupForm extends Component {
                     }
                   >
                     <InputValidation
+                      myRef={ref => (this.senhaInput = ref)}
                       placeholder="Senha"
                       autoCapitalize="none"
+                      returnKeyType="next"
+                      onSubmitEditing={() => this.confirmarSenhaInput.focus()}
                       secureTextEntry
                       value={this.props.senha}
                       onChange={setFieldValue}
@@ -149,9 +180,6 @@ class SignupForm extends Component {
                       style={styles.input}
                     />
                   </View>
-
-                  {/* ConfirmPassword Input */}
-
                   <View
                     style={
                       this.state.viewMode === "portrait"
@@ -160,9 +188,12 @@ class SignupForm extends Component {
                     }
                   >
                     <InputValidation
+                      myRef={ref => (this.confirmarSenhaInput = ref)}
                       placeholder="Confirmar senha"
                       autoCapitalize="none"
+                      returnKeyType="send"
                       secureTextEntry
+                      onSubmitEditing={handleSubmit}
                       value={values.confirmPassword}
                       onChange={setFieldValue}
                       onTouch={setFieldTouched}
@@ -176,6 +207,7 @@ class SignupForm extends Component {
               {!this.props.isLoading ? (
                 <View style={{ width: "80%" }}>
                   <ButtonWithBackground
+                    myRef={ref => (this.submitButton = ref)}
                     color="#29aaf4"
                     onPress={handleSubmit}
                     isDisabled={!isValid}
@@ -242,7 +274,9 @@ const mapStateToProps = state => {
   return {
     isLoading: state.ui.isLoading,
     email: state.form.email,
-    senha: state.form.senha
+    senha: state.form.senha,
+    nome: state.form.nome,
+    sobrenome: state.form.sobrenome
   };
 };
 

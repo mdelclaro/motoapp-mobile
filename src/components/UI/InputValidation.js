@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import { View, TextInput, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
-import { emailChanged, senhaChanged } from "../../store/actions/index";
+import {
+  emailChanged,
+  senhaChanged,
+  nomeChanged,
+  sobrenomeChanged
+} from "../../store/actions/index";
 
 class InputValidation extends Component {
   textChangeHandler = value => {
     this.props.onChange(this.props.name, value);
     if (this.props.name == "email") this.props.onEmailChanged(value);
     if (this.props.name == "senha") this.props.onSenhaChanged(value);
+    if (this.props.name == "nome") this.props.onNomeChanged(value);
+    if (this.props.name == "sobrenome") this.props.onSobrenomeChanged(value);
   };
 
   touchHandler = () => {
@@ -20,6 +27,7 @@ class InputValidation extends Component {
     return (
       <View>
         <TextInput
+          ref={this.props.myRef}
           underlineColorAndroid="transparent"
           onChangeText={this.textChangeHandler}
           onBlur={this.touchHandler}
@@ -53,7 +61,9 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = dispatch => {
   return {
     onEmailChanged: email => dispatch(emailChanged(email)),
-    onSenhaChanged: senha => dispatch(senhaChanged(senha))
+    onSenhaChanged: senha => dispatch(senhaChanged(senha)),
+    onNomeChanged: nome => dispatch(nomeChanged(nome)),
+    onSobrenomeChanged: sobrenome => dispatch(sobrenomeChanged(sobrenome))
   };
 };
 

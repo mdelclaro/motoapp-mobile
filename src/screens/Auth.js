@@ -3,7 +3,13 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import { connect } from "react-redux";
 
 import startApp from "../App";
-import { tryAuth, authAutoSignIn } from "../store/actions/index";
+import {
+  tryAuth,
+  authAutoSignIn,
+  signUp,
+  clearForm,
+  emailChanged
+} from "../store/actions/index";
 
 import backgroundImage from "../assets/background.png";
 import SignupForm from "../components/SignupForm";
@@ -31,8 +37,24 @@ class Auth extends Component {
     });
   };
 
-  submitHandler = values => {
-    this.props.onTryAuth(values.email, values.senha);
+  submitHandler = async values => {
+    if (this.state.authMode === "login") {
+      this.props.onTryAuth(values.email, values.senha);
+    } else {
+      const result = await this.props.onSignUp(
+        values.email,
+        values.senha,
+        values.nome,
+        values.sobrenome
+      );
+      if (result) {
+        this.props.onClearForm();
+        this.props.onEmailChange(values.email);
+        this.setState({
+          authMode: "login"
+        });
+      }
+    }
   };
 
   render() {
@@ -66,7 +88,11 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = dispatch => {
   return {
     onTryAuth: (email, senha) => dispatch(tryAuth(email, senha)),
-    onAutoSignIn: () => dispatch(authAutoSignIn())
+    onAutoSignIn: () => dispatch(authAutoSignIn()),
+    onSignUp: (email, senha, nome, sobrenome) =>
+      dispatch(signUp(email, senha, nome, sobrenome)),
+    onClearForm: () => dispatch(clearForm()),
+    onEmailChange: email => dispatch(emailChanged(email))
   };
 };
 

@@ -50,7 +50,11 @@ const buttonWithBackground = props => {
     </View>
   );
   return (
-    <TouchableOpacity onPress={props.onPress} disabled={props.isDisabled}>
+    <TouchableOpacity
+      ref={props.myRef}
+      onPress={props.onPress}
+      disabled={props.isDisabled}
+    >
       {content}
     </TouchableOpacity>
   );
