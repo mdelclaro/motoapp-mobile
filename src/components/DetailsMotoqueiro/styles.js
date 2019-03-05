@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.View`
-  flex-direction: column;
   justify-content: space-around;
   background: #fff;
   height: 240px;
@@ -35,4 +34,24 @@ export const Description = styled.Text`
 export const Image = styled.Image`
   height: 80px;
   margin: 10px 0;
+`;
+
+export const ActionButton = styled.TouchableOpacity`
+  flex: 2;
+  background: #425cf4;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  align-self: stretch;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 15;
+`;
+
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
 `;

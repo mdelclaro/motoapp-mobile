@@ -4,6 +4,7 @@ import MapView, { Marker, AnimatedRegion } from "react-native-maps";
 import { Navigation } from "react-native-navigation";
 import GeoCoder from "react-native-geocoding";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
+import geolib from "geolib";
 
 import { connect } from "react-redux";
 
@@ -41,7 +42,9 @@ class Localizacao extends Component {
       latitude: null,
       longitude: null
     }),
-    motoqueiroMarker: false
+    motoqueiroMarker: false,
+    showDestination: false,
+    showRider: false
   };
 
   // pedir permissao de localizacao
@@ -130,7 +133,8 @@ class Localizacao extends Component {
         latitude,
         longitude,
         title: data.structured_formatting.main_text
-      }
+      },
+      showDestination: true
     });
 
     getImageSource(
@@ -157,7 +161,7 @@ class Localizacao extends Component {
   };
 
   // pedir corrida
-  handleAddCorrida = () => {
+  handleAddCorrida = async () => {
     const { region, destination, duration, location, distance } = this.state;
 
     const origem = {
@@ -171,7 +175,16 @@ class Localizacao extends Component {
       local: destination.title
     };
 
-    this.props.onAddCorrida(origem, destino, distance, duration);
+    const exec = await this.props.onAddCorrida(
+      origem,
+      destino,
+      distance,
+      duration
+    );
+
+    if (!exec) return;
+
+    this.setState({ showDestination: false });
 
     // tirar botao de voltar, e colocar menu
     getImageSource(
@@ -196,7 +209,13 @@ class Localizacao extends Component {
   // cancelar corrida
   handleCancelCorrida = async () => {
     const idCorrida = this.props.corrida._id;
-    await this.props.onCancelCorrida(idCorrida);
+    const exec = await this.props.onCancelCorrida(idCorrida);
+
+    if (!exec) {
+      return;
+    }
+
+    this.setState({ showDestination: true });
 
     getImageSource(
       Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
@@ -224,7 +243,8 @@ class Localizacao extends Component {
   // cancelar destino
   handleBack = () => {
     this.setState({
-      destination: null
+      destination: null,
+      showDestination: false
     });
 
     // voltar botao de menu e esconder botao de voltar
@@ -251,16 +271,16 @@ class Localizacao extends Component {
       ...motoqueiro,
       duracao: duration
     };
-    this.setState({
-      // destination: null,
-      motoqueiro
-    });
+    this.setState({});
     const coordinates = {
       latitude: parseFloat(coords.lat),
       longitude: parseFloat(coords.long)
     };
     this.setState(prevState => {
       return {
+        showDestination: false,
+        showRider: true,
+        motoqueiro,
         motoqueiroLocation: {
           ...prevState.motoqueiroLocation,
           latitude: coordinates.latitude,
@@ -295,6 +315,11 @@ class Localizacao extends Component {
     } else {
       this.state.motoqueiroLocation.timing(coordinates).start();
     }
+
+    const distance = geolib.getDistance(coordinates, this.state.region, 1);
+    if (distance <= 5) {
+      this.setState({ showRider: false, showDestination: true });
+    }
   };
 
   render() {
@@ -305,7 +330,9 @@ class Localizacao extends Component {
       location,
       motoqueiro,
       motoqueiroLocation,
-      motoqueiroMarker
+      motoqueiroMarker,
+      showDestination,
+      showRider
     } = this.state;
     return (
       <View style={{ flex: 1 }}>
@@ -321,7 +348,7 @@ class Localizacao extends Component {
           showsScale={false}
           ref={el => (this.mapView = el)}
         >
-          {destination && (
+          {showDestination && (
             <Fragment>
               <Directions
                 origin={region}
@@ -343,7 +370,7 @@ class Localizacao extends Component {
                 }}
               />
               <Marker
-                anchor={{ x: 0.5, y: 0.5 }}
+                //anchor={{ x: 0.5, y: 0.5 }}
                 coordinate={destination}
                 image={pin}
               />
@@ -356,6 +383,14 @@ class Localizacao extends Component {
                 />
               ) : null}
             </Fragment>
+          )}
+          {showRider && (
+            <Marker.Animated
+              ref={marker => {
+                this.motoqueiroMarker = marker;
+              }}
+              coordinate={motoqueiroLocation}
+            />
           )}
         </MapView>
 

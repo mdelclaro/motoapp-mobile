@@ -27,14 +27,17 @@ export const addCorrida = (origem, destino, distancia, tempo) => {
         console.log(res);
         dispatch(uiStopLoading());
         dispatch(corridaAdded({ corrida: res.corrida }));
+        return true;
       } else {
         dispatch(uiStopLoading());
         alert("Ocorreu um erro ao chamar uma moto");
+        return false;
       }
     } catch (err) {
       dispatch(uiStopLoading());
       alert("Ocorreu um erro");
       console.log("Erro: " + err);
+      return false;
     }
   };
 };
@@ -72,22 +75,25 @@ export const cancelCorrida = id => {
           });
 
           if (result.ok) {
-            let res = await result.json();
             dispatch(uiStopLoading());
             dispatch(corridaCancelled());
+            return true;
           } else {
             dispatch(uiStopLoading());
             alert("Ocorreu um erro");
             console.log("Erro: " + err);
+            return false;
           }
         } else {
           alert("Erro ao cancelar. Esta corrida já foi aceita!");
+          return false;
         }
       }
     } catch (err) {
       dispatch(uiStopLoading());
       alert("Ocorreu um erro");
       console.log("Erro: " + err);
+      return false;
     }
   };
 };

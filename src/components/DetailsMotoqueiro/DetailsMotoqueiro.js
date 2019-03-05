@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { Image, ActivityIndicator } from "react-native";
+import { View, Image, ActivityIndicator, TouchableOpacity } from "react-native";
 import openSocket from "socket.io-client";
 import { socketUrl } from "../../config";
 
-import { Container, Title, Description } from "./styles";
+import {
+  Container,
+  Title,
+  Description,
+  ActionButton,
+  ButtonText
+} from "./styles";
 
-import flags from "../../assets/flags/flags.png";
+import avatar from "../../assets/avatar/avatar.png";
 
 class DetailsMotoqueiro extends Component {
   componentDidMount() {
@@ -27,7 +33,7 @@ class DetailsMotoqueiro extends Component {
           {this.props.motoqueiro.nome} {this.props.motoqueiro.sobrenome}
         </Title>
         <Image
-          source={flags}
+          source={avatar}
           style={{
             paddingBottom: 3,
             width: 60,
@@ -43,6 +49,23 @@ class DetailsMotoqueiro extends Component {
         <Description>
           Tempo estimado: {Math.floor(this.props.motoqueiro.duracao / 60)} min
         </Description>
+        <View
+          style={{
+            flex: 1,
+            width: "100%",
+            flexDirection: "row",
+            alignContent: "space-between",
+            justifyContent: "space-between",
+            alignItems: "stretch"
+          }}
+        >
+          <ActionButton>
+            <ButtonText>Mensagem</ButtonText>
+          </ActionButton>
+          <ActionButton>
+            <ButtonText>Ligar</ButtonText>
+          </ActionButton>
+        </View>
       </Container>
     );
   }
