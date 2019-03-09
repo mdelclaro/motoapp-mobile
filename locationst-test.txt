@@ -1,0 +1,17 @@
+motoqueiro: {
+		"lat": -21.788008,
+		"long": -46.566232,
+    "local": "R. Assis"
+	}
+
+origem": {
+  "lat": -21.80014907,
+  "long": -46.56450562,
+  "local": "R. Paraguai"
+  }
+
+destino": {
+  "lat": -21.7856587,
+  "long": -46.5753302,
+  "local": "J Pinheiro"
+}

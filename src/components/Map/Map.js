@@ -14,10 +14,13 @@ import Search from "../Search/Search";
 import Directions from "../Directions/Directions";
 import Details from "../Details/Details";
 import DetailsMotoqueiro from "../DetailsMotoqueiro/DetailsMotoqueiro";
+import EnRoute from "../EnRoute/EnRoute";
 
 import { getPixelSize } from "../../utils";
 
 import pin from "../../assets/destination_pin/pin.png";
+import user from "../../assets/user/user.png";
+import helmet from "../../assets/helmet/helmet.png";
 
 // const width = Dimensions.get("window").width;
 // const height = Dimensions.get("window").height;
@@ -28,24 +31,46 @@ class Localizacao extends Component {
   constructor(props) {
     super(props);
     Navigation.events().bindComponent(this, "Main");
+    this.watchID = null;
   }
 
   state = {
+    step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
     region: null, // localizacao atual
     destination: null, // destino
     duration: null, // duracao
     location: null, // nome da rua destino
     distance: null, // distancia origem -> destino
-    motoqueiro: false, // se corrida foi aceita ou nao
-    motoqueiroLocation: new AnimatedRegion({
-      // localizacao do motoqueiro
+    motoqueiro: false, // objeto com dados do motoqueiro
+    clienteLocation: new AnimatedRegion({
       latitude: null,
       longitude: null
     }),
-    motoqueiroMarker: false,
-    showDestination: false,
-    showRider: false
+    motoqueiroLocation: new AnimatedRegion({
+      latitude: null,
+      longitude: null
+    })
   };
+
+  resetState = () => {
+    this.setState({
+      step: 0,
+      destination: null, // destino
+      duration: null, // duracao
+      location: null, // nome da rua destino
+      distance: null, // distancia origem -> destino
+      motoqueiro: false, // se corrida foi aceita ou nao
+      motoqueiroLocation: new AnimatedRegion({
+        // localizacao do motoqueiro
+        latitude: null,
+        longitude: null
+      })
+    });
+  };
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
 
   // pedir permissao de localizacao
   async componentDidMount() {
@@ -62,7 +87,7 @@ class Localizacao extends Component {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             this.getCurrentLocation();
-            // this.handleLocationChanged();
+            this.locationChanged();
           }
         } else {
           this.getCurrentLocation();
@@ -72,7 +97,7 @@ class Localizacao extends Component {
       }
     } else {
       this.getCurrentLocation();
-      // this.handleLocationChanged();
+      this.locationChanged();
     }
   }
 
@@ -105,20 +130,59 @@ class Localizacao extends Component {
               (Dimensions.get("window").width /
                 Dimensions.get("window").height) *
               0.0122
+          },
+          clienteLocation: {
+            latitude,
+            longitude
           }
-          // coordinate: {
-          //   latitude,
-          //   longitude
-          // }
         });
-      }, // sucesso,
-      err => {
-        console.log(err);
-      }, // erro
+      },
+      err => console.log(err),
       {
         timeout: 5000,
         enableHighAccuracy: true
       }
+    );
+  };
+
+  // observa mudanca de localizacao
+  locationChanged = () => {
+    this.watchID = navigator.geolocation.watchPosition(
+      lastPosition => {
+        const latitude = parseFloat(
+          JSON.stringify(lastPosition.coords.latitude)
+        );
+        const longitude = parseFloat(
+          JSON.stringify(lastPosition.coords.longitude)
+        );
+        const location = { latitude, longitude };
+        this.setState(prevState => {
+          return {
+            region: {
+              ...prevState.region,
+              latitude,
+              longitude
+            },
+            clienteLocation: {
+              latitude,
+              longitude
+            }
+          };
+        });
+
+        if (Platform.OS === "android") {
+          if (this.clienteMarker) {
+            this.clienteMarker._component.animateMarkerToCoordinate(
+              location,
+              500
+            );
+          }
+        } else {
+          this.state.clienteLocation.timing(location).start();
+        }
+      },
+      err => console.log(err),
+      { enableHighAccuracy: true, timeout: 5000 }
     );
   };
 
@@ -134,7 +198,7 @@ class Localizacao extends Component {
         longitude,
         title: data.structured_formatting.main_text
       },
-      showDestination: true
+      step: 1
     });
 
     getImageSource(
@@ -184,8 +248,6 @@ class Localizacao extends Component {
 
     if (!exec) return;
 
-    this.setState({ showDestination: false });
-
     // tirar botao de voltar, e colocar menu
     getImageSource(
       Platform.OS === "android" ? "md-menu" : "ios-menu",
@@ -215,7 +277,7 @@ class Localizacao extends Component {
       return;
     }
 
-    this.setState({ showDestination: true });
+    this.setState({ step: 1 });
 
     getImageSource(
       Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
@@ -243,8 +305,8 @@ class Localizacao extends Component {
   // cancelar destino
   handleBack = () => {
     this.setState({
-      destination: null,
-      showDestination: false
+      step: 0,
+      destination: null
     });
 
     // voltar botao de menu e esconder botao de voltar
@@ -271,22 +333,19 @@ class Localizacao extends Component {
       ...motoqueiro,
       duracao: duration
     };
-    this.setState({});
     const coordinates = {
       latitude: parseFloat(coords.lat),
       longitude: parseFloat(coords.long)
     };
     this.setState(prevState => {
       return {
-        showDestination: false,
-        showRider: true,
+        step: 2,
         motoqueiro,
         motoqueiroLocation: {
           ...prevState.motoqueiroLocation,
           latitude: coordinates.latitude,
           longitude: coordinates.longitude
-        },
-        motoqueiroMarker: true
+        }
       };
     });
     this.handleLocationChanged(coords);
@@ -316,39 +375,59 @@ class Localizacao extends Component {
       this.state.motoqueiroLocation.timing(coordinates).start();
     }
 
+    // motoqueiro -> passageiro
     const distance = geolib.getDistance(coordinates, this.state.region, 1);
-    if (distance <= 5) {
-      this.setState({ showRider: false, showDestination: true });
+    // motoqueiro chegou - em viagem agora
+    if (distance <= 20) {
+      alert("Motoqueiro ja deve estar na sua localizacao");
     }
+  };
+
+  handleStartCorrida = () => {
+    alert("em viagem!");
+
+    this.setState({
+      step: 3
+    });
+  };
+
+  handleFinishCorrida = () => {
+    //avaliar
+    alert("chegou ao destino!");
+
+    this.resetState();
   };
 
   render() {
     const {
+      step,
       region,
       destination,
       duration,
       location,
       motoqueiro,
       motoqueiroLocation,
-      motoqueiroMarker,
-      showDestination,
-      showRider
+      clienteLocation
     } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        {/* mapa */}
         <MapView
           onMapReady={this.onMapReady}
           style={{ flex: 1 }}
           region={region}
-          showsUserLocation
+          //showsUserLocation
           loadingEnabled
           showsCompass={false}
           showsMyLocationButton={false}
           showsScale={false}
           ref={el => (this.mapView = el)}
         >
-          {showDestination && (
+          <Marker.Animated
+            anchor={{ x: 0.5, y: 0.5 }}
+            coordinate={clienteLocation}
+            image={user}
+          />
+          {step == 1 ? (
             <Fragment>
               <Directions
                 origin={region}
@@ -370,31 +449,28 @@ class Localizacao extends Component {
                 }}
               />
               <Marker
-                //anchor={{ x: 0.5, y: 0.5 }}
+                anchor={{ x: 0.5, y: 0.5 }}
                 coordinate={destination}
                 image={pin}
               />
-              {motoqueiroMarker ? (
-                <Marker.Animated
-                  ref={marker => {
-                    this.motoqueiroMarker = marker;
-                  }}
-                  coordinate={motoqueiroLocation}
-                />
-              ) : null}
             </Fragment>
-          )}
-          {showRider && (
+          ) : null}
+          {step == 2 ? (
             <Marker.Animated
               ref={marker => {
                 this.motoqueiroMarker = marker;
               }}
               coordinate={motoqueiroLocation}
+              image={helmet}
             />
-          )}
+          ) : null}
         </MapView>
 
-        {destination ? (
+        {step == 0 ? (
+          <Search onLocationSelected={this.handleLocationSelected} />
+        ) : null}
+
+        {step == 1 ? (
           <Details
             origem={location}
             destino={destination.title}
@@ -403,13 +479,21 @@ class Localizacao extends Component {
             cancel={this.handleCancelCorrida}
             accept={this.handleAcceptCorrida}
           />
-        ) : (
-          // <DetailsMotoqueiro />
-          <Search onLocationSelected={this.handleLocationSelected} />
-        )}
-        {motoqueiro ? (
+        ) : null}
+
+        {step == 2 ? (
           <DetailsMotoqueiro
             handleLocationChanged={this.handleLocationChanged}
+            handleStartCorrida={this.handleStartCorrida}
+            motoqueiro={motoqueiro}
+          />
+        ) : null}
+
+        {step == 3 ? (
+          <EnRoute
+            handleFinishCorrida={this.handleFinishCorrida}
+            origem={location}
+            destino={destination.title}
             motoqueiro={motoqueiro}
           />
         ) : null}

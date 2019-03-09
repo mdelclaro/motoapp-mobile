@@ -1,0 +1,54 @@
+import React, { Component } from "react";
+import { Image } from "react-native";
+
+import { Container, Title, Description } from "./styles";
+import openSocket from "socket.io-client";
+import { socketUrl } from "../../config";
+
+import avatar from "../../assets/avatar/avatar.png";
+
+class EnRoute extends Component {
+  componentDidMount() {
+    const { _id } = this.props.motoqueiro;
+    const socket = openSocket(socketUrl);
+    socket.emit("join", { id: _id });
+
+    socket.on("finishCorrida", () => {
+      this.props.handleFinishCorrida();
+      socket.close();
+    });
+
+    socket.on("reconnect", () => {
+      socket.emit("join", { id: _id });
+    });
+  }
+
+  render() {
+    const { origem, destino, motoqueiro } = this.props;
+    return (
+      <Container>
+        <Title>Em viagem com</Title>
+        <Description>
+          {motoqueiro.nome} {motoqueiro.sobrenome}
+        </Description>
+        <Image
+          source={avatar}
+          style={{
+            paddingBottom: 3,
+            width: 60,
+            height: 60,
+            resizeMode: "center",
+            borderRadius: 100
+          }}
+        />
+        <Description>
+          De {origem} para {destino}
+        </Description>
+        <Description>R$6,00</Description>
+        <Description />
+      </Container>
+    );
+  }
+}
+
+export default EnRoute;

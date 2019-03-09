@@ -15,22 +15,30 @@ import avatar from "../../assets/avatar/avatar.png";
 
 class DetailsMotoqueiro extends Component {
   componentDidMount() {
+    const { _id } = this.props.motoqueiro;
     const socket = openSocket(socketUrl);
-    socket.emit("join", { id: this.props.motoqueiro._id });
+    socket.emit("join", { id: _id });
 
     socket.on("locationChanged", data => {
       this.props.handleLocationChanged(data.coords);
     });
 
+    socket.on("startCorrida", () => {
+      this.props.handleStartCorrida();
+      socket.close();
+    });
+
     socket.on("reconnect", () => {
-      socket.emit("join", { id: this.props.motoqueiro._id });
+      socket.emit("join", { id: _id });
     });
   }
+
   render() {
+    const { nome, sobrenome, moto, placa, duracao } = this.props.motoqueiro;
     return (
       <Container>
         <Title>
-          {this.props.motoqueiro.nome} {this.props.motoqueiro.sobrenome}
+          {nome} {sobrenome}
         </Title>
         <Image
           source={avatar}
@@ -43,11 +51,11 @@ class DetailsMotoqueiro extends Component {
           }}
         />
         <Description>
-          {this.props.motoqueiro.moto} - {this.props.motoqueiro.placa}
+          {moto} - {placa}
         </Description>
         <Description>R$6,00</Description>
         <Description>
-          Tempo estimado: {Math.floor(this.props.motoqueiro.duracao / 60)} min
+          Tempo estimado: {Math.floor(duracao / 60)} min
         </Description>
         <View
           style={{
