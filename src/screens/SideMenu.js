@@ -5,19 +5,33 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
-  Platform
+  Platform,
+  Image
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+
+import avatar from "../assets/avatar/avatar.png";
 
 class Menu extends Component {
   render() {
     return (
       <View
         style={[
-          styles.container,
-          { width: Dimensions.get("window").width * 0.9 }
+          styles.container
+          // { width: Dimensions.get("window").width * 0.7 }
         ]}
       >
+        <Image
+          source={avatar}
+          style={{
+            alignSelf: "center",
+            paddingBottom: 3,
+            width: 60,
+            height: 60,
+            resizeMode: "center",
+            borderRadius: 100
+          }}
+        />
         <TouchableOpacity onPress={this.props.onLogout}>
           <View style={styles.drawerItemFirst}>
             <Icon

@@ -75,29 +75,36 @@ const startApp = () => {
                       }
                     ]
                   }
-                },
-                {
-                  stack: {
-                    id: "tab2",
-                    children: [
-                      {
-                        component: {
-                          id: "Home2",
-                          name: "motoapp.Main",
-                          options: {
-                            bottomTab: {
-                              text: "Entrega",
-                              textColor: "white",
-                              icon: icons[1],
-                              iconColor: "white"
-                            }
-                          }
-                        }
-                      }
-                    ]
-                  }
                 }
+                // {
+                //   stack: {
+                //     id: "tab2",
+                //     children: [
+                //       {
+                //         component: {
+                //           id: "Home2",
+                //           name: "motoapp.Main",
+                //           options: {
+                //             bottomTab: {
+                //               text: "Entrega",
+                //               textColor: "white",
+                //               icon: icons[1],
+                //               iconColor: "white"
+                //             }
+                //           }
+                //         }
+                //       }
+                //     ]
+                //   }
+                // }
               ]
+            }
+          },
+          options: {
+            sideMenu: {
+              right: {
+                width: 260
+              }
             }
           }
         }
