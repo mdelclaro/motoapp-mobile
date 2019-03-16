@@ -49,7 +49,7 @@ class Search extends Component {
           textInput: {
             height: 54,
             margin: 0,
-            borderRadius: 20,
+            borderRadius: 15,
             paddingTop: 0,
             paddingBottom: 0,
             paddingLeft: 20,
@@ -57,10 +57,10 @@ class Search extends Component {
             marginTop: 0,
             marginLeft: 0,
             marginRight: 0,
-            // elevation: 5,
-            // shadowColor: "#000",
-            // shadowOffset: { x: 0, y: 0 },
-            // shadowRadius: 10,
+            elevation: 1,
+            shadowColor: "#000",
+            shadowOffset: { x: 0, y: 0 },
+            shadowRadius: 3,
             borderWidth: 1,
             borderColor: "#DDD",
             fontSize: 18
@@ -71,10 +71,10 @@ class Search extends Component {
             borderRadius: 20,
             backgroundColor: "#FFF",
             marginHorizontal: 20,
-            // elevation: 5,
-            // shadowColor: "#000",
-            // shadowOffset: { x: 0, y: 0 },
-            // shadowRadius: 10,
+            elevation: 1,
+            shadowColor: "#000",
+            shadowOffset: { x: 0, y: 0 },
+            shadowRadius: 3,
             marginTop: 10
           },
           description: {

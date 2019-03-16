@@ -8,13 +8,18 @@ import geolib from "geolib";
 
 import { connect } from "react-redux";
 
-import { addCorrida, cancelCorrida } from "../../store/actions/index";
+import {
+  addCorrida,
+  cancelCorrida,
+  addRating
+} from "../../store/actions/index";
 
 import Search from "../Search/Search";
 import Directions from "../Directions/Directions";
 import Details from "../Details/Details";
 import DetailsMotoqueiro from "../DetailsMotoqueiro/DetailsMotoqueiro";
 import EnRoute from "../EnRoute/EnRoute";
+import Rating from "../Rating/Rating";
 
 import { getPixelSize } from "../../utils";
 
@@ -41,7 +46,7 @@ class Localizacao extends Component {
     duration: null, // duracao
     location: null, // nome da rua destino
     distance: null, // distancia origem -> destino
-    motoqueiro: false, // objeto com dados do motoqueiro
+    motoqueiro: null, // objeto com dados do motoqueiro
     clienteLocation: new AnimatedRegion({
       latitude: null,
       longitude: null
@@ -49,22 +54,27 @@ class Localizacao extends Component {
     motoqueiroLocation: new AnimatedRegion({
       latitude: null,
       longitude: null
-    })
+    }),
+    showRate: false
   };
 
   resetState = () => {
     this.setState({
-      step: 0,
+      step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
+      region: null, // localizacao atual
       destination: null, // destino
       duration: null, // duracao
       location: null, // nome da rua destino
       distance: null, // distancia origem -> destino
-      motoqueiro: false, // se corrida foi aceita ou nao
-      motoqueiroLocation: new AnimatedRegion({
-        // localizacao do motoqueiro
+      clienteLocation: new AnimatedRegion({
         latitude: null,
         longitude: null
-      })
+      }),
+      motoqueiroLocation: new AnimatedRegion({
+        latitude: null,
+        longitude: null
+      }),
+      showRate: false
     });
   };
 
@@ -392,10 +402,16 @@ class Localizacao extends Component {
   };
 
   handleFinishCorrida = () => {
-    //avaliar
-    alert("chegou ao destino!");
-
     this.resetState();
+    this.setState({ showRate: true });
+  };
+
+  submitRating = async rate => {
+    const exec = await this.props.onAddRating(this.state.motoqueiro._id, rate);
+
+    if (!exec) return;
+
+    this.setState({ motoqueiro: null, showRate: false });
   };
 
   render() {
@@ -407,10 +423,12 @@ class Localizacao extends Component {
       location,
       motoqueiro,
       motoqueiroLocation,
-      clienteLocation
+      clienteLocation,
+      showRate
     } = this.state;
     return (
       <View style={{ flex: 1 }}>
+        {showRate && <Rating handleRating={this.submitRating} />}
         <MapView
           onMapReady={this.onMapReady}
           style={{ flex: 1 }}
@@ -504,7 +522,8 @@ class Localizacao extends Component {
 
 const mapStateToProps = state => {
   return {
-    corrida: state.corrida.corrida
+    corrida: state.corrida.corrida,
+    motoqueiro: state.motoqueiro.motoqueiro
   };
 };
 
@@ -512,7 +531,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddCorrida: (origem, destino, distancia, tempo) =>
       dispatch(addCorrida(origem, destino, distancia, tempo)),
-    onCancelCorrida: id => dispatch(cancelCorrida(id))
+    onCancelCorrida: id => dispatch(cancelCorrida(id)),
+    onAddRating: (idMotoqueiro, comentario, nota) =>
+      dispatch(addRating(idMotoqueiro, comentario, nota))
   };
 };
 

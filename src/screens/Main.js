@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
@@ -62,7 +62,11 @@ class Main extends Component {
   }
 
   render() {
-    return <Map />;
+    return (
+      <Fragment>
+        <Map />
+      </Fragment>
+    );
   }
 }
 
