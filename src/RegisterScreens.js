@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 
 import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
-import BottomModal from "./screens/BottomModal";
 
 import Main from "./screens/Main";
 

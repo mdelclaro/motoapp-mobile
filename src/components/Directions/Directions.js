@@ -1,12 +1,13 @@
 import React from "react";
 import MapViewDirections from "react-native-maps-directions";
+import { googleApi } from "../../config";
 
 const Direction = ({ destination, origin, onReady }) => (
   <MapViewDirections
     destination={destination}
     origin={origin}
     onReady={onReady}
-    apikey="AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs"
+    apikey={googleApi}
     strokeWidth={4}
     strokeColor="#425cf4"
   />

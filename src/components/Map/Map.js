@@ -22,6 +22,7 @@ import EnRoute from "../EnRoute/EnRoute";
 import Rating from "../Rating/Rating";
 
 import { getPixelSize } from "../../utils";
+import { googleApi } from "../../config";
 
 import pin from "../../assets/destination_pin/pin.png";
 import user from "../../assets/user/user.png";
@@ -30,7 +31,7 @@ import helmet from "../../assets/helmet/helmet.png";
 // const width = Dimensions.get("window").width;
 // const height = Dimensions.get("window").height;
 
-GeoCoder.init("AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs");
+GeoCoder.init(googleApi);
 
 class Localizacao extends Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class Localizacao extends Component {
           }
         } else {
           this.getCurrentLocation();
+          this.locationChanged();
         }
       } catch (err) {
         console.log(err);
@@ -192,7 +194,7 @@ class Localizacao extends Component {
         }
       },
       err => console.log(err),
-      { enableHighAccuracy: true, timeout: 5000 }
+      { enableHighAccuracy: true, timeout: 5000, distanceFilter: 3 }
     );
   };
 
@@ -430,7 +432,7 @@ class Localizacao extends Component {
       <View style={{ flex: 1 }}>
         {showRate && <Rating handleRating={this.submitRating} />}
         <MapView
-          onMapReady={this.onMapReady}
+          // onMapReady={this.onMapReady}
           style={{ flex: 1 }}
           region={region}
           //showsUserLocation
@@ -444,6 +446,7 @@ class Localizacao extends Component {
             anchor={{ x: 0.5, y: 0.5 }}
             coordinate={clienteLocation}
             image={user}
+            ref={el => (this.clienteMarker = el)}
           />
           {step == 1 ? (
             <Fragment>

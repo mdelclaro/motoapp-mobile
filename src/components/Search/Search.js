@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Platform } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { googleApi } from "../../config";
 
 class Search extends Component {
   state = {
@@ -16,7 +17,7 @@ class Search extends Component {
         placeholderTextColor="#333"
         onPress={onLocationSelected}
         query={{
-          key: "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs",
+          key: googleApi,
           language: "pt"
         }}
         textInputProps={{
