@@ -8,12 +8,12 @@
         "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
-        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_light_focused.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-base-11.6.2.aar/9f743b8346d084d64a1277e1f4e8d1f3/res/drawable/common_google_signin_btn_text_light_focused.xml"
-    },
-    {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/tooltip_frame_dark.xml",
         "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/drawable/tooltip_frame_dark.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_light_focused.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-base-11.6.2.aar/9f743b8346d084d64a1277e1f4e8d1f3/res/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
@@ -222,6 +222,10 @@
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_light.xml",
         "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-base-11.6.2.aar/9f743b8346d084d64a1277e1f4e8d1f3/res/drawable/common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/redbox_top_border_background.xml",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/drawable/redbox_top_border_background.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",

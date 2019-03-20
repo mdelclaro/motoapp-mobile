@@ -13,10 +13,10 @@ import { store, persistor } from "./store/configureStore";
 const registerScreens = () => {
   Navigation.registerComponent(
     "motoapp.Main",
-    () => () => (
+    () => props => (
       <Provider store={store}>
         <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-          <Main />
+          <Main {...props} />
         </PersistGate>
       </Provider>
     ),
@@ -35,10 +35,10 @@ const registerScreens = () => {
   );
   Navigation.registerComponent(
     "motoapp.SideMenu",
-    () => () => (
+    () => props => (
       <Provider store={store}>
         <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-          <SideMenu />
+          <SideMenu {...props} />
         </PersistGate>
       </Provider>
     ),

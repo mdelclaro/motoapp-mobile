@@ -6,10 +6,10 @@ INJECTED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifes
 INJECTED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:1:1-31:12
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:17:1-31:12
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:2:1-15:12
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:2:1-15:12
 MERGED from [com.github.wix-playground:reflow-animator:1.0.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/reflow-animator-1.0.4.aar/f3194bc1eed43f72bbf656aa9a59898a/AndroidManifest.xml:2:1-12:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/AndroidManifest.xml:17:1-31:12
 MERGED from [:react-native-maps] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-maps/lib/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-12:12
@@ -30,18 +30,17 @@ MERGED from [com.android.support:support-fragment:26.1.0] /home/mdelclaro/.gradl
 MERGED from [com.android.support:support-core-utils:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/5616f22476561e62973b708dae3204dc/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/d07406284e69c1179a52f5f7c9b1b5bd/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/AndroidManifest.xml:17:1-31:12
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/a8dabdb3c9d4d47bc00b1c45a2dee118/AndroidManifest.xml:10:1-18:12
-MERGED from [com.facebook.fresco:fresco:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.9.0.aar/c2648674199bb1a338361b2709afaf6b/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.9.0.aar/c0f04e04d045610dfb8326beee8f3969/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:drawee:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.9.0.aar/354779e06ab098033790225d128a08ba/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.9.0.aar/2209444717df10f6661e11cbdd488be6/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-base:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.9.0.aar/6d53027abd55e68e2839721f64b72cb0/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.soloader:soloader:0.3.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/c0d1d1c08706d0c09555b05bee22bc36/AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.fresco:fresco:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/eccf578665e4d1fc729ea73fd051ce27/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/1b6f62038d12c202e2b509243a1e516d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/0316b02166101ef4cd9d9fc2525588fe/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/6b03dd9981513696501b32e6a8774e68/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/e240ce97934398bb29d2f84c376bb19c/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.6.0.aar/5ae5219decb411da395a7facd02b385b/AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r174650] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fa342337595e318bad9815b6d5fb7b80/AndroidManifest.xml:1:1-3:12
 MERGED from [com.github.clans:fab:1.6.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-places-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-places-license-11.6.2.aar/165e649b621b8245ea7c0196ef92702a/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-location-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.6.2.aar/62e2d3437a14d5a7801252c80d1ebe69/AndroidManifest.xml:2:1-6:12
-MERGED from [com.facebook.fresco:fbcore:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.9.0.aar/ed103ba80885a13757f16c5e5c88dd88/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/85e26fd6d18e0501ab9609aaebde35f5/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.6.2.aar/8fe53a138de02397229a3423477689f2/AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/22978f0ac8602f2df49266eac01e5e40/AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.android.gms:play-services-base-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.6.2.aar/e7af7cc7a08cb92e4861e858aa56706d/AndroidManifest.xml:2:1-6:12
@@ -74,8 +73,8 @@ MERGED from [com.google.android.gms:play-services-maps:11.6.2] /home/mdelclaro/.
 		ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:4:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:5:5-78
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:5:22-75
 uses-permission#android.permission.ACCESS_FINE_LOCATION
@@ -86,14 +85,14 @@ application
 ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:8:5-29:19
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-12:19
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-12:19
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:11:5-15:19
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:11:5-20
 MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:25:5-29:19
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:13:5-20
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/AndroidManifest.xml:25:5-29:19
 MERGED from [com.google.android.gms:play-services-places:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-places-11.6.2.aar/b77343aabcbd0303c050971c0170636a/AndroidManifest.xml:18:5-19
@@ -130,8 +129,8 @@ MERGED from [com.android.support:support-core-ui:26.1.0] /home/mdelclaro/.gradle
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/d07406284e69c1179a52f5f7c9b1b5bd/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-compat:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-compat:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/AndroidManifest.xml:25:5-29:19
-MERGED from [com.facebook.soloader:soloader:0.3.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/c0d1d1c08706d0c09555b05bee22bc36/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.3.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/c0d1d1c08706d0c09555b05bee22bc36/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.6.0.aar/5ae5219decb411da395a7facd02b385b/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.6.0.aar/5ae5219decb411da395a7facd02b385b/AndroidManifest.xml:11:5-20
 MERGED from [org.webkit:android-jsc:r174650] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fa342337595e318bad9815b6d5fb7b80/AndroidManifest.xml:2:3-17
 MERGED from [org.webkit:android-jsc:r174650] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fa342337595e318bad9815b6d5fb7b80/AndroidManifest.xml:2:3-17
 MERGED from [com.github.clans:fab:1.6.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/AndroidManifest.xml:12:5-20
@@ -190,10 +189,10 @@ ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.x
 		ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:25:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
 ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:28:7-84
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:12:9-14:40
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:12:9-14:40
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:12:9-14:40
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:12:9-14:40
 	android:exported
-		ADDED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:14:13-37
+		ADDED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:14:13-37
 	android:name
 		ADDED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifest.xml:28:17-81
 uses-sdk
@@ -204,14 +203,14 @@ MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_mo
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative57/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:21:5-23:62
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.58.6] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.wix-playground:reflow-animator:1.0.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/reflow-animator-1.0.4.aar/f3194bc1eed43f72bbf656aa9a59898a/AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.wix-playground:reflow-animator:1.0.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/reflow-animator-1.0.4.aar/f3194bc1eed43f72bbf656aa9a59898a/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/AndroidManifest.xml:21:5-23:78
@@ -252,28 +251,26 @@ MERGED from [com.android.support:support-core-ui:26.1.0] /home/mdelclaro/.gradle
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/d07406284e69c1179a52f5f7c9b1b5bd/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/45c494e3f69e28f4646dacf62cb2174f/AndroidManifest.xml:21:5-23:58
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/a8dabdb3c9d4d47bc00b1c45a2dee118/AndroidManifest.xml:14:5-16:41
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/a8dabdb3c9d4d47bc00b1c45a2dee118/AndroidManifest.xml:14:5-16:41
-MERGED from [com.facebook.fresco:fresco:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.9.0.aar/c2648674199bb1a338361b2709afaf6b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.9.0.aar/c2648674199bb1a338361b2709afaf6b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.9.0.aar/c0f04e04d045610dfb8326beee8f3969/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.9.0.aar/c0f04e04d045610dfb8326beee8f3969/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.9.0.aar/354779e06ab098033790225d128a08ba/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.9.0.aar/354779e06ab098033790225d128a08ba/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.9.0.aar/2209444717df10f6661e11cbdd488be6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.9.0.aar/2209444717df10f6661e11cbdd488be6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.9.0.aar/6d53027abd55e68e2839721f64b72cb0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.9.0.aar/6d53027abd55e68e2839721f64b72cb0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.soloader:soloader:0.3.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/c0d1d1c08706d0c09555b05bee22bc36/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.soloader:soloader:0.3.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/c0d1d1c08706d0c09555b05bee22bc36/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/eccf578665e4d1fc729ea73fd051ce27/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/eccf578665e4d1fc729ea73fd051ce27/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/1b6f62038d12c202e2b509243a1e516d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/1b6f62038d12c202e2b509243a1e516d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/0316b02166101ef4cd9d9fc2525588fe/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/0316b02166101ef4cd9d9fc2525588fe/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/6b03dd9981513696501b32e6a8774e68/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/6b03dd9981513696501b32e6a8774e68/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/e240ce97934398bb29d2f84c376bb19c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/e240ce97934398bb29d2f84c376bb19c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.6.0.aar/5ae5219decb411da395a7facd02b385b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/soloader-0.6.0.aar/5ae5219decb411da395a7facd02b385b/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.clans:fab:1.6.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.clans:fab:1.6.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/fc3600afde0a6baeead8fa7291deb9b2/AndroidManifest.xml:8:5-10:41
 MERGED from [com.google.android.gms:play-services-places-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-places-license-11.6.2.aar/165e649b621b8245ea7c0196ef92702a/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-places-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-places-license-11.6.2.aar/165e649b621b8245ea7c0196ef92702a/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-location-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.6.2.aar/62e2d3437a14d5a7801252c80d1ebe69/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-location-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-location-license-11.6.2.aar/62e2d3437a14d5a7801252c80d1ebe69/AndroidManifest.xml:4:5-43
-MERGED from [com.facebook.fresco:fbcore:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.9.0.aar/ed103ba80885a13757f16c5e5c88dd88/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:1.9.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.9.0.aar/ed103ba80885a13757f16c5e5c88dd88/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/85e26fd6d18e0501ab9609aaebde35f5/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/85e26fd6d18e0501ab9609aaebde35f5/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.6.2.aar/8fe53a138de02397229a3423477689f2/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.6.2.aar/8fe53a138de02397229a3423477689f2/AndroidManifest.xml:4:5-43
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/22978f0ac8602f2df49266eac01e5e40/AndroidManifest.xml:20:5-22:41

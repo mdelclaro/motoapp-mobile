@@ -56,3 +56,5 @@ buck-out/
 *.jsbundle
 node_modules
 .env
+android/build
+android/app/build

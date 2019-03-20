@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
         "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/drawable-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ec3bf8124d399404f90319305e2f3f5a/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
@@ -29,7 +29,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/ic_arrow_back_black_24dp.png",
-        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/drawable-xxxhdpi-v4/ic_arrow_back_black_24dp.png"
+        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative57Debug/res/drawable-xxxhdpi-v4/ic_arrow_back_black_24dp.png"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
@@ -61,7 +61,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/ic_arrow_back_black_rtl_24dp.png",
-        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/drawable-xxxhdpi-v4/ic_arrow_back_black_rtl_24dp.png"
+        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative57Debug/res/drawable-xxxhdpi-v4/ic_arrow_back_black_rtl_24dp.png"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",

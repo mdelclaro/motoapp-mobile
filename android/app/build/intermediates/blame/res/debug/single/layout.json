@@ -29,7 +29,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_view.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/layout/redbox_view.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/layout/redbox_view.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
@@ -153,7 +153,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/dev_loading_view.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/layout/dev_loading_view.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/layout/dev_loading_view.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
@@ -197,7 +197,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/fps_view.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/layout/fps_view.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/layout/fps_view.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_custom.xml",
@@ -237,7 +237,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_item_title.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/layout/redbox_item_title.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/layout/redbox_item_title.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
@@ -265,7 +265,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_item_frame.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/res/layout/redbox_item_frame.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.58.6.aar/cead5e4b124466ad6363650c32163be5/res/layout/redbox_item_frame.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/place_autocomplete_fragment.xml",

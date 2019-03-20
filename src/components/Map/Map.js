@@ -42,7 +42,15 @@ class Localizacao extends Component {
 
   state = {
     step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
-    region: null, // localizacao atual
+    region: null, // localizacao atual,
+    initialRegion: {
+      latitude: 0,
+      longitude: 0,
+      latitudeDelta: 0.0122,
+      longitudeDelta:
+        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        0.0122
+    },
     destination: null, // destino
     duration: null, // duracao
     location: null, // nome da rua destino
@@ -50,11 +58,19 @@ class Localizacao extends Component {
     motoqueiro: null, // objeto com dados do motoqueiro
     clienteLocation: new AnimatedRegion({
       latitude: null,
-      longitude: null
+      longitude: null,
+      latitudeDelta: 0.0122,
+      longitudeDelta:
+        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        0.0122
     }),
     motoqueiroLocation: new AnimatedRegion({
       latitude: null,
-      longitude: null
+      longitude: null,
+      latitudeDelta: 0.0122,
+      longitudeDelta:
+        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        0.0122
     }),
     showRate: false
   };
@@ -69,11 +85,19 @@ class Localizacao extends Component {
       distance: null, // distancia origem -> destino
       clienteLocation: new AnimatedRegion({
         latitude: null,
-        longitude: null
+        longitude: null,
+        latitudeDelta: 0.0122,
+        longitudeDelta:
+          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          0.0122
       }),
       motoqueiroLocation: new AnimatedRegion({
         latitude: null,
-        longitude: null
+        longitude: null,
+        latitudeDelta: 0.0122,
+        longitudeDelta:
+          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          0.0122
       }),
       showRate: false
     });
@@ -420,6 +444,7 @@ class Localizacao extends Component {
     const {
       step,
       region,
+      initialRegion,
       destination,
       duration,
       location,
@@ -434,6 +459,7 @@ class Localizacao extends Component {
         <MapView
           // onMapReady={this.onMapReady}
           style={{ flex: 1 }}
+          initialRegion={initialRegion}
           region={region}
           //showsUserLocation
           loadingEnabled

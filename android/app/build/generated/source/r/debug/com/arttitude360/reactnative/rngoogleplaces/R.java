@@ -99,35 +99,35 @@ public final class R {
         public static final int powered_by_google_light = 0x7f020085;
     }
     public static final class id {
-        public static final int adjust_height = 0x7f10005e;
-        public static final int adjust_width = 0x7f10005f;
-        public static final int amu_text = 0x7f100004;
-        public static final int auto = 0x7f10003b;
-        public static final int center = 0x7f10003d;
-        public static final int dark = 0x7f100071;
-        public static final int hybrid = 0x7f100060;
-        public static final int icon_only = 0x7f10006e;
-        public static final int light = 0x7f100072;
-        public static final int none = 0x7f100029;
-        public static final int normal = 0x7f100025;
-        public static final int place_autocomplete_clear_button = 0x7f1000d3;
-        public static final int place_autocomplete_powered_by_google = 0x7f1000d5;
-        public static final int place_autocomplete_prediction_primary_text = 0x7f1000d7;
-        public static final int place_autocomplete_prediction_secondary_text = 0x7f1000d8;
-        public static final int place_autocomplete_progress = 0x7f1000d6;
-        public static final int place_autocomplete_search_button = 0x7f1000d1;
-        public static final int place_autocomplete_search_input = 0x7f1000d2;
-        public static final int place_autocomplete_separator = 0x7f1000d4;
-        public static final int radio = 0x7f100090;
-        public static final int satellite = 0x7f100061;
-        public static final int standard = 0x7f10006f;
-        public static final int terrain = 0x7f100062;
-        public static final int text = 0x7f100015;
-        public static final int text2 = 0x7f100016;
-        public static final int webview = 0x7f1000a7;
-        public static final int wide = 0x7f100070;
-        public static final int window = 0x7f1000a6;
-        public static final int wrap_content = 0x7f10003a;
+        public static final int adjust_height = 0x7f100060;
+        public static final int adjust_width = 0x7f100061;
+        public static final int amu_text = 0x7f100006;
+        public static final int auto = 0x7f10003d;
+        public static final int center = 0x7f10003f;
+        public static final int dark = 0x7f100073;
+        public static final int hybrid = 0x7f100062;
+        public static final int icon_only = 0x7f100070;
+        public static final int light = 0x7f100074;
+        public static final int none = 0x7f10002b;
+        public static final int normal = 0x7f100027;
+        public static final int place_autocomplete_clear_button = 0x7f1000d5;
+        public static final int place_autocomplete_powered_by_google = 0x7f1000d7;
+        public static final int place_autocomplete_prediction_primary_text = 0x7f1000d9;
+        public static final int place_autocomplete_prediction_secondary_text = 0x7f1000da;
+        public static final int place_autocomplete_progress = 0x7f1000d8;
+        public static final int place_autocomplete_search_button = 0x7f1000d3;
+        public static final int place_autocomplete_search_input = 0x7f1000d4;
+        public static final int place_autocomplete_separator = 0x7f1000d6;
+        public static final int radio = 0x7f100092;
+        public static final int satellite = 0x7f100063;
+        public static final int standard = 0x7f100071;
+        public static final int terrain = 0x7f100064;
+        public static final int text = 0x7f100017;
+        public static final int text2 = 0x7f100018;
+        public static final int webview = 0x7f1000a9;
+        public static final int wide = 0x7f100072;
+        public static final int window = 0x7f1000a8;
+        public static final int wrap_content = 0x7f10003c;
     }
     public static final class integer {
         public static final int google_play_services_version = 0x7f0d0007;
@@ -164,7 +164,7 @@ public final class R {
         public static final int amu_visibility_ground_overlay = 0x7f080013;
     }
     public static final class string {
-        public static final int app_name = 0x7f090034;
+        public static final int app_name = 0x7f090035;
         public static final int common_google_play_services_enable_button = 0x7f090013;
         public static final int common_google_play_services_enable_text = 0x7f090014;
         public static final int common_google_play_services_enable_title = 0x7f090015;
