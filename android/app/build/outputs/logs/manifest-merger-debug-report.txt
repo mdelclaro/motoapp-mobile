@@ -7,7 +7,7 @@ INJECTED from /home/mdelclaro/MotoApp/mobile/android/app/src/main/AndroidManifes
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:2:1-17:12
-MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.8] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:17:1-31:12
 MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:2:1-15:12
 MERGED from [com.github.wix-playground:reflow-animator:1.0.4] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/reflow-animator-1.0.4.aar/f3194bc1eed43f72bbf656aa9a59898a/AndroidManifest.xml:2:1-12:12
@@ -88,8 +88,8 @@ MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_mo
 MERGED from [:react-native-google-places] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-12:19
 MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.8] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/AndroidManifest.xml:11:5-20
-MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.8] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/AndroidManifest.xml:11:5-20
+MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:11:5-20
+MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:25:5-29:19
 MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:13:5-20
@@ -206,8 +206,8 @@ MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_mod
 MERGED from [:react-native-vector-icons] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-navigation] /home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/manifests/full/reactNative56/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.8] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.8] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.wix-playground:ahbottomnavigation:2.4.9] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:design:26.1.0] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/544f786c9e9533c5f3a6b38c2f6ae70c/AndroidManifest.xml:21:5-23:62
 MERGED from [com.facebook.react:react-native:0.56.1] /home/mdelclaro/.gradle/caches/transforms-1/files-1.1/react-native-0.56.1.aar/c54b10752440a08942bfde0692769a44/AndroidManifest.xml:7:5-9:41

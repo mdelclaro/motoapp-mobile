@@ -1,33 +1,48 @@
+import React from "react";
+import { ActivityIndicator } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
-
 import Main from "./screens/Main";
 
-import configureStore from "./store/configureStore";
-
-const store = configureStore();
+import { store, persistor } from "./store/configureStore";
 
 const registerScreens = () => {
-  Navigation.registerComponentWithRedux(
+  Navigation.registerComponent(
     "motoapp.Main",
-    () => Main,
-    Provider,
-    store
+    () => () => (
+      <Provider store={store}>
+        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+          <Main />
+        </PersistGate>
+      </Provider>
+    ),
+    () => Main
   );
-  Navigation.registerComponentWithRedux(
+  Navigation.registerComponent(
     "motoapp.Auth",
-    () => Auth,
-    Provider,
-    store
+    () => () => (
+      <Provider store={store}>
+        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+          <Auth />
+        </PersistGate>
+      </Provider>
+    ),
+    () => Auth
   );
-  Navigation.registerComponentWithRedux(
+  Navigation.registerComponent(
     "motoapp.SideMenu",
-    () => SideMenu,
-    Provider,
-    store
+    () => () => (
+      <Provider store={store}>
+        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+          <SideMenu />
+        </PersistGate>
+      </Provider>
+    ),
+    () => SideMenu
   );
 };
 

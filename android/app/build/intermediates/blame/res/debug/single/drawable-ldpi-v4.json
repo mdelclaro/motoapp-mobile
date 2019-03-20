@@ -2,5 +2,9 @@
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ic_arrow_back_black_24dp.png",
         "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/drawable-ldpi-v4/ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ic_arrow_back_black_rtl_24dp.png",
+        "source": "/home/mdelclaro/MotoApp/mobile/node_modules/react-native-navigation/lib/android/app/build/intermediates/bundles/reactNative56Debug/res/drawable-ldpi-v4/ic_arrow_back_black_rtl_24dp.png"
     }
 ]

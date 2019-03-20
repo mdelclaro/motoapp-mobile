@@ -121,7 +121,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/bottom_navigation_small_item.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/res/layout/bottom_navigation_small_item.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/res/layout/bottom_navigation_small_item.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
@@ -257,7 +257,7 @@
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/bottom_navigation_item.xml",
-        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.8.aar/4d438fcf6af47855994b6f293537bba8/res/layout/bottom_navigation_item.xml"
+        "source": "/home/mdelclaro/.gradle/caches/transforms-1/files-1.1/ahbottomnavigation-2.4.9.aar/9871e342cc43fefe13cb4edff81fadd2/res/layout/bottom_navigation_item.xml"
     },
     {
         "merged": "/home/mdelclaro/MotoApp/mobile/android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
