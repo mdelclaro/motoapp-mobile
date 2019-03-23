@@ -29,6 +29,8 @@ export const addCorrida = (origem, destino, distancia, tempo) => {
         dispatch(corridaAdded({ corrida: res.corrida }));
         return true;
       } else {
+        let res = await result.json();
+        console.log(res);
         dispatch(uiStopLoading());
         alert("Ocorreu um erro ao chamar uma moto");
         return false;

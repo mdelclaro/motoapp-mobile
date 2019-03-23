@@ -24,10 +24,10 @@ const registerScreens = () => {
   );
   Navigation.registerComponent(
     "motoapp.Auth",
-    () => () => (
+    () => props => (
       <Provider store={store}>
         <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-          <Auth />
+          <Auth {...props} />
         </PersistGate>
       </Provider>
     ),

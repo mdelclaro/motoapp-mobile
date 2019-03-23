@@ -20,7 +20,8 @@ const rootReducer = combineReducers({
 // redux-persist
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  blacklist: ["ui"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
