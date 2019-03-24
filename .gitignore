@@ -24,7 +24,7 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-build/
+android/build/
 .idea
 .gradle
 local.properties
@@ -56,5 +56,3 @@ buck-out/
 *.jsbundle
 node_modules
 .env
-android/build
-android/app/build
