@@ -42,8 +42,8 @@ class Localizacao extends Component {
 
   state = {
     step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
-    region: null, // localizacao atual,
-    initialRegion: {
+    // localizacao atual,
+    region: {
       latitude: 0,
       longitude: 0,
       latitudeDelta: 0.0122,
@@ -72,13 +72,20 @@ class Localizacao extends Component {
         (Dimensions.get("window").width / Dimensions.get("window").height) *
         0.0122
     }),
-    showRate: false
+    showRate: true
   };
 
   resetState = () => {
     this.setState({
       step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
-      region: null, // localizacao atual
+      region: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.0122,
+        longitudeDelta:
+          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          0.0122
+      }, // localizacao atual
       destination: null, // destino
       duration: null, // duracao
       location: null, // nome da rua destino
@@ -459,7 +466,7 @@ class Localizacao extends Component {
         <MapView
           // onMapReady={this.onMapReady}
           style={{ flex: 1 }}
-          initialRegion={initialRegion}
+          // initialRegion={initialRegion}
           region={region}
           //showsUserLocation
           loadingEnabled
