@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Dimensions,
   StyleSheet,
   TouchableOpacity,
   Platform,
@@ -10,34 +9,32 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+import { baseColor, baseErrorColor } from "../config";
 import avatar from "../assets/avatar/avatar.png";
 
 class Menu extends Component {
   render() {
     return (
-      <View
-        style={[
-          styles.container
-          // { width: Dimensions.get("window").width * 0.7 }
-        ]}
-      >
-        <Image
-          source={avatar}
-          style={{
-            alignSelf: "center",
-            paddingBottom: 3,
-            width: 60,
-            height: 60,
-            resizeMode: "center",
-            borderRadius: 100
-          }}
-        />
+      <View style={styles.container}>
+        <TouchableOpacity style={{ flex: 0, justifyContent: "center" }}>
+          <Image
+            source={avatar}
+            style={{
+              alignSelf: "center",
+              paddingBottom: 3,
+              width: 60,
+              height: 60,
+              resizeMode: "center",
+              borderRadius: 100
+            }}
+          />
+        </TouchableOpacity>
         <TouchableOpacity onPress={this.props.onLogout}>
-          <View style={styles.drawerItemFirst}>
+          <View style={styles.drawerItem}>
             <Icon
               name={Platform.OS === "android" ? "md-person" : "ios-person"}
               size={30}
-              color="#aaa"
+              color={baseColor}
               style={styles.drawerItemIcon}
             />
             <Text>Perfil</Text>
@@ -50,7 +47,7 @@ class Menu extends Component {
                 Platform.OS === "android" ? "md-chatboxes" : "ios-chatboxes"
               }
               size={30}
-              color="#aaa"
+              color={baseColor}
               style={styles.drawerItemIcon}
             />
             <Text>Mensagens</Text>
@@ -59,10 +56,21 @@ class Menu extends Component {
         <TouchableOpacity onPress={this.props.onLogout}>
           <View style={styles.drawerItem}>
             <Icon
+              name={Platform.OS === "android" ? "md-settings" : "ios-settings"}
+              size={30}
+              color={baseColor}
+              style={styles.drawerItemIcon}
+            />
+            <Text>Configurações</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.props.onLogout}>
+          <View style={styles.drawerItem}>
+            <Icon
               name={Platform.OS === "android" ? "md-log-out" : "ios-log-out"}
               size={30}
-              color="#aaa"
-              style={[styles.drawerItemIcon, { color: "#fc6f6f" }]}
+              color={baseErrorColor}
+              style={styles.drawerItemIcon}
             />
             <Text style={{ color: "#fc6f6f" }}>Sair</Text>
           </View>
@@ -89,8 +97,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     backgroundColor: "white",
-    borderTopWidth: 1,
-    borderTopColor: "#e8e8e8"
+    borderBottomWidth: 1,
+    borderBottomColor: "#e8e8e8"
   },
   drawerItemIcon: {
     marginRight: 10

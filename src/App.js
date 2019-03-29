@@ -8,13 +8,13 @@ import { baseColor } from "./config";
 
 console.disableYellowBox = true;
 
-// Navigation.setDefaultOptions({
-//   topBar: {
-//     visible: false,
-//     drawBehind: true,
-//     animate: false
-//   }
-// });
+Navigation.setDefaultOptions({
+  topBar: {
+    visible: false,
+    drawBehind: true,
+    animate: false
+  }
+});
 
 const startApp = () => {
   Promise.all([

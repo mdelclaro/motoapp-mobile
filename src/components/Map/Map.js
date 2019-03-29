@@ -172,10 +172,12 @@ class Localizacao extends Component {
           const address = response.results[0].formatted_address;
           location = address.substring(0, address.indexOf(","));
         } catch (err) {
-          alert("Localização desconhecida");
           console.log(err);
         }
-        location = location ? location : "Localização desconhecida";
+        if (!location || location === "Unnamed Road") {
+          location = "Localização desconhecida";
+          alert("Localização desconhecida");
+        }
         this.setState({
           location,
           region: {
@@ -205,7 +207,7 @@ class Localizacao extends Component {
   // observa mudanca de localizacao
   locationChanged = () => {
     this.watchID = navigator.geolocation.watchPosition(
-      lastPosition => {
+      async lastPosition => {
         const latitude = parseFloat(
           JSON.stringify(lastPosition.coords.latitude)
         );
@@ -213,6 +215,19 @@ class Localizacao extends Component {
           JSON.stringify(lastPosition.coords.longitude)
         );
         const location = { latitude, longitude };
+        let address;
+        try {
+          const response = await GeoCoder.from({ latitude, longitude });
+          address = response.results[0].formatted_address;
+          address = address.substring(0, address.indexOf(","));
+        } catch (err) {
+          console.log(err);
+        }
+
+        if (!address || address === "Unnamed Road") {
+          address = "Localização desconhecida";
+        }
+
         this.setState(prevState => {
           return {
             region: {
@@ -223,7 +238,8 @@ class Localizacao extends Component {
             clienteLocation: {
               latitude,
               longitude
-            }
+            },
+            location: address
           };
         });
 
