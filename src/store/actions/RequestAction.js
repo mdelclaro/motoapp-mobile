@@ -1,5 +1,6 @@
 import { CORRIDA_ADDED, CORRIDA_CANCELLED } from "./types";
-import { uiStartLoading, uiStopLoading, authGetToken } from "./index";
+import { uiStartLoading, uiStopLoading } from "./UIAction";
+import { authGetToken } from "./AuthAction";
 import { baseUrl } from "../../config";
 
 export const addCorrida = (origem, destino, distancia, tempo) => {

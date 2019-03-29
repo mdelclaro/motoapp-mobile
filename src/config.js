@@ -1,5 +1,7 @@
-export const baseUrl = "http://192.168.2.107:8080/motoapp/v1/";
-export const socketUrl = "http://192.168.2.107:8080";
+// export const baseUrl = "http://192.168.2.107:8080/motoapp/v1/";
+export const baseUrl = "http://192.168.1.13:8080/motoapp/v1/";
+// export const socketUrl = "http://192.168.2.107:8080/drivers";
+export const socketUrl = "http://192.168.1.13:8080/drivers";
 
 export const googleApi = "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs";
 

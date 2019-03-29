@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -10,12 +10,18 @@ import Main from "./screens/Main";
 
 import { store, persistor } from "./store/configureStore";
 
+const loadingComponent = (
+  <View style={{ flex: 1, justifyContent: "center" }}>
+    <ActivityIndicator size="large" />
+  </View>
+);
+
 const registerScreens = () => {
   Navigation.registerComponent(
     "motoapp.Main",
     () => props => (
       <Provider store={store}>
-        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+        <PersistGate loading={loadingComponent} persistor={persistor}>
           <Main {...props} />
         </PersistGate>
       </Provider>
@@ -26,7 +32,7 @@ const registerScreens = () => {
     "motoapp.Auth",
     () => props => (
       <Provider store={store}>
-        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+        <PersistGate loading={loadingComponent} persistor={persistor}>
           <Auth {...props} />
         </PersistGate>
       </Provider>
@@ -37,7 +43,7 @@ const registerScreens = () => {
     "motoapp.SideMenu",
     () => props => (
       <Provider store={store}>
-        <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+        <PersistGate loading={loadingComponent} persistor={persistor}>
           <SideMenu {...props} />
         </PersistGate>
       </Provider>

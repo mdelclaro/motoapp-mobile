@@ -1,6 +1,6 @@
 import { AsyncStorage } from "react-native";
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "./types";
-import { uiStartLoading, uiStopLoading } from "./index";
+import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { baseUrl } from "../../config";
 
 import startApp from "../../App";
@@ -8,11 +8,12 @@ import startApp from "../../App";
 export const authAutoSignIn = () => {
   return async dispatch => {
     try {
-      const token = await dispatch(authGetToken());
-      console.log("Token -> " + token);
+      console.log("auto");
+      dispatch(uiStartLoading());
+      await dispatch(authGetToken());
       startApp();
     } catch (err) {
-      console.log("Sem token: " + err);
+      dispatch(uiStopLoading());
     }
   };
 };
@@ -88,7 +89,6 @@ export const authGetToken = () => {
 
         // verificar se token do storage eh valido
         if (!fetchedToken || new Date(expiryDate) <= new Date()) {
-          console.log("Token do storage invalido");
           //needs to be refreshed
           const refreshToken = await AsyncStorage.getItem(
             "ap:auth:refreshToken"
@@ -104,14 +104,12 @@ export const authGetToken = () => {
           });
 
           if (result.ok) {
-            console.log("novo token gerado");
             let res = await result.json();
             const { token, refreshToken, userId, expiryDate } = res;
 
             dispatch(storeAuth(token, refreshToken, userId, expiryDate));
             return token;
           } else {
-            console.log("precisa fazer login");
             error = new Error("Realizar login");
             throw Error();
           }

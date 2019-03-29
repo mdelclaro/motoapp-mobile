@@ -53,6 +53,7 @@ class Auth extends Component {
 
   renderContent = () => {
     let content;
+    console.log(this.props.isLoading);
     if (this.props.isLoading) {
       content = <ActivityIndicator size="large" />;
     } else {

@@ -1,5 +1,5 @@
 import { MOTOQUEIRO_FETCHED } from "./types";
-import { uiStartLoading, uiStopLoading } from "./index";
+import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { baseUrl } from "../../config";
 
 const token =

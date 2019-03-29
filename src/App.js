@@ -1,18 +1,20 @@
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
+import { store } from "./store/configureStore";
+import { uiStopLoading } from "./store/actions/UIAction";
 
 import { baseColor } from "./config";
 
 console.disableYellowBox = true;
 
-Navigation.setDefaultOptions({
-  topBar: {
-    visible: false,
-    drawBehind: true,
-    animate: false
-  }
-});
+// Navigation.setDefaultOptions({
+//   topBar: {
+//     visible: false,
+//     drawBehind: true,
+//     animate: false
+//   }
+// });
 
 const startApp = () => {
   Promise.all([
@@ -121,6 +123,7 @@ const startApp = () => {
         }
       }
     });
+    store.dispatch(uiStopLoading());
   });
 };
 

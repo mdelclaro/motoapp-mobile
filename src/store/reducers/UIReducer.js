@@ -1,7 +1,7 @@
-import { UI_START_LOADING, UI_STOP_LOADING } from '../actions/types';
+import { UI_START_LOADING, UI_STOP_LOADING } from "../actions/types";
 
 const initialState = {
-  isLoading: false
+  isLoading: true
 };
 
 export default (state = initialState, action) => {

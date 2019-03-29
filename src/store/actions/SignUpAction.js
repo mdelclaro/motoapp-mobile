@@ -1,4 +1,4 @@
-import { uiStartLoading, uiStopLoading } from "./index";
+import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { baseUrl } from "../../config";
 
 export const signUp = (email, senha, nome, sobrenome) => {

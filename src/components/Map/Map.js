@@ -1,5 +1,11 @@
 import React, { Component, Fragment } from "react";
-import { View, Dimensions, Platform, PermissionsAndroid } from "react-native";
+import {
+  View,
+  Dimensions,
+  Platform,
+  PermissionsAndroid,
+  ActivityIndicator
+} from "react-native";
 import MapView, { Marker, AnimatedRegion } from "react-native-maps";
 import { Navigation } from "react-native-navigation";
 import GeoCoder from "react-native-geocoding";
@@ -73,7 +79,7 @@ class Localizacao extends Component {
         (Dimensions.get("window").width / Dimensions.get("window").height) *
         0.0122
     }),
-    showRate: true
+    showRate: false
   };
 
   resetState = () => {
@@ -160,10 +166,16 @@ class Localizacao extends Component {
   getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
       async ({ coords: { latitude, longitude } }) => {
-        const response = await GeoCoder.from({ latitude, longitude });
-        const address = response.results[0].formatted_address;
-        const location = address.substring(0, address.indexOf(","));
-
+        let location;
+        try {
+          const response = await GeoCoder.from({ latitude, longitude });
+          const address = response.results[0].formatted_address;
+          location = address.substring(0, address.indexOf(","));
+        } catch (err) {
+          alert("Localização desconhecida");
+          console.log(err);
+        }
+        location = location ? location : "Localização desconhecida";
         this.setState({
           location,
           region: {
@@ -523,9 +535,11 @@ class Localizacao extends Component {
             ) : null}
           </MapView>
         )}
-        {step == 0 ? (
-          <Search onLocationSelected={this.handleLocationSelected} />
-        ) : null}
+        {step == 0
+          ? this.state.location !== "Localização desconhecida" && (
+              <Search onLocationSelected={this.handleLocationSelected} />
+            )
+          : null}
 
         {step == 1 ? (
           <Details

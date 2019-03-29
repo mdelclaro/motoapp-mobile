@@ -91,12 +91,7 @@ class LoginForm extends Component {
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <KeyboardAvoidingView style={styles.container} behavior="padding">
               {headingText}
-
-              {/* Inputs Container */}
-
               <View style={styles.inputContainer}>
-                {/* Email Input */}
-
                 <InputValidation
                   placeholder="Email"
                   keyboardType="email-address"
@@ -105,24 +100,23 @@ class LoginForm extends Component {
                   value={this.props.email}
                   onChange={setFieldValue}
                   onTouch={setFieldTouched}
+                  onSubmitEditing={() => this.senhaInput.focus()}
+                  blurOnSubmit={false}
                   name="email"
                   error={touched.email && errors.email}
                   style={styles.input}
                 />
-
-                {/* Password, ConfirmPassword container */}
-
                 <View style={styles.passwordContainer}>
-                  {/* Password Input */}
-
                   <View style={styles.passwordWrapper}>
                     <InputValidation
+                      myRef={ref => (this.senhaInput = ref)}
                       placeholder="Senha"
                       autoCapitalize="none"
                       secureTextEntry
                       value={this.props.senha}
                       onChange={setFieldValue}
                       onTouch={setFieldTouched}
+                      onSubmitEditing={handleSubmit}
                       name="senha"
                       error={touched.senha && errors.senha}
                       style={styles.input}
@@ -130,8 +124,7 @@ class LoginForm extends Component {
                   </View>
                 </View>
               </View>
-              {// Show Activity Indicator instead of button when loading
-              !this.props.isLoading ? (
+              {!this.props.isLoading ? (
                 <View style={{ width: "80%" }}>
                   <ButtonWithBackground
                     color="#425cf4"
@@ -144,8 +137,7 @@ class LoginForm extends Component {
               ) : (
                 <ActivityIndicator />
               )}
-              {// Disable signup button when signin is loading
-              !this.props.isLoading ? (
+              {!this.props.isLoading ? (
                 <ButtonWithBackground
                   onPress={this.props.onSwitchAuthMode}
                   textColor="#425cf4"
