@@ -41,6 +41,7 @@ class Localizacao extends Component {
   }
 
   state = {
+    isLoading: true,
     step: 0, // 0 - escolher destino, 1 - destino escolhido/chamar moto, 2 - motoqueiro aceitou, 3 - em viagem
     // localizacao atual,
     region: {
@@ -177,7 +178,8 @@ class Localizacao extends Component {
           clienteLocation: {
             latitude,
             longitude
-          }
+          },
+          isLoading: false
         });
       },
       err => console.log(err),
@@ -451,7 +453,6 @@ class Localizacao extends Component {
     const {
       step,
       region,
-      initialRegion,
       destination,
       duration,
       location,
@@ -463,63 +464,65 @@ class Localizacao extends Component {
     return (
       <View style={{ flex: 1 }}>
         {showRate && <Rating handleRating={this.submitRating} />}
-        <MapView
-          // onMapReady={this.onMapReady}
-          style={{ flex: 1 }}
-          // initialRegion={initialRegion}
-          region={region}
-          //showsUserLocation
-          loadingEnabled
-          showsCompass={false}
-          showsMyLocationButton={false}
-          showsScale={false}
-          ref={el => (this.mapView = el)}
-        >
-          <Marker.Animated
-            anchor={{ x: 0.5, y: 0.5 }}
-            coordinate={clienteLocation}
-            image={user}
-            ref={el => (this.clienteMarker = el)}
-          />
-          {step == 1 ? (
-            <Fragment>
-              <Directions
-                origin={region}
-                destination={destination}
-                onReady={result => {
-                  this.setState({
-                    duration: Math.floor(result.duration),
-                    distance: Math.floor(result.distance)
-                  });
-                  this.mapView.fitToCoordinates(result.coordinates, {
-                    edgePadding: {
-                      right: getPixelSize(60),
-                      left: getPixelSize(60),
-                      top: getPixelSize(60),
-                      bottom: getPixelSize(260)
-                    },
-                    animated: true
-                  });
-                }}
-              />
-              <Marker
-                anchor={{ x: 0.5, y: 0.5 }}
-                coordinate={destination}
-                image={pin}
-              />
-            </Fragment>
-          ) : null}
-          {step == 2 ? (
+        {this.state.isLoading ? (
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <MapView
+            style={{ flex: 1 }}
+            region={region}
+            loadingEnabled
+            showsCompass={false}
+            showsMyLocationButton={false}
+            showsScale={false}
+            ref={el => (this.mapView = el)}
+          >
             <Marker.Animated
-              ref={marker => {
-                this.motoqueiroMarker = marker;
-              }}
-              coordinate={motoqueiroLocation}
-              image={helmet}
+              anchor={{ x: 0.5, y: 0.5 }}
+              coordinate={clienteLocation}
+              image={user}
+              ref={el => (this.clienteMarker = el)}
             />
-          ) : null}
-        </MapView>
-
+            {step == 1 ? (
+              <Fragment>
+                <Directions
+                  origin={region}
+                  destination={destination}
+                  onReady={result => {
+                    this.setState({
+                      duration: Math.floor(result.duration),
+                      distance: Math.floor(result.distance)
+                    });
+                    this.mapView.fitToCoordinates(result.coordinates, {
+                      edgePadding: {
+                        right: getPixelSize(60),
+                        left: getPixelSize(60),
+                        top: getPixelSize(60),
+                        bottom: getPixelSize(260)
+                      },
+                      animated: true
+                    });
+                  }}
+                />
+                <Marker
+                  anchor={{ x: 0.5, y: 0.5 }}
+                  coordinate={destination}
+                  image={pin}
+                />
+              </Fragment>
+            ) : null}
+            {step == 2 ? (
+              <Marker.Animated
+                ref={marker => {
+                  this.motoqueiroMarker = marker;
+                }}
+                coordinate={motoqueiroLocation}
+                image={helmet}
+              />
+            ) : null}
+          </MapView>
+        )}
         {step == 0 ? (
           <Search onLocationSelected={this.handleLocationSelected} />
         ) : null}

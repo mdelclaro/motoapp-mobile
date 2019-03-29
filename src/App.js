@@ -1,24 +1,35 @@
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
+
+import { baseColor } from "./config";
+
 console.disableYellowBox = true;
+
+Navigation.setDefaultOptions({
+  topBar: {
+    visible: false,
+    drawBehind: true,
+    animate: false
+  }
+});
+
 const startApp = () => {
   Promise.all([
     getImageSource(
       Platform.OS === "android" ? "md-pin" : "ios-pin",
       35,
-      //"#425cf4"
-      "#425cf4"
+      baseColor
     ),
     getImageSource(
       Platform.OS === "android" ? "md-paper-plane" : "ios-paper-plane",
       35,
-      "#425cf4"
+      baseColor
     ),
     getImageSource(
       Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       35,
-      "#425cf4"
+      baseColor
     )
   ]).then(icons => {
     Navigation.setRoot({

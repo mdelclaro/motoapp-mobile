@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "android-win": "cd android && gradlew app:assembleDebug && gradlew installDebug",
     "adb": "adb -s 27c5c81c96217ece reverse tcp:8081 tcp:8081"
   },
   "dependencies": {
