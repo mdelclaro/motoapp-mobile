@@ -1,14 +1,14 @@
 import { CORRIDA_ADDED, CORRIDA_CANCELLED } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { authGetToken } from "./AuthAction";
-import { baseUrl } from "../../config";
+import { BASE_URL } from "../../config";
 
 export const addCorrida = (origem, destino, distancia, tempo) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     const token = await dispatch(authGetToken());
     try {
-      const result = await fetch(`${baseUrl}corrida/`, {
+      const result = await fetch(`${BASE_URL}corrida/`, {
         method: "POST",
         body: JSON.stringify({
           origem,
@@ -57,7 +57,7 @@ export const cancelCorrida = id => {
     dispatch(uiStartLoading());
     const token = await dispatch(authGetToken());
     try {
-      const corrida = await fetch(`${baseUrl}corrida/${id}`, {
+      const corrida = await fetch(`${BASE_URL}corrida/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export const cancelCorrida = id => {
 
         // Nenhum motoqueiro aceitou ainda
         if (!res.corrida.idMotoqueiro) {
-          const result = await fetch(`${baseUrl}corrida/${id}`, {
+          const result = await fetch(`${BASE_URL}corrida/${id}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",

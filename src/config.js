@@ -1,14 +1,26 @@
-// export const baseUrl = "http://192.168.2.107:8080/motoapp/v1/";
-export const baseUrl = "http://192.168.1.13:8080/motoapp/v1/";
-// export const socketUrl = "http://192.168.2.107:8080/drivers";
-export const socketUrl = "http://192.168.1.13:8080/drivers";
+/**
+ * Connection/Network
+ */
 
-export const googleApi = "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs";
+// export const BASE_URL = "http://192.168.2.107:8080/motoapp/v1/";
+// export const SOCKET_URL = "http://192.168.2.107:8080/drivers";
+export const BASE_URL = "http://192.168.1.13:8080/motoapp/v1/";
+export const SOCKET_URL = "http://192.168.1.13:8080/drivers";
+export const FETCH_TIMEOUT = 6000;
 
-export const baseColor = "#425cf4";
-export const baseErrorColor = "#f24b4b";
+/**
+ * Keys
+ */
 
-export const mapStyle = [
+export const GOOGLE_API = "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs";
+
+/**
+ * UI
+ */
+
+export const BASE_COLOR = "#425cf4";
+export const BASE_COLOR_ERROR = "#f24b4b";
+export const MAP_STYLE = [
   {
     featureType: "landscape.man_made",
     elementType: "geometry",

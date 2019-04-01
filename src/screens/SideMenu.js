@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import { baseColor, baseErrorColor } from "../config";
+import { BASE_COLOR, baseErrorColor } from "../config";
 import avatar from "../assets/avatar/avatar.png";
 
 class Menu extends Component {
@@ -34,7 +34,7 @@ class Menu extends Component {
             <Icon
               name={Platform.OS === "android" ? "md-person" : "ios-person"}
               size={30}
-              color={baseColor}
+              color={BASE_COLOR}
               style={styles.drawerItemIcon}
             />
             <Text>Perfil</Text>
@@ -47,7 +47,7 @@ class Menu extends Component {
                 Platform.OS === "android" ? "md-chatboxes" : "ios-chatboxes"
               }
               size={30}
-              color={baseColor}
+              color={BASE_COLOR}
               style={styles.drawerItemIcon}
             />
             <Text>Mensagens</Text>
@@ -58,7 +58,7 @@ class Menu extends Component {
             <Icon
               name={Platform.OS === "android" ? "md-settings" : "ios-settings"}
               size={30}
-              color={baseColor}
+              color={BASE_COLOR}
               style={styles.drawerItemIcon}
             />
             <Text>Configurações</Text>

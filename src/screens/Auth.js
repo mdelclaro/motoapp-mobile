@@ -19,7 +19,7 @@ class Auth extends Component {
   };
 
   componentDidMount() {
-    this.props.onAutoSignIn();
+    this.props.authAutoSignIn();
     // this.props.onTryAuth("matheus_delclaro@hotmail.com", "123456");
   }
 
@@ -33,17 +33,17 @@ class Auth extends Component {
 
   submitHandler = async values => {
     if (this.state.authMode === "login") {
-      this.props.onTryAuth(values.email, values.senha);
+      this.props.tryAuth(values.email, values.senha);
     } else {
-      const result = await this.props.onSignUp(
+      const result = await this.props.signUp(
         values.email,
         values.senha,
         values.nome,
         values.sobrenome
       );
       if (result) {
-        this.props.onClearForm();
-        this.props.onEmailChange(values.email);
+        this.props.clearForm();
+        this.props.emailChange(values.email);
         this.setState({
           authMode: "login"
         });
@@ -92,15 +92,13 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onTryAuth: (email, senha) => dispatch(tryAuth(email, senha)),
-    onAutoSignIn: () => dispatch(authAutoSignIn()),
-    onSignUp: (email, senha, nome, sobrenome) =>
-      dispatch(signUp(email, senha, nome, sobrenome)),
-    onClearForm: () => dispatch(clearForm()),
-    onEmailChange: email => dispatch(emailChanged(email))
-  };
+const mapDispatchToProps = {
+  tryAuth: (email, senha) => tryAuth(email, senha),
+  authAutoSignIn,
+  clearForm,
+  emailChanged: email => emailChanged(email),
+  signUp: (email, senha, nome, sobrenome) =>
+    signUp(email, senha, nome, sobrenome)
 };
 
 export default connect(

@@ -1,18 +1,19 @@
 import { AsyncStorage } from "react-native";
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
-import { baseUrl } from "../../config";
+import { BASE_URL } from "../../config";
 
 import startApp from "../../App";
+import { timeout } from "../../utils";
 
 export const authAutoSignIn = () => {
   return async dispatch => {
     try {
-      console.log("auto");
       dispatch(uiStartLoading());
       await dispatch(authGetToken());
       startApp();
     } catch (err) {
+      console.log(err);
       dispatch(uiStopLoading());
     }
   };
@@ -22,7 +23,7 @@ export const tryAuth = (email, senha) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     try {
-      const result = await fetch(`${baseUrl}auth/cliente/`, {
+      const result = await fetch(`${BASE_URL}auth/cliente/`, {
         method: "POST",
         body: JSON.stringify({
           email,
@@ -93,15 +94,19 @@ export const authGetToken = () => {
           const refreshToken = await AsyncStorage.getItem(
             "ap:auth:refreshToken"
           );
-          const result = await fetch(`${baseUrl}auth/cliente/refreshToken/`, {
-            method: "POST",
-            body: JSON.stringify({
-              refreshToken
-            }),
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
+          console.log("vai chamar");
+          const result = await timeout(
+            fetch(`${BASE_URL}auth/cliente/refreshToken/`, {
+              method: "POST",
+              body: JSON.stringify({
+                refreshToken
+              }),
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+          );
+          console.log("chamou");
 
           if (result.ok) {
             let res = await result.json();

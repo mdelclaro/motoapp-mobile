@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Image, ActivityIndicator, TouchableOpacity } from "react-native";
 import openSocket from "socket.io-client";
-import { socketUrl } from "../../config";
+import { SOCKET_URL } from "../../config";
 
 import {
   Container,
@@ -16,7 +16,7 @@ import avatar from "../../assets/avatar/avatar.png";
 class DetailsMotoqueiro extends Component {
   componentDidMount() {
     const { _id } = this.props.motoqueiro;
-    const socket = openSocket(socketUrl);
+    const socket = openSocket(SOCKET_URL);
     socket.emit("join", { id: _id });
 
     socket.on("locationChanged", data => {

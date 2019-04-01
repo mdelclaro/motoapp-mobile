@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
 
-import { baseColor } from "../config";
+import { BASE_COLOR } from "../config";
 import Map from "../components/Map/Map";
 
 class Main extends Component {
@@ -27,7 +27,7 @@ class Main extends Component {
     getImageSource(
       Platform.OS === "android" ? "md-menu" : "ios-menu",
       30,
-      baseColor
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {
@@ -40,9 +40,9 @@ class Main extends Component {
           ]
         },
         bottomTab: {
-          selectedIconColor: baseColor,
-          textColor: baseColor,
-          selectedTextColor: baseColor
+          selectedIconColor: BASE_COLOR,
+          textColor: BASE_COLOR,
+          selectedTextColor: BASE_COLOR
         }
       });
     });

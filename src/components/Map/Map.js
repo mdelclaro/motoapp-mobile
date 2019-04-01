@@ -28,7 +28,7 @@ import EnRoute from "../EnRoute/EnRoute";
 import Rating from "../Rating/Rating";
 
 import { getPixelSize } from "../../utils";
-import { googleApi } from "../../config";
+import { GOOGLE_API } from "../../config";
 
 import pin from "../../assets/destination_pin/pin.png";
 import user from "../../assets/user/user.png";
@@ -37,7 +37,7 @@ import helmet from "../../assets/helmet/helmet.png";
 // const width = Dimensions.get("window").width;
 // const height = Dimensions.get("window").height;
 
-GeoCoder.init(googleApi);
+GeoCoder.init(GOOGLE_API);
 
 class Localizacao extends Component {
   constructor(props) {
@@ -312,7 +312,7 @@ class Localizacao extends Component {
       local: destination.title
     };
 
-    const exec = await this.props.onAddCorrida(
+    const exec = await this.props.addCorrida(
       origem,
       destino,
       distance,
@@ -344,11 +344,9 @@ class Localizacao extends Component {
   // cancelar corrida
   handleCancelCorrida = async () => {
     const idCorrida = this.props.corrida._id;
-    const exec = await this.props.onCancelCorrida(idCorrida);
+    const exec = await this.props.cancelCorrida(idCorrida);
 
-    if (!exec) {
-      return;
-    }
+    if (!exec) return;
 
     this.setState({ step: 1 });
 
@@ -470,7 +468,7 @@ class Localizacao extends Component {
   };
 
   submitRating = async rate => {
-    const exec = await this.props.onAddRating(this.state.motoqueiro._id, rate);
+    const exec = await this.props.addRating(this.state.motoqueiro._id, rate);
 
     if (!exec) return;
 
@@ -596,14 +594,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddCorrida: (origem, destino, distancia, tempo) =>
-      dispatch(addCorrida(origem, destino, distancia, tempo)),
-    onCancelCorrida: id => dispatch(cancelCorrida(id)),
-    onAddRating: (idMotoqueiro, comentario, nota) =>
-      dispatch(addRating(idMotoqueiro, comentario, nota))
-  };
+const mapDispatchToProps = {
+  addCorrida: (origem, destino, distancia, tempo) =>
+    addCorrida(origem, destino, distancia, tempo),
+  cancelCorrida: id => cancelCorrida(id),
+  addRating: (idMotoqueiro, comentario, nota) =>
+    addRating(idMotoqueiro, comentario, nota)
 };
 
 export default connect(

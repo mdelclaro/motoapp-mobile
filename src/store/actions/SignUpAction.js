@@ -1,11 +1,11 @@
 import { uiStartLoading, uiStopLoading } from "./UIAction";
-import { baseUrl } from "../../config";
+import { BASE_URL } from "../../config";
 
 export const signUp = (email, senha, nome, sobrenome) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     try {
-      const result = await fetch(`${baseUrl}usuario/cliente/`, {
+      const result = await fetch(`${BASE_URL}usuario/cliente/`, {
         method: "POST",
         body: JSON.stringify({
           email,

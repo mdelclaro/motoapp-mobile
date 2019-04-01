@@ -1,6 +1,6 @@
 import { MOTOQUEIRO_FETCHED } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
-import { baseUrl } from "../../config";
+import { BASE_URL } from "../../config";
 
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRpYW96b2xhQGdtYWlsLmNvbS5iciIsInVzZXJJZCI6IjVjNmI1Zjg5MTI1Y2FmNzMwNGZjZGMzOCIsImlhdCI6MTU1MTMxMDg3NCwiZXhwIjoxNTY5MzEwODc0fQ.ohA7kQjaeaM_kNzmF8AC7Eu0DVPXualmzFpFLesjat8";
@@ -10,7 +10,7 @@ export const fetchMotoqueiro = idMotoqueiro => {
     dispatch(uiStartLoading());
     try {
       const result = await fetch(
-        `${baseUrl}usuario/motoqueiro/${idMotoqueiro}`,
+        `${BASE_URL}usuario/motoqueiro/${idMotoqueiro}`,
         {
           method: "GET",
           headers: {

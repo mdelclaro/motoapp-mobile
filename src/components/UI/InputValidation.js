@@ -11,11 +11,20 @@ import {
 
 class InputValidation extends Component {
   textChangeHandler = value => {
-    this.props.onChange(this.props.name, value);
-    if (this.props.name == "email") this.props.onEmailChanged(value);
-    if (this.props.name == "senha") this.props.onSenhaChanged(value);
-    if (this.props.name == "nome") this.props.onNomeChanged(value);
-    if (this.props.name == "sobrenome") this.props.onSobrenomeChanged(value);
+    const {
+      name,
+      onChange,
+      emailChanged,
+      senhaChanged,
+      nomeChanged,
+      sobrenomeChanged
+    } = this.props;
+
+    onChange(name, value);
+    if (name == "email") emailChanged(value);
+    if (name == "senha") senhaChanged(value);
+    if (name == "nome") nomeChanged(value);
+    if (name == "sobrenome") sobrenomeChanged(value);
   };
 
   touchHandler = () => {
@@ -23,17 +32,17 @@ class InputValidation extends Component {
   };
 
   render() {
-    const { placeholder, error, ...rest } = this.props;
+    const { placeholder, error, style, myRef, ...rest } = this.props;
     return (
       <View>
         <TextInput
-          ref={this.props.myRef}
+          ref={myRef}
           underlineColorAndroid="transparent"
           onChangeText={this.textChangeHandler}
           onBlur={this.touchHandler}
           placeholder={placeholder}
           {...rest}
-          style={[styles.input, this.props.style]}
+          style={[styles.input, style]}
         />
         {error && <Text style={styles.errorMsg}>{error}</Text>}
       </View>
@@ -45,11 +54,9 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     borderBottomWidth: 1,
-    //borderColor: '#eee',
     padding: 5,
     marginTop: 8,
     marginBottom: 8
-    //justifyContent: 'center'
   },
   errorMsg: {
     color: "red",
@@ -58,13 +65,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onEmailChanged: email => dispatch(emailChanged(email)),
-    onSenhaChanged: senha => dispatch(senhaChanged(senha)),
-    onNomeChanged: nome => dispatch(nomeChanged(nome)),
-    onSobrenomeChanged: sobrenome => dispatch(sobrenomeChanged(sobrenome))
-  };
+const mapDispatchToProps = {
+  emailChanged: email => emailChanged(email),
+  senhaChanged: senha => senhaChanged(senha),
+  nomeChanged: nome => nomeChanged(nome),
+  sobrenomeChanged: sobrenome => sobrenomeChanged(sobrenome)
 };
 
 export default connect(

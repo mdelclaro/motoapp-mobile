@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Image, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
 import openSocket from "socket.io-client";
-import { socketUrl } from "../../config";
+import { SOCKET_URL } from "../../config";
 
 import {
   Container,
@@ -17,7 +17,7 @@ import flags from "../../assets/flags/flags.png";
 
 class Details extends Component {
   componentDidMount() {
-    const socket = openSocket(socketUrl);
+    const socket = openSocket(SOCKET_URL);
     socket.emit("join", { id: this.props.idCliente });
 
     socket.on("acceptCorrida", data => {
