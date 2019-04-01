@@ -23,16 +23,18 @@ export const tryAuth = (email, senha) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     try {
-      const result = await fetch(`${BASE_URL}auth/cliente/`, {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          senha
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+      const result = await timeout(
+        fetch(`${BASE_URL}auth/cliente/`, {
+          method: "POST",
+          body: JSON.stringify({
+            email,
+            senha
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+      );
 
       if (result.ok) {
         let res = await result.json();
@@ -40,17 +42,16 @@ export const tryAuth = (email, senha) => {
 
         dispatch(storeAuth(token, refreshToken, userId, expiryDate));
         startApp();
-        dispatch(uiStopLoading());
       } else {
         let res = await result.json();
         alert(res.message);
-        console.log(result);
+        console.log(res);
         dispatch(uiStopLoading());
       }
     } catch (err) {
       dispatch(uiStopLoading());
-      alert("Não foi possível fazer o login");
-      console.log("Erro: " + err);
+      alert(err.message);
+      console.log(err);
     }
   };
 };
@@ -82,7 +83,6 @@ export const authGetToken = () => {
     const stateExpiryDate = getState().auth.expiryDate;
     // verificar se token do state eh valido
     if (!token || new Date(stateExpiryDate) <= new Date()) {
-      console.log("Sem token no state ou invalido");
       try {
         const fetchedToken = await AsyncStorage.getItem("ap:auth:jwt");
         const expiryDate = await AsyncStorage.getItem("ap:auth:expiryDate");
@@ -94,7 +94,6 @@ export const authGetToken = () => {
           const refreshToken = await AsyncStorage.getItem(
             "ap:auth:refreshToken"
           );
-          console.log("vai chamar");
           const result = await timeout(
             fetch(`${BASE_URL}auth/cliente/refreshToken/`, {
               method: "POST",
@@ -106,7 +105,6 @@ export const authGetToken = () => {
               }
             })
           );
-          console.log("chamou");
 
           if (result.ok) {
             let res = await result.json();
@@ -132,7 +130,7 @@ export const authGetToken = () => {
 };
 
 export const authClearStorage = () => {
-  return dispatch => {
+  return () => {
     AsyncStorage.removeItem("ap:auth:token");
     AsyncStorage.removeItem("ap:auth:expiryDate");
     AsyncStorage.removeItem("ap:auth:refreshToken");

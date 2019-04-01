@@ -11,7 +11,6 @@ export function getPixelSize(pixels) {
 export function timeout(promise, ms = FETCH_TIMEOUT) {
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
-      alert("Erro de conexão (timeout)");
       reject(new Error("Erro de conexão (timeout)"));
     }, ms);
     promise.then(resolve, reject);

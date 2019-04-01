@@ -1,6 +1,7 @@
 import { CORRIDA_ADDED, CORRIDA_CANCELLED } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { authGetToken } from "./AuthAction";
+import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
 export const addCorrida = (origem, destino, distancia, tempo) => {
@@ -8,24 +9,25 @@ export const addCorrida = (origem, destino, distancia, tempo) => {
     dispatch(uiStartLoading());
     const token = await dispatch(authGetToken());
     try {
-      const result = await fetch(`${BASE_URL}corrida/`, {
-        method: "POST",
-        body: JSON.stringify({
-          origem,
-          destino,
-          distancia,
-          tempo,
-          status: "0"
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        }
-      });
+      const result = await timeout(
+        fetch(`${BASE_URL}corrida/`, {
+          method: "POST",
+          body: JSON.stringify({
+            origem,
+            destino,
+            distancia,
+            tempo,
+            status: "0"
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
+          }
+        })
+      );
 
       if (result.ok) {
         let res = await result.json();
-        console.log(res);
         dispatch(uiStopLoading());
         dispatch(corridaAdded({ corrida: res.corrida }));
         return true;
@@ -57,25 +59,29 @@ export const cancelCorrida = id => {
     dispatch(uiStartLoading());
     const token = await dispatch(authGetToken());
     try {
-      const corrida = await fetch(`${BASE_URL}corrida/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        }
-      });
+      const corrida = await timeout(
+        fetch(`${BASE_URL}corrida/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
+          }
+        })
+      );
       if (corrida.ok) {
         let res = await corrida.json();
 
         // Nenhum motoqueiro aceitou ainda
         if (!res.corrida.idMotoqueiro) {
-          const result = await fetch(`${BASE_URL}corrida/${id}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + token
-            }
-          });
+          const result = await timeout(
+            fetch(`${BASE_URL}corrida/${id}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token
+              }
+            })
+          );
 
           if (result.ok) {
             dispatch(uiStopLoading());

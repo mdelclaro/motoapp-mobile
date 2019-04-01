@@ -1,5 +1,6 @@
 import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { authGetToken } from "./AuthAction";
+import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
 export const addRating = (idMotoqueiro, nota) => {
@@ -8,21 +9,21 @@ export const addRating = (idMotoqueiro, nota) => {
     dispatch(uiStartLoading());
     const token = await dispatch(authGetToken());
     try {
-      const result = await fetch(`${BASE_URL}avaliacao/`, {
-        method: "POST",
-        body: JSON.stringify({
-          idMotoqueiro,
-          nota
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        }
-      });
+      const result = await timeout(
+        fetch(`${BASE_URL}avaliacao/`, {
+          method: "POST",
+          body: JSON.stringify({
+            idMotoqueiro,
+            nota
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
+          }
+        })
+      );
 
       if (result.ok) {
-        let res = await result.json();
-        console.log(res);
         dispatch(uiStopLoading());
         return true;
       } else {

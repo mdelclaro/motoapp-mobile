@@ -1,22 +1,25 @@
 import { uiStartLoading, uiStopLoading } from "./UIAction";
+import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
 export const signUp = (email, senha, nome, sobrenome) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     try {
-      const result = await fetch(`${BASE_URL}usuario/cliente/`, {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          senha,
-          nome,
-          sobrenome
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+      const result = await timeout(
+        fetch(`${BASE_URL}usuario/cliente/`, {
+          method: "POST",
+          body: JSON.stringify({
+            email,
+            senha,
+            nome,
+            sobrenome
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+      );
 
       if (result.ok) {
         dispatch(uiStopLoading());

@@ -6,7 +6,7 @@
 // export const SOCKET_URL = "http://192.168.2.107:8080/drivers";
 export const BASE_URL = "http://192.168.1.13:8080/motoapp/v1/";
 export const SOCKET_URL = "http://192.168.1.13:8080/drivers";
-export const FETCH_TIMEOUT = 6000;
+export const FETCH_TIMEOUT = 3000;
 
 /**
  * Keys
