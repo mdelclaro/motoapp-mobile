@@ -1,8 +1,8 @@
 export { addCorrida, cancelCorrida } from "./RequestAction";
-export { fetchMotoqueiro } from "./MotoqueiroAction";
 export { uiStartLoading, uiStopLoading } from "./UIAction";
 export { signUp } from "./SignUpAction";
 export { addRating } from "./RatingAction";
+export { updateMotoqueiros } from "./MotoqueirosAction";
 export {
   tryAuth,
   authGetToken,

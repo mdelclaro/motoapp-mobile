@@ -589,8 +589,7 @@ class Localizacao extends Component {
 
 const mapStateToProps = state => {
   return {
-    corrida: state.corrida.corrida,
-    motoqueiro: state.motoqueiro.motoqueiro
+    corrida: state.corrida.corrida
   };
 };
 

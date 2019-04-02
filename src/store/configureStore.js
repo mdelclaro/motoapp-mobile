@@ -5,14 +5,14 @@ import thunk from "redux-thunk";
 
 import RequestReducer from "./reducers/RequestReducer";
 import UIReducer from "./reducers/UIReducer";
-import MotoqueiroReducer from "./reducers/MotoqueiroReducer";
+import MotoqueirosReducer from "./reducers/MotoqueirosReducer";
 import AuthReducer from "./reducers/AuthReducer";
 import FormReducer from "./reducers/FormReducer";
 
 const rootReducer = combineReducers({
   corrida: RequestReducer,
   ui: UIReducer,
-  motoqueiro: MotoqueiroReducer,
+  motoqueiros: MotoqueirosReducer,
   auth: AuthReducer,
   form: FormReducer
 });
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["ui", "form"]
+  blacklist: ["ui", "form", "motoqueiros"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
