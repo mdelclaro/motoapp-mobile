@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { connect } from "react-redux";
 import { getImageSource } from "react-native-vector-icons/Ionicons";
+import io from "socket.io-client";
 
 import { updateMotoqueiros } from "../store/actions";
 
@@ -61,6 +62,29 @@ class Main extends Component {
     //tratar evento
     this.socket.on("fetchMotoqueiros", data => {
       this.props.updateMotoqueiros(data.motoqueiros);
+      // this.props.updateMotoqueiros([
+      //   {
+      //     coords: {
+      //       lat: -21.789099999999998,
+      //       long: -46.563498333333335
+      //     },
+      //     userId: "5c9e5c82ab18dc35c05f635"
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -21.793,
+      //       long: -46.564
+      //     },
+      //     userId: "5c9e5c82a18dc35c05f1635"
+      //   },
+      //   {
+      //     coords: {
+      //       lat: -21.7935,
+      //       long: -46.5649
+      //     },
+      //     userId: "c9e5c82ab18dc35c05f1635"
+      //   }
+      // ]);
     });
   }
 
@@ -83,17 +107,23 @@ class Main extends Component {
   render() {
     return (
       <Fragment>
-        <Map />
+        <Map motoqueiros={this.props.motoqueiros} />
       </Fragment>
     );
   }
 }
 
-mapDispatchToProps = {
+const mapStateToProps = state => {
+  return {
+    motoqueiros: state.motoqueiros.motoqueiros
+  };
+};
+
+const mapDispatchToProps = {
   updateMotoqueiros: motoqueiros => updateMotoqueiros(motoqueiros)
 };
 
 export default connect(
-  null,
-  updateMotoqueiros
+  mapStateToProps,
+  mapDispatchToProps
 )(Main);

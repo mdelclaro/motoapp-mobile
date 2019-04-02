@@ -1,7 +1,7 @@
 import { MOTOQUEIROS_UPDATE } from "../actions/types";
 
 const INITIAL_STATE = {
-  motoqueiros: []
+  motoqueiros: null
 };
 
 export default (state = INITIAL_STATE, action) => {

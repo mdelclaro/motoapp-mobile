@@ -475,6 +475,25 @@ class Localizacao extends Component {
     this.setState({ motoqueiro: null, showRate: false });
   };
 
+  renderMarkers() {
+    if (this.props.motoqueiros) {
+      if (Object.keys(this.props.motoqueiros).length > 0) {
+        return this.props.motoqueiros.map(motoqueiro => {
+          return (
+            <Marker.Animated
+              coordinate={{
+                latitude: motoqueiro.coords.lat,
+                longitude: motoqueiro.coords.long
+              }}
+              image={helmet}
+              key={motoqueiro.userId}
+            />
+          );
+        });
+      }
+    }
+  }
+
   render() {
     const {
       step,
@@ -510,6 +529,7 @@ class Localizacao extends Component {
               image={user}
               ref={el => (this.clienteMarker = el)}
             />
+            {this.renderMarkers()}
             {step == 1 ? (
               <Fragment>
                 <Directions
