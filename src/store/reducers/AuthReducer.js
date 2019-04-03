@@ -1,12 +1,12 @@
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "../actions/types";
 
-const initialState = {
+const INITIAL_STATE = {
   jwt: null,
   expiryDate: null,
   userId: null
 };
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTH_SET_TOKEN:
       return {

@@ -1,10 +1,10 @@
 import { UI_START_LOADING, UI_STOP_LOADING } from "../actions/types";
 
-const initialState = {
+const INITIAL_STATE = {
   isLoading: true
 };
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UI_START_LOADING:
       return {

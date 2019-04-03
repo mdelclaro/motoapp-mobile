@@ -121,6 +121,10 @@ const startApp = () => {
             }
           }
         }
+        // component: {
+        //   id: "avatar",
+        //   name: "motoapp.Avatar"
+        // }
       }
     });
     store.dispatch(uiStopLoading());

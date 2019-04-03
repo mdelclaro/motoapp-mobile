@@ -1,6 +1,7 @@
 import { AsyncStorage } from "react-native";
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
+import { setInfo } from "./InfoAction";
 import { BASE_URL } from "../../config";
 
 import startApp from "../../App";
@@ -13,7 +14,7 @@ export const authAutoSignIn = () => {
       await dispatch(authGetToken());
       startApp();
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
       dispatch(uiStopLoading());
     }
   };
@@ -40,6 +41,7 @@ export const tryAuth = (email, senha) => {
         let res = await result.json();
         const { token, refreshToken, userId, expiryDate } = res;
 
+        dispatch(setInfo(email));
         dispatch(storeAuth(token, refreshToken, userId, expiryDate));
         startApp();
       } else {
@@ -94,28 +96,31 @@ export const authGetToken = () => {
           const refreshToken = await AsyncStorage.getItem(
             "ap:auth:refreshToken"
           );
-          const result = await timeout(
-            fetch(`${BASE_URL}auth/cliente/refreshToken/`, {
-              method: "POST",
-              body: JSON.stringify({
-                refreshToken
-              }),
-              headers: {
-                "Content-Type": "application/json"
-              }
-            })
-          );
+          if (refreshToken) {
+            const result = await timeout(
+              fetch(`${BASE_URL}auth/cliente/refreshToken/`, {
+                method: "POST",
+                body: JSON.stringify({
+                  refreshToken
+                }),
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              })
+            );
 
-          if (result.ok) {
-            let res = await result.json();
-            const { token, refreshToken, userId, expiryDate } = res;
+            if (result.ok) {
+              let res = await result.json();
+              const { token, refreshToken, userId, expiryDate } = res;
 
-            dispatch(storeAuth(token, refreshToken, userId, expiryDate));
-            return token;
-          } else {
-            error = new Error("Realizar login");
-            throw Error();
-          }
+              dispatch(storeAuth(token, refreshToken, userId, expiryDate));
+              return token;
+            } else {
+              let res = await result.json();
+              error = new Error(res.message);
+              throw Error();
+            }
+          } else throw new Error("Fazer login");
         } else {
           dispatch(authSetToken(fetchedToken, expiryDate, userId));
           return fetchedToken;

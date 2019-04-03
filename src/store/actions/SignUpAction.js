@@ -1,4 +1,5 @@
 import { uiStartLoading, uiStopLoading } from "./UIAction";
+import { setInfo } from "./InfoAction";
 import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
@@ -23,6 +24,7 @@ export const signUp = (email, senha, nome, sobrenome) => {
 
       if (result.ok) {
         dispatch(uiStopLoading());
+        dispatch(setInfo(email));
         return true;
       } else {
         let res = await result.json();

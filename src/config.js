@@ -4,6 +4,7 @@
 
 // export const BASE_URL = "http://192.168.2.107:8080/motoapp/v1/";
 // export const SOCKET_URL = "http://192.168.2.107:8080";
+export const IMAGES_URL = "http://192.168.1.13:8080/images/";
 export const BASE_URL = "http://192.168.1.13:8080/motoapp/v1/";
 export const SOCKET_URL = "http://192.168.1.13:8080";
 export const FETCH_TIMEOUT = 3000;
@@ -18,8 +19,8 @@ export const GOOGLE_API = "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs";
  * UI
  */
 
-export const BASE_COLOR = "#425cf4";
-export const BASE_COLOR_ERROR = "#f24b4b";
+export const BASE_COLOR = "#5568f1";
+export const BASE_COLOR_ERROR = "#ff3907";
 export const MAP_STYLE = [
   {
     featureType: "landscape.man_made",

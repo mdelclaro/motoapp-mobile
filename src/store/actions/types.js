@@ -16,3 +16,5 @@ export const MOTOQUEIROS_UPDATE = "motoqueiros_update";
 
 export const UI_START_LOADING = "ui_start_loading";
 export const UI_STOP_LOADING = "ui_stop_loading";
+
+export const INFO_UPDATE = "info_update";

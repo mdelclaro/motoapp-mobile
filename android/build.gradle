@@ -48,7 +48,7 @@ subprojects { subproject ->
             android {
                 variantFilter { variant ->
                     def names = variant.flavors*.name
-                    if (names.contains("reactNative51") || names.contains("reactNative57_5")) {
+                    if (names.contains("reactNative51") || names.contains("reactNative55")) {
                         setIgnore(true)
                     }
                 }

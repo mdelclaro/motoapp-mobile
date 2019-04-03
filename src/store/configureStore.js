@@ -8,13 +8,15 @@ import UIReducer from "./reducers/UIReducer";
 import MotoqueirosReducer from "./reducers/MotoqueirosReducer";
 import AuthReducer from "./reducers/AuthReducer";
 import FormReducer from "./reducers/FormReducer";
+import InfoReducer from "./reducers/InfoReducer";
 
 const rootReducer = combineReducers({
   corrida: RequestReducer,
   ui: UIReducer,
   motoqueiros: MotoqueirosReducer,
   auth: AuthReducer,
-  form: FormReducer
+  form: FormReducer,
+  info: InfoReducer
 });
 
 // redux-persist

@@ -7,6 +7,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
 import Main from "./screens/Main";
+import Camera from "./screens/Camera";
+import Avatar from "./components/Avatar/Avatar";
 
 import { store, persistor } from "./store/configureStore";
 
@@ -50,6 +52,18 @@ const registerScreens = () => {
     ),
     () => SideMenu
   );
+  Navigation.registerComponent(
+    "motoapp.Camera",
+    () => props => (
+      <Provider store={store}>
+        <PersistGate loading={loadingComponent} persistor={persistor}>
+          <Camera {...props} />
+        </PersistGate>
+      </Provider>
+    ),
+    () => Camera
+  );
+  Navigation.registerComponent("motoapp.Avatar", () => Avatar);
 };
 
 export default registerScreens;
