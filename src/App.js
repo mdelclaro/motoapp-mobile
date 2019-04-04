@@ -89,49 +89,6 @@ const startApp = () => {
                     ]
                   }
                 }
-                // {
-                //   stack: {
-                //     children: [
-                //       {
-                //         component: {
-                //           name: "motoapp.Avatar",
-                //           id: "avatar",
-                //           options: {
-                //             topBar: {
-                //               visible: true,
-                //               drawBehind: true,
-                //               noBorder: true,
-                //               elevation: 0,
-                //               background: { color: "transparent" },
-                //               backButton: { icon, visible: true }
-                //             }
-                //           }
-                //         }
-                //       }
-                //     ]
-                //   }
-                // }
-                // {
-                //   stack: {
-                //     id: "tab2",
-                //     children: [
-                //       {
-                //         component: {
-                //           id: "Home2",
-                //           name: "motoapp.Main",
-                //           options: {
-                //             bottomTab: {
-                //               text: "Entrega",
-                //               textColor: "white",
-                //               icon: icons[1],
-                //               iconColor: "white"
-                //             }
-                //           }
-                //         }
-                //       }
-                //     ]
-                //   }
-                // }
               ]
             }
           },
@@ -143,10 +100,6 @@ const startApp = () => {
             }
           }
         }
-        // component: {
-        //   id: "avatar",
-        //   name: "motoapp.Avatar"
-        // }
       }
     });
     store.dispatch(uiStopLoading());

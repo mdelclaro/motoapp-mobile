@@ -39,9 +39,14 @@ export const tryAuth = (email, senha) => {
 
       if (result.ok) {
         let res = await result.json();
-        const { token, refreshToken, userId, expiryDate } = res;
+        const { token, refreshToken, userId, expiryDate, imgPerfil } = res;
 
-        dispatch(setInfo(email));
+        // sanitize uri
+        imgPerfil = imgPerfil.split("images")[1];
+        imgPerfil = imgPerfil.replace("/", "");
+        imgPerfil = imgPerfil.replace("\\", "");
+
+        dispatch(setInfo(email, imgPerfil));
         dispatch(storeAuth(token, refreshToken, userId, expiryDate));
         startApp();
       } else {

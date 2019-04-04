@@ -1,30 +1,33 @@
 import React, { Component, Fragment } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   Platform,
   Image
 } from "react-native";
-import Icon, { getImageSource } from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/Ionicons";
 import { Navigation } from "react-native-navigation";
 import FastImage from "react-native-fast-image";
 import { connect } from "react-redux";
+import MenuItem from "../components/UI/MenuItem";
 
-import { BASE_COLOR, BASE_COLOR_ERROR, IMAGES_URL } from "../config";
+import { BASE_COLOR, IMAGES_URL } from "../config";
 
 class Menu extends Component {
   renderImage() {
     let uri;
     let imageComponent;
-    if (this.props.imgPerfil) {
-      uri = { uri: IMAGES_URL + this.props.imgPerfil };
-      imageComponent = <FastImage source={uri} style={styles.image} fallback />;
-    } else {
-      uri = require("../assets/avatar/avatar.png");
-      imageComponent = <Image source={uri} style={styles.image} />;
-    }
+
+    // if (this.props.imgPerfil) {
+    uri = {
+      uri: IMAGES_URL + this.props.imgPerfil
+    };
+    imageComponent = <FastImage source={uri} style={styles.image} fallback />;
+    // } else {
+    //   uri = require("../assets/avatar/avatar.png");
+    //   imageComponent = <Image source={uri} style={styles.image} />;
+    // }
     return (
       <Fragment>
         <TouchableOpacity onPress={() => this.renderAvatar(uri)}>
@@ -68,7 +71,7 @@ class Menu extends Component {
         children: [
           {
             component: {
-              name: "motoapp.Avatar",
+              name: "motoapp.ProfileImage",
               passProps: {
                 uri
               },
@@ -94,52 +97,18 @@ class Menu extends Component {
         <View style={{ flex: 0, justifyContent: "center" }}>
           {this.renderImage()}
         </View>
-        <TouchableOpacity onPress={this.props.onLogout}>
-          <View style={styles.drawerItem}>
-            <Icon
-              name={Platform.OS === "android" ? "md-person" : "ios-person"}
-              size={30}
-              color={BASE_COLOR}
-              style={styles.drawerItemIcon}
-            />
-            <Text>Perfil</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.props.onLogout}>
-          <View style={styles.drawerItem}>
-            <Icon
-              name={
-                Platform.OS === "android" ? "md-chatboxes" : "ios-chatboxes"
-              }
-              size={30}
-              color={BASE_COLOR}
-              style={styles.drawerItemIcon}
-            />
-            <Text>Mensagens</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.props.onLogout}>
-          <View style={styles.drawerItem}>
-            <Icon
-              name={Platform.OS === "android" ? "md-settings" : "ios-settings"}
-              size={30}
-              color={BASE_COLOR}
-              style={styles.drawerItemIcon}
-            />
-            <Text>Configurações</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.props.onLogout}>
-          <View style={styles.drawerItem}>
-            <Icon
-              name={Platform.OS === "android" ? "md-log-out" : "ios-log-out"}
-              size={30}
-              color={BASE_COLOR_ERROR}
-              style={styles.drawerItemIcon}
-            />
-            <Text>Sair</Text>
-          </View>
-        </TouchableOpacity>
+        <MenuItem onPress={this.props.onLogout} icon="person" text="Perfil" />
+        <MenuItem
+          onPress={this.props.onLogout}
+          icon="chatboxes"
+          text="Mensagens"
+        />
+        <MenuItem
+          onPress={this.props.onLogout}
+          icon="settings"
+          text="Configurações"
+        />
+        <MenuItem onPress={this.props.onLogout} icon="log-out" text="Sair" />
       </View>
     );
   }
@@ -177,23 +146,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 50,
     bottom: -10
-  },
-  drawerItemFirst: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: "white"
-  },
-  drawerItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: "#f8f8f8",
-    borderBottomWidth: 1,
-    borderBottomColor: "#e4e4e4"
-  },
-  drawerItemIcon: {
-    marginRight: 10
   }
 });
 

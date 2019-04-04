@@ -8,7 +8,7 @@ import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
 import Main from "./screens/Main";
 import Camera from "./screens/Camera";
-import Avatar from "./components/Avatar/Avatar";
+import ProfileImage from "./components/ProfileImage/ProfileImage";
 
 import { store, persistor } from "./store/configureStore";
 
@@ -63,7 +63,7 @@ const registerScreens = () => {
     ),
     () => Camera
   );
-  Navigation.registerComponent("motoapp.Avatar", () => Avatar);
+  Navigation.registerComponent("motoapp.ProfileImage", () => ProfileImage);
 };
 
 export default registerScreens;

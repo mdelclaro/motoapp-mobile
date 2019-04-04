@@ -1,66 +1,43 @@
-import React from "react";
-import {
-  View,
-  Dimensions,
-  ImageBackground,
-  TouchableOpacity,
-  Platform,
-  StyleSheet
-} from "react-native";
+import React, { Fragment } from "react";
+import { TouchableOpacity, Platform } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { Navigation } from "react-native-navigation";
-import { BASE_COLOR } from "../../config";
+
+import {
+  Container,
+  Image,
+  ImageContainer,
+  ImageIcon,
+  FastImageComponent
+} from "./styles";
+
+import { IMAGES_URL } from "../../config";
 
 const Avatar = props => {
-  const { uri, componentId } = props;
-
-  handleBack = () => {
-    Navigation.dismissModal(componentId);
-  };
-
+  const { renderAvatar, renderCamera, componentType, uri, style } = props;
+  let imageComponent = null;
+  if (componentType === 1) {
+    imageComponent = <FastImageComponent source={uri} fallback style={style} />;
+  } else {
+    imageComponent = <Image source={uri} />;
+  }
   return (
-    <View style={{ flex: 1 }}>
-      <ImageBackground source={uri} style={styles.image}>
-        <View style={styles.container}>
-          <TouchableOpacity onPress={this.handleBack} style={styles.button}>
+    <Container>
+      <Fragment>
+        <TouchableOpacity onPress={() => renderAvatar(uri)}>
+          {imageComponent}
+        </TouchableOpacity>
+        <ImageContainer>
+          <ImageIcon onPress={renderCamera}>
             <Icon
-              name={
-                Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back"
-              }
-              size={30}
-              color="#f8f8f8"
+              name={Platform.OS === "android" ? "md-create" : "ios-create"}
+              size={25}
+              color="#4e4e4f"
             />
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </View>
+          </ImageIcon>
+        </ImageContainer>
+      </Fragment>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    height: Dimensions.get("window").height,
-    width: Dimensions.get("window").width
-  },
-  container: {
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "center"
-  },
-  button: {
-    flex: 0,
-    backgroundColor: BASE_COLOR,
-    borderRadius: 100,
-    height: 55,
-    width: 55,
-    margin: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    left: 5,
-    top: 15
-  }
-});
 
 export default Avatar;
