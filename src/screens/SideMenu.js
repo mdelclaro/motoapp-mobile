@@ -16,22 +16,14 @@ import { BASE_COLOR, IMAGES_URL } from "../config";
 
 class Menu extends Component {
   renderImage() {
-    let uri;
-    let imageComponent;
-
-    // if (this.props.imgPerfil) {
-    uri = {
-      uri: IMAGES_URL + this.props.imgPerfil
-    };
-    imageComponent = <FastImage source={uri} style={styles.image} fallback />;
-    // } else {
-    //   uri = require("../assets/avatar/avatar.png");
-    //   imageComponent = <Image source={uri} style={styles.image} />;
-    // }
     return (
       <Fragment>
         <TouchableOpacity onPress={() => this.renderAvatar(uri)}>
-          {imageComponent}
+          <FastImage
+            source={{ uri: IMAGES_URL + this.props.imgPerfil }}
+            style={styles.image}
+            fallback
+          />
         </TouchableOpacity>
         <View style={styles.imageIconContainer}>
           <TouchableOpacity
