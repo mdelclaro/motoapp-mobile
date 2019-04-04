@@ -91,6 +91,28 @@ const startApp = () => {
                 }
                 // {
                 //   stack: {
+                //     children: [
+                //       {
+                //         component: {
+                //           name: "motoapp.Avatar",
+                //           id: "avatar",
+                //           options: {
+                //             topBar: {
+                //               visible: true,
+                //               drawBehind: true,
+                //               noBorder: true,
+                //               elevation: 0,
+                //               background: { color: "transparent" },
+                //               backButton: { icon, visible: true }
+                //             }
+                //           }
+                //         }
+                //       }
+                //     ]
+                //   }
+                // }
+                // {
+                //   stack: {
                 //     id: "tab2",
                 //     children: [
                 //       {

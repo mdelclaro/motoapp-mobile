@@ -5,40 +5,43 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  Dimensions
+  Image
 } from "react-native";
 import Icon, { getImageSource } from "react-native-vector-icons/Ionicons";
 import { Navigation } from "react-native-navigation";
 import FastImage from "react-native-fast-image";
 import { connect } from "react-redux";
 
-import Avatar from "../components/Avatar/Avatar";
 import { BASE_COLOR, BASE_COLOR_ERROR, IMAGES_URL } from "../config";
 
 class Menu extends Component {
   renderImage() {
     let uri;
+    let imageComponent;
     if (this.props.imgPerfil) {
-      uri = IMAGES_URL + this.props.imgPerfil;
+      uri = { uri: IMAGES_URL + this.props.imgPerfil };
+      imageComponent = <FastImage source={uri} style={styles.image} fallback />;
     } else {
       uri = require("../assets/avatar/avatar.png");
+      imageComponent = <Image source={uri} style={styles.image} />;
     }
     return (
       <Fragment>
         <TouchableOpacity onPress={() => this.renderAvatar(uri)}>
-          <FastImage source={{ uri }} style={styles.image} />
+          {imageComponent}
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.imageIconContainer}
-          onPress={this.renderCamera}
-        >
-          <Icon
-            name={Platform.OS === "android" ? "md-create" : "ios-create"}
-            size={30}
-            color="#4e4e4f"
+        <View style={styles.imageIconContainer}>
+          <TouchableOpacity
             style={styles.imageIcon}
-          />
-        </TouchableOpacity>
+            onPress={this.renderCamera}
+          >
+            <Icon
+              name={Platform.OS === "android" ? "md-create" : "ios-create"}
+              size={25}
+              color="#4e4e4f"
+            />
+          </TouchableOpacity>
+        </View>
       </Fragment>
     );
   }
@@ -60,12 +63,6 @@ class Menu extends Component {
   };
 
   renderAvatar = async uri => {
-    const icon = await getImageSource(
-      Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
-      35,
-      BASE_COLOR
-    );
-
     Navigation.showModal({
       stack: {
         children: [
@@ -73,16 +70,15 @@ class Menu extends Component {
             component: {
               name: "motoapp.Avatar",
               passProps: {
-                icon,
                 uri
               },
               options: {
                 topBar: {
+                  visible: true,
                   drawBehind: true,
                   noBorder: true,
                   elevation: 0,
-                  background: { color: "transparent" },
-                  backButton: { icon }
+                  background: { color: "transparent" }
                 }
               }
             }
@@ -90,27 +86,6 @@ class Menu extends Component {
         ]
       }
     });
-
-    // Navigation.push(this.props.componentId, {
-    //   component: {
-    //     name: "motoapp.Avatar",
-    //     passProps: {
-    //       icon,
-    //       uri
-    //     },
-    //     options: {
-    //       topBar: {
-    //         leftButtons: [
-    //           {
-    //             visible: true,
-    //             id: "imgBackButton",
-    //             icon: icon
-    //           }
-    //         ]
-    //       }
-    //     }
-    //   }
-    // });
   };
 
   render() {
@@ -185,19 +160,23 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: BASE_COLOR
   },
-  imageIcon: {
-    flex: 1,
-    backgroundColor: "#e4e4e4",
-    borderRadius: 50,
-    paddingLeft: 5,
-    paddingRight: 5,
-    margin: 1
-  },
   imageIconContainer: {
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "center"
+  },
+  imageIcon: {
+    backgroundColor: "#e4e4e4",
+    flex: 0,
+    borderRadius: 100,
+    height: 30,
+    width: 30,
+    margin: 20,
+    alignItems: "center",
+    justifyContent: "center",
     position: "absolute",
-    padding: 5,
-    right: 75,
-    bottom: 0
+    right: 50,
+    bottom: -10
   },
   drawerItemFirst: {
     flexDirection: "row",
