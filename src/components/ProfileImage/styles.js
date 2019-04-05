@@ -21,7 +21,7 @@ export const Container = styled.View`
 export const TouchableOpacity = styled.TouchableOpacity`
   flex: 0;
   background-color: ${BASE_COLOR};
-  border-radius: 100px;
+  border-radius: 100;
   height: 55px;
   width: 55px;
   margin: 20px;

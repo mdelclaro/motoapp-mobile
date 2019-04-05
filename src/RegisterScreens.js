@@ -7,7 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
 import Main from "./screens/Main";
-import Camera from "./screens/Camera";
+import Camera from "./components/Camera/Camera";
 import ProfileImage from "./components/ProfileImage/ProfileImage";
 
 import { store, persistor } from "./store/configureStore";
@@ -18,51 +18,33 @@ const loadingComponent = (
   </View>
 );
 
+const providerWrapper = (props, Component) => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={loadingComponent} persistor={persistor}>
+        <Component {...props} />
+      </PersistGate>
+    </Provider>
+  );
+};
+
 const registerScreens = () => {
   Navigation.registerComponent(
     "motoapp.Main",
-    () => props => (
-      <Provider store={store}>
-        <PersistGate loading={loadingComponent} persistor={persistor}>
-          <Main {...props} />
-        </PersistGate>
-      </Provider>
-    ),
+    () => props => providerWrapper(props, Main),
     () => Main
   );
   Navigation.registerComponent(
     "motoapp.Auth",
-    () => props => (
-      <Provider store={store}>
-        <PersistGate loading={loadingComponent} persistor={persistor}>
-          <Auth {...props} />
-        </PersistGate>
-      </Provider>
-    ),
+    () => props => providerWrapper(props, Auth),
     () => Auth
   );
   Navigation.registerComponent(
     "motoapp.SideMenu",
-    () => props => (
-      <Provider store={store}>
-        <PersistGate loading={loadingComponent} persistor={persistor}>
-          <SideMenu {...props} />
-        </PersistGate>
-      </Provider>
-    ),
+    () => props => providerWrapper(props, SideMenu),
     () => SideMenu
   );
-  Navigation.registerComponent(
-    "motoapp.Camera",
-    () => props => (
-      <Provider store={store}>
-        <PersistGate loading={loadingComponent} persistor={persistor}>
-          <Camera {...props} />
-        </PersistGate>
-      </Provider>
-    ),
-    () => Camera
-  );
+  Navigation.registerComponent("motoapp.Camera", () => Camera);
   Navigation.registerComponent("motoapp.ProfileImage", () => ProfileImage);
 };
 
