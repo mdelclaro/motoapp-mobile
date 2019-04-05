@@ -17,6 +17,7 @@ import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
+import com.imagepicker.ImagePickerPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,8 @@ public class MainApplication extends NavigationApplication {
       new VectorIconsPackage(),
       new RNGooglePlacesPackage(),
       new RNCameraPackage(),
-      new FastImageViewPackage()
+      new FastImageViewPackage(),
+      new ImagePickerPackage()
     );
   }
 

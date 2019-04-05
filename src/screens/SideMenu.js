@@ -4,32 +4,34 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  Image
+  Alert
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Navigation } from "react-native-navigation";
 import FastImage from "react-native-fast-image";
+import ImagePicker from "react-native-image-picker";
 import { connect } from "react-redux";
+
+import { updateInfo } from "../store/actions/";
+
 import MenuItem from "../components/UI/MenuItem";
 
 import { BASE_COLOR, IMAGES_URL } from "../config";
 
 class Menu extends Component {
+  state = {
+    uri: IMAGES_URL + this.props.imgPerfil
+  };
+
   renderImage() {
+    const uri = IMAGES_URL + this.props.imgPerfil;
     return (
       <Fragment>
-        <TouchableOpacity onPress={() => this.renderAvatar(uri)}>
-          <FastImage
-            source={{ uri: IMAGES_URL + this.props.imgPerfil }}
-            style={styles.image}
-            fallback
-          />
+        <TouchableOpacity onPress={this.renderAvatar}>
+          <FastImage source={{ uri }} style={styles.image} fallback />
         </TouchableOpacity>
         <View style={styles.imageIconContainer}>
-          <TouchableOpacity
-            style={styles.imageIcon}
-            onPress={this.renderCamera}
-          >
+          <TouchableOpacity style={styles.imageIcon} onPress={this.handleEdit}>
             <Icon
               name={Platform.OS === "android" ? "md-create" : "ios-create"}
               size={25}
@@ -41,6 +43,47 @@ class Menu extends Component {
     );
   }
 
+  handleEdit = () => {
+    Alert.alert(
+      "Editar avatar",
+      "Escolha uma opção para editar a sua imagem de perfil",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel"
+        },
+        {
+          text: "Tirar foto",
+          onPress: () => {
+            this.renderCamera();
+          }
+        },
+        {
+          text: "Escolher existente",
+          onPress: () => {
+            const options = {
+              noData: true,
+              permissionDenied: {
+                title: "Permissão negada",
+                text:
+                  "Para poder escolher uma imagem existente precisamos de sua permissão para acessar o armazenamento do dispositivo.",
+                reTryTitle: "Conceder permissão",
+                okTitle: "Ok"
+              }
+            };
+
+            ImagePicker.launchImageLibrary(options, response => {
+              if (response.uri) {
+                this.setState({ uri: response.uri });
+              }
+            });
+          }
+        }
+      ],
+      { cancelable: true }
+    );
+  };
+
   renderCamera = () => {
     Navigation.showModal({
       stack: {
@@ -49,7 +92,10 @@ class Menu extends Component {
           {
             component: {
               id: "camera",
-              name: "motoapp.Camera"
+              name: "motoapp.Camera",
+              passProps: {
+                handleUpload: uri => this.handleUpload(uri)
+              }
             }
           }
         ]
@@ -57,16 +103,15 @@ class Menu extends Component {
     });
   };
 
-  renderAvatar = async uri => {
+  renderAvatar = () => {
+    const uri = { uri: IMAGES_URL + this.props.imgPerfil };
     Navigation.showModal({
       stack: {
         children: [
           {
             component: {
               name: "motoapp.ProfileImage",
-              passProps: {
-                uri
-              },
+              passProps: { uri },
               options: {
                 topBar: {
                   visible: true,
@@ -82,6 +127,12 @@ class Menu extends Component {
       }
     });
   };
+
+  handleUpload(uri, id = null) {
+    const { updateInfo, userId, imgPerfil } = this.props;
+    updateInfo(uri, userId);
+    this.setState({ uri: IMAGES_URL + imgPerfil });
+  }
 
   render() {
     return (
@@ -143,8 +194,17 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    imgPerfil: state.info.imgPerfil
+    imgPerfil: state.info.imgPerfil,
+    userId: state.auth.userId
   };
 };
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = {
+  updateInfo: (imgPerfil, idMotoqueiro) =>
+    updateInfo(null, null, imgPerfil, idMotoqueiro)
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Menu);

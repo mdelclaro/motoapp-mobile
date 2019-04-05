@@ -153,6 +153,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-image-picker')
     implementation project(':react-native-fast-image')
     compile project(':react-native-google-places')
     implementation fileTree(dir: "libs", include: ["*.jar"])

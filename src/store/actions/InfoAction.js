@@ -47,10 +47,18 @@ export const updateInfo = (
 
       if (result.ok) {
         let res = await result.json();
-        let imgPerfil = res.cliente.imgPerfil.split("images")[1];
-        imgPerfil = imgPerfil.replace("/", "");
-        imgPerfil = imgPerfil.replace("\\", "");
-        dispatch(setInfo(res.cliente.email, imgPerfil));
+        let { imgPerfil, email } = res.cliente;
+
+        // sanitize uri
+        if (imgPerfil) {
+          imgPerfil = imgPerfil.split("images")[1];
+          imgPerfil = imgPerfil.replace("/", "");
+          imgPerfil = imgPerfil.replace("\\", "");
+        } else {
+          imgPerfil = "avatar.png";
+        }
+
+        dispatch(setInfo(email, imgPerfil));
         dispatch(uiStopLoading());
         return true;
       } else {

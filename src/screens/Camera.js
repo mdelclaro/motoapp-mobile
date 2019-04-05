@@ -5,22 +5,17 @@ import {
   View,
   Dimensions,
   ImageBackground,
-  Platform,
-  ActivityIndicator
+  Platform
 } from "react-native";
-import { connect } from "react-redux";
 import { RNCamera } from "react-native-camera";
 import { Navigation } from "react-native-navigation";
 import Icon from "react-native-vector-icons/Ionicons";
-
-import { updateInfo } from "../store/actions/";
 
 import { BASE_COLOR, BASE_COLOR_ERROR } from "../config";
 
 class Camera extends Component {
   state = {
-    path: null,
-    type: RNCamera.Constants.Type.back
+    path: null
   };
 
   renderCamera() {
@@ -30,7 +25,7 @@ class Camera extends Component {
           this.camera = camera;
         }}
         style={styles.preview}
-        type={this.state.type}
+        type={RNCamera.Constants.Type.back}
         autoFocus={RNCamera.Constants.AutoFocus.on}
         flashMode={RNCamera.Constants.FlashMode.off}
         captureAudio={false}
@@ -59,39 +54,31 @@ class Camera extends Component {
           source={{ uri: this.state.path }}
           style={styles.preview}
         >
-          {this.props.isLoading ? (
-            <ActivityIndicator
-              size="large"
-              color={BASE_COLOR}
-              style={{ flex: 1, justifyContent: "center" }}
-            />
-          ) : (
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                onPress={() => this.setState({ path: null })}
-                style={[styles.capture, { backgroundColor: BASE_COLOR_ERROR }]}
-              >
-                <Icon
-                  name={Platform.OS === "android" ? "md-close" : "ios-close"}
-                  size={32}
-                  color="#FFF"
-                />
-              </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => this.setState({ path: null })}
+              style={[styles.capture, { backgroundColor: BASE_COLOR_ERROR }]}
+            >
+              <Icon
+                name={Platform.OS === "android" ? "md-close" : "ios-close"}
+                size={32}
+                color="#FFF"
+              />
+            </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={this.uploadPicture}
-                style={styles.capture}
-              >
-                <Icon
-                  name={
-                    Platform.OS === "android" ? "md-checkmark" : "ios-checkmark"
-                  }
-                  size={32}
-                  color="#FFF"
-                />
-              </TouchableOpacity>
-            </View>
-          )}
+            <TouchableOpacity
+              onPress={this.uploadPicture}
+              style={styles.capture}
+            >
+              <Icon
+                name={
+                  Platform.OS === "android" ? "md-checkmark" : "ios-checkmark"
+                }
+                size={32}
+                color="#FFF"
+              />
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     );
@@ -109,10 +96,9 @@ class Camera extends Component {
     }
   };
 
-  uploadPicture = async () => {
-    const { updateInfo, componentId, userId } = this.props;
-    await updateInfo(this.state.path, userId);
-
+  uploadPicture = () => {
+    const { id, handleUpload, componentId } = this.props;
+    handleUpload(this.state.path, id);
     Navigation.dismissModal(componentId);
   };
 
@@ -165,18 +151,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
-  return {
-    userId: state.auth.userId,
-    isLoading: state.ui.isLoading
-  };
-};
-
-const mapDispatchToProps = {
-  updateInfo: (image, idCliente) => updateInfo(null, null, image, idCliente)
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Camera);
+export default Camera;
