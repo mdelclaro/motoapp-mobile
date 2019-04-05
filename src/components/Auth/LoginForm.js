@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   View,
   StyleSheet,
-  Dimensions,
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
@@ -18,16 +17,9 @@ import InputValidation from "../UI/InputValidation";
 import HeadingText from "../UI/HeadingText";
 import MainText from "../UI/MainText";
 
+import { BASE_COLOR } from "../../config";
+
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    Dimensions.addEventListener("change", this.updateStyles);
-  }
-
-  state = {
-    viewMode: Dimensions.get("window").height > 500 ? "portrait" : "landscape"
-  };
-
   componentDidMount() {
     if (
       this.form.initialValues.email !== "" ||
@@ -46,26 +38,13 @@ class LoginForm extends Component {
     }
   }
 
-  componentWillUnmount() {
-    Dimensions.removeEventListener("change", this.updateStyles);
-  }
-
-  updateStyles = dims => {
-    this.setState({
-      viewMode: dims.window.height > 500 ? "portrait" : "landscape"
-    });
-  };
-
   render() {
-    let headingText = null;
+    let headingText = (
+      <MainText>
+        <HeadingText style={{ color: BASE_COLOR }}>MotoApp</HeadingText>
+      </MainText>
+    );
 
-    if (this.state.viewMode === "portrait") {
-      headingText = (
-        <MainText>
-          <HeadingText style={{ color: "#425cf4" }}>Fazer login</HeadingText>
-        </MainText>
-      );
-    }
     return (
       <Formik
         ref={el => (this.form = el)}
@@ -80,7 +59,6 @@ class LoginForm extends Component {
             .required("Preencha a senha")
         })}
         render={({
-          values,
           handleSubmit,
           setFieldValue,
           errors,
@@ -127,7 +105,7 @@ class LoginForm extends Component {
               {!this.props.isLoading ? (
                 <View style={{ width: "80%" }}>
                   <ButtonWithBackground
-                    color="#425cf4"
+                    color={BASE_COLOR}
                     onPress={handleSubmit}
                     isDisabled={!isValid}
                   >
@@ -140,7 +118,7 @@ class LoginForm extends Component {
               {!this.props.isLoading ? (
                 <ButtonWithBackground
                   onPress={this.props.onSwitchAuthMode}
-                  textColor="#425cf4"
+                  textColor={BASE_COLOR}
                 >
                   Não tem uma conta? Crie agora
                 </ButtonWithBackground>
@@ -164,14 +142,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   input: {
-    //backgroundColor: "#eee",
     borderBottomColor: "#bbb"
-    //borderBottomRadius: 15
   },
   inputContainer: {
-    // it controls the input width,
-    // better approach. makes
-    // TextInputs reusable with 100% width
     width: "80%"
   },
   passwordContainer: {

@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Platform
-} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
+import CustomIcon from "../UI/CustomIcon";
 import { BASE_COLOR, BASE_COLOR_ERROR } from "../../config";
 
 const MenuItem = props => {
@@ -15,8 +9,8 @@ const MenuItem = props => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.drawerItem}>
-        <Icon
-          name={Platform.OS === "android" ? `md-${icon}` : `ios-${icon}`}
+        <CustomIcon
+          icon={icon}
           size={30}
           color={text === "Sair" ? BASE_COLOR_ERROR : BASE_COLOR}
           style={styles.drawerItemIcon}

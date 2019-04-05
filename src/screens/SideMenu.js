@@ -7,7 +7,6 @@ import {
   Alert,
   ActivityIndicator
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
 import { Navigation } from "react-native-navigation";
 import FastImage from "react-native-fast-image";
 import ImagePicker from "react-native-image-picker";
@@ -16,6 +15,7 @@ import { connect } from "react-redux";
 import { updateInfo } from "../store/actions/";
 
 import MenuItem from "../components/UI/MenuItem";
+import CustomIcon from "../components/UI/CustomIcon";
 
 import { BASE_COLOR, IMAGES_URL } from "../config";
 
@@ -35,11 +35,7 @@ class Menu extends Component {
         </TouchableOpacity>
         <View style={styles.imageIconContainer}>
           <TouchableOpacity style={styles.imageIcon} onPress={this.handleEdit}>
-            <Icon
-              name={Platform.OS === "android" ? "md-create" : "ios-create"}
-              size={25}
-              color="#4e4e4f"
-            />
+            <CustomIcon icon={"create"} size={25} color="#4e4e4f" />
           </TouchableOpacity>
         </View>
       </Fragment>
