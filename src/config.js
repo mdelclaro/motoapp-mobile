@@ -8,12 +8,12 @@ const home = false;
 let BASE_URL, SOCKET_URL, IMAGES_URL;
 
 if (home) {
-  BASE_URL = "http://192.168.2.107:8080/motoapp/v1/";
+  BASE_URL = "http://192.168.2.107:8080/v1/";
   SOCKET_URL = "http://192.168.2.107:8080";
   IMAGES_URL = "http://192.168.2.107:8080/images/";
 } else {
   IMAGES_URL = "http://192.168.1.13:8080/images/";
-  BASE_URL = "http://192.168.1.13:8080/motoapp/v1/";
+  BASE_URL = "http://192.168.1.13:8080/v1/";
   SOCKET_URL = "http://192.168.1.13:8080";
 }
 export const FETCH_TIMEOUT = 3000;
