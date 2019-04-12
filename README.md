@@ -2,7 +2,7 @@
 
 The client's app
 
-* [Rider's app](https://github.com/mdelclaro/motoappdriver-mobile)
+* [Driver's app](https://github.com/mdelclaro/motoappdriver-mobile)
 * [Back-end](https://github.com/mdelclaro/motoapp-backend)
 
 ### Running:
