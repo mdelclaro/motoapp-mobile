@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { GiftedChat, Bubble, Send } from "react-native-gifted-chat";
+import { connect } from "react-redux";
 import "moment/locale/pt-br";
 
-import { BASE_COLOR } from "../../config";
+import { sendMessage, setChats } from "../../store/actions/";
+import { BASE_COLOR, IMAGES_URL } from "../../config";
 
 class Chat extends Component {
   state = {
@@ -10,38 +12,61 @@ class Chat extends Component {
   };
 
   componentWillMount() {
+    const messages = this.props.mensagens.reverse();
     this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: "Hello developer",
-          createdAt: new Date(),
+      messages: messages.map(mensagem => {
+        return {
+          _id: mensagem._id,
+          text: mensagem.text,
+          createdAt: mensagem.createdAt,
           user: {
-            _id: 2,
-            name: "React Native",
-            avatar: "https://placeimg.com/140/140/any"
-          }
-        }
-      ]
+            _id: mensagem.sender
+          },
+          sent: true
+        };
+      })
     });
   }
 
-  onSend(messages = []) {
-    messages[0].sent = true;
-    this.setState(previousState => ({
+  async onSend(messages = []) {
+    messages[0].user = {
+      _id: this.props.idCliente
+    };
+    await this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages)
     }));
+
+    const exec = await this.props.sendMessage(
+      this.props.idMotoqueiro._id,
+      this.props.idCliente,
+      messages[0].text
+    );
+
+    if (exec) {
+      let newState = this.state.messages;
+      newState = newState.map(message => {
+        if (message._id === messages[0]._id) {
+          message.sent = true;
+        }
+        return message;
+      });
+      this.setState({ messages: newState });
+      let chats = this.props.chats.reverse();
+      chats[this.props.index].mensagens.push(exec);
+      this.props.setChats(chats);
+    }
   }
 
   render() {
     return (
       <GiftedChat
+        // inverted={false}
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         placeholder="Escrever..."
         locale={"pt-br"}
         user={{
-          _id: 1
+          _id: this.props.idCliente
         }}
         renderSend={props => {
           return (
@@ -77,4 +102,19 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+const mapStateToProps = state => {
+  return {
+    chats: state.chats.chats
+  };
+};
+
+const mapDispatchToProps = {
+  sendMessage: (idMotoqueiro, idCliente, text) =>
+    sendMessage(idMotoqueiro, idCliente, text),
+  setChats: chats => setChats(chats)
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chat);

@@ -103,6 +103,22 @@ class Menu extends Component {
     });
   };
 
+  renderChat = () => {
+    Navigation.showModal({
+      stack: {
+        id: "chats",
+        children: [
+          {
+            component: {
+              id: "chats",
+              name: "motoapp.Chats"
+            }
+          }
+        ]
+      }
+    });
+  };
+
   renderAvatar = () => {
     const uri = { uri: IMAGES_URL + this.props.imgPerfil };
     Navigation.showModal({
@@ -141,11 +157,7 @@ class Menu extends Component {
           {this.renderImage()}
         </View>
         <MenuItem onPress={this.props.onLogout} icon="person" text="Perfil" />
-        <MenuItem
-          onPress={this.props.onLogout}
-          icon="chatboxes"
-          text="Mensagens"
-        />
+        <MenuItem onPress={this.renderChat} icon="chatboxes" text="Mensagens" />
         <MenuItem
           onPress={this.props.onLogout}
           icon="settings"

@@ -14,10 +14,11 @@ import Camera from "./components/Camera/Camera";
 import ProfileImage from "./components/ProfileImage/ProfileImage";
 
 import { store, persistor } from "./store/configureStore";
+import { BASE_COLOR } from "./config";
 
 const loadingComponent = (
   <View style={{ flex: 1, justifyContent: "center" }}>
-    <ActivityIndicator size="large" />
+    <ActivityIndicator size="large" color={BASE_COLOR} />
   </View>
 );
 
@@ -54,7 +55,11 @@ const registerScreens = () => {
     () => props => providerWrapper(props, Chats),
     () => Chats
   );
-  Navigation.registerComponent("motoapp.Chat", () => Chat);
+  Navigation.registerComponent(
+    "motoapp.Chat",
+    () => props => providerWrapper(props, Chat),
+    () => Chat
+  );
   Navigation.registerComponent("motoapp.Camera", () => Camera);
   Navigation.registerComponent("motoapp.ProfileImage", () => ProfileImage);
 };

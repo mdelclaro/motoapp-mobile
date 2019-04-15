@@ -28,7 +28,7 @@ import EnRoute from "../EnRoute/EnRoute";
 import Rating from "../Rating/Rating";
 
 import { getPixelSize } from "../../utils";
-import { GOOGLE_API } from "../../config";
+import { GOOGLE_API, BASE_COLOR } from "../../config";
 
 import pin from "../../assets/destination_pin/pin.png";
 import user from "../../assets/user/user.png";
@@ -511,7 +511,7 @@ class Localizacao extends Component {
         {showRate && <Rating handleRating={this.submitRating} />}
         {this.state.isLoading ? (
           <View style={{ flex: 1, justifyContent: "center" }}>
-            <ActivityIndicator size="large" />
+            <ActivityIndicator size="large" color={BASE_COLOR} />
           </View>
         ) : (
           <MapView

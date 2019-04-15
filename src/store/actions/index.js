@@ -4,7 +4,7 @@ export { signUp } from "./SignUpAction";
 export { addRating } from "./RatingAction";
 export { updateMotoqueiros } from "./MotoqueirosAction";
 export { updateInfo } from "./InfoAction";
-export { getChats } from "./ChatAction";
+export { getChats, sendMessage, setChats } from "./ChatAction";
 export {
   tryAuth,
   authGetToken,

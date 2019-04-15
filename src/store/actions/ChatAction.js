@@ -7,7 +7,6 @@ import { BASE_URL } from "../../config";
 export const getChats = idCliente => {
   return async dispatch => {
     dispatch(uiStartLoading());
-    console.log(`${BASE_URL}chat/cliente/${idCliente}`);
     // const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
@@ -23,6 +22,7 @@ export const getChats = idCliente => {
       if (result.ok) {
         dispatch(uiStopLoading());
         const res = await result.json();
+        console.log(res);
         dispatch(setChats(res.chat));
         return true;
       } else {
@@ -35,6 +35,48 @@ export const getChats = idCliente => {
     } catch (err) {
       dispatch(uiStopLoading());
       alert("Ocorreu um erro");
+      console.log("Erro: " + err);
+      return false;
+    }
+  };
+};
+
+export const sendMessage = (idMotoqueiro, idCliente, text) => {
+  return async dispatch => {
+    dispatch(uiStartLoading());
+    // const token = await dispatch(authGetToken());
+    try {
+      const result = await timeout(
+        fetch(`${BASE_URL}mensagem/`, {
+          method: "POST",
+          body: JSON.stringify({
+            idMotoqueiro,
+            idCliente,
+            sender: idCliente,
+            text
+          }),
+          headers: {
+            "Content-Type": "application/json"
+            // Authorization: "Bearer " + token
+          }
+        })
+      );
+
+      if (result.ok) {
+        dispatch(uiStopLoading());
+        const res = await result.json();
+        // dispatch(setChats(res.chat));
+        return res.mensagem;
+      } else {
+        let res = await result.json();
+        console.log(res);
+        dispatch(uiStopLoading());
+        // alert("Ocorreu um erro ao buscar as conversas");
+        return false;
+      }
+    } catch (err) {
+      dispatch(uiStopLoading());
+      // alert("Ocorreu um erro");
       console.log("Erro: " + err);
       return false;
     }
