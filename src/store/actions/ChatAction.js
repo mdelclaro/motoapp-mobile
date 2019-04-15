@@ -1,35 +1,35 @@
+import { CHAT_SET } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { authGetToken } from "./AuthAction";
 import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
-export const addRating = (idMotoqueiro, nota) => {
+export const getChats = idCliente => {
   return async dispatch => {
     dispatch(uiStartLoading());
-    const token = await dispatch(authGetToken());
+    console.log(`${BASE_URL}chat/cliente/${idCliente}`);
+    // const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
-        fetch(`${BASE_URL}avaliacao/`, {
-          method: "POST",
-          body: JSON.stringify({
-            idMotoqueiro,
-            nota
-          }),
+        fetch(`${BASE_URL}chat/cliente/${idCliente}`, {
+          method: "GET",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token
+            "Content-Type": "application/json"
+            // Authorization: "Bearer " + token
           }
         })
       );
 
       if (result.ok) {
         dispatch(uiStopLoading());
+        const res = await result.json();
+        dispatch(setChats(res.chat));
         return true;
       } else {
         let res = await result.json();
         console.log(res);
         dispatch(uiStopLoading());
-        alert("Ocorreu um erro ao avaliar o motoqueiro");
+        alert("Ocorreu um erro ao buscar as conversas");
         return false;
       }
     } catch (err) {
@@ -38,5 +38,12 @@ export const addRating = (idMotoqueiro, nota) => {
       console.log("Erro: " + err);
       return false;
     }
+  };
+};
+
+export const setChats = chats => {
+  return {
+    type: CHAT_SET,
+    payload: chats
   };
 };

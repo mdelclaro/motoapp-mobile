@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { Overlay, Rating, AirbnbRating } from "react-native-elements";
+import { Overlay, AirbnbRating } from "react-native-elements";
 import avatar from "../../assets/avatar/avatar.png";
 
 class MyRating extends Component {

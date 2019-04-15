@@ -2,11 +2,14 @@ import React from "react";
 import { View, ActivityIndicator } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { Provider } from "react-redux";
+import { Provider as PaperProvider } from "react-native-paper";
 import { PersistGate } from "redux-persist/integration/react";
 
 import Auth from "./screens/Auth";
 import SideMenu from "./screens/SideMenu";
 import Main from "./screens/Main";
+import Chats from "./components/Chat/Chats";
+import Chat from "./components/Chat/Chat";
 import Camera from "./components/Camera/Camera";
 import ProfileImage from "./components/ProfileImage/ProfileImage";
 
@@ -22,7 +25,9 @@ const providerWrapper = (props, Component) => {
   return (
     <Provider store={store}>
       <PersistGate loading={loadingComponent} persistor={persistor}>
-        <Component {...props} />
+        <PaperProvider>
+          <Component {...props} />
+        </PaperProvider>
       </PersistGate>
     </Provider>
   );
@@ -44,6 +49,12 @@ const registerScreens = () => {
     () => props => providerWrapper(props, SideMenu),
     () => SideMenu
   );
+  Navigation.registerComponent(
+    "motoapp.Chats",
+    () => props => providerWrapper(props, Chats),
+    () => Chats
+  );
+  Navigation.registerComponent("motoapp.Chat", () => Chat);
   Navigation.registerComponent("motoapp.Camera", () => Camera);
   Navigation.registerComponent("motoapp.ProfileImage", () => ProfileImage);
 };

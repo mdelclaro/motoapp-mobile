@@ -9,6 +9,7 @@ import MotoqueirosReducer from "./reducers/MotoqueirosReducer";
 import AuthReducer from "./reducers/AuthReducer";
 import FormReducer from "./reducers/FormReducer";
 import InfoReducer from "./reducers/InfoReducer";
+import ChatReducer from "./reducers/ChatReducer";
 
 const rootReducer = combineReducers({
   corrida: RequestReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   motoqueiros: MotoqueirosReducer,
   auth: AuthReducer,
   form: FormReducer,
-  info: InfoReducer
+  info: InfoReducer,
+  chats: ChatReducer
 });
 
 // redux-persist

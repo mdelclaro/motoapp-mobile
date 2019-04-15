@@ -5,19 +5,18 @@ const home = false;
  * | Network |
  *  ---------
  */
-let BASE_URL, SOCKET_URL, IMAGES_URL;
 
-if (home) {
-  BASE_URL = "http://192.168.2.107:8080/v1/";
-  SOCKET_URL = "http://192.168.2.107:8080";
-  IMAGES_URL = "http://192.168.2.107:8080/images/";
-} else {
-  IMAGES_URL = "http://192.168.1.13:8080/images/";
-  BASE_URL = "http://192.168.1.13:8080/v1/";
-  SOCKET_URL = "http://192.168.1.13:8080";
-}
+export const BASE_URL = home
+  ? "http://192.168.2.107:8080/v1/"
+  : "http://192.168.1.13:8080/v1/";
+export const SOCKET_URL = home
+  ? "http://192.168.2.107:8080"
+  : "http://192.168.1.13:8080";
+export const IMAGES_URL = home
+  ? "http://192.168.2.107:8080/images/"
+  : "http://192.168.1.13:8080/images/";
+
 export const FETCH_TIMEOUT = 3000;
-export { BASE_URL, SOCKET_URL, IMAGES_URL };
 
 /**
  *  --------
