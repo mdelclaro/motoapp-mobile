@@ -35,7 +35,7 @@ class Menu extends Component {
         </TouchableOpacity>
         <View style={styles.imageIconContainer}>
           <TouchableOpacity style={styles.imageIcon} onPress={this.handleEdit}>
-            <CustomIcon icon={"create"} size={25} color="#4e4e4f" />
+            <CustomIcon icon={"edit-2"} size={25} color="#4e4e4f" />
           </TouchableOpacity>
         </View>
       </Fragment>
@@ -156,8 +156,12 @@ class Menu extends Component {
         <View style={{ flex: 0, justifyContent: "center" }}>
           {this.renderImage()}
         </View>
-        <MenuItem onPress={this.props.onLogout} icon="person" text="Perfil" />
-        <MenuItem onPress={this.renderChat} icon="chatboxes" text="Mensagens" />
+        <MenuItem onPress={this.props.onLogout} icon="user" text="Perfil" />
+        <MenuItem
+          onPress={this.renderChat}
+          icon="message-circle"
+          text="Mensagens"
+        />
         <MenuItem
           onPress={this.props.onLogout}
           icon="settings"

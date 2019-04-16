@@ -28,7 +28,8 @@ export default (CameraComponent = (props, { style }) => {
         </ButtonContainer>
       </RNCamera>
       <BackButton onPress={() => Navigation.dismissAllModals()}>
-        <CustomIcon icon={"arrow-back"} size={32} color="#FFF" />
+        {/* <CustomIcon icon={"arrow-back"} size={32} color="#FFF" /> */}
+        <CustomIcon icon={"arrow-left"} size={32} color="#FFF" />
       </BackButton>
     </Fragment>
   );

@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { connect } from "react-redux";
-import { getImageSource } from "react-native-vector-icons/Ionicons";
+// import { getImageSource } from "react-native-vector-icons/Ionicons";
+import { getImageSource } from "react-native-vector-icons/Feather";
 import io from "socket.io-client";
 
 import { updateMotoqueiros } from "../store/actions";
@@ -29,7 +30,8 @@ class Main extends Component {
     super(props);
     Navigation.events().bindComponent(this);
     getImageSource(
-      Platform.OS === "android" ? "md-menu" : "ios-menu",
+      // Platform.OS === "android" ? "md-menu" : "ios-menu",
+      "menu",
       30,
       BASE_COLOR
     ).then(icon => {

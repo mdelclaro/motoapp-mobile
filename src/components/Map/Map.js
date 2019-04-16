@@ -275,7 +275,8 @@ class Localizacao extends Component {
     });
 
     getImageSource(
-      Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      "arrow-left",
       35,
       "#425cf4"
     ).then(icon => {
@@ -323,7 +324,8 @@ class Localizacao extends Component {
 
     // tirar botao de voltar, e colocar menu
     getImageSource(
-      Platform.OS === "android" ? "md-menu" : "ios-menu",
+      // Platform.OS === "android" ? "md-menu" : "ios-menu",
+      "menu",
       30,
       "#425cf4"
     ).then(icon => {
@@ -351,7 +353,8 @@ class Localizacao extends Component {
     this.setState({ step: 1 });
 
     getImageSource(
-      Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      "arrow-left",
       35,
       "#425cf4"
     ).then(icon => {
@@ -382,7 +385,8 @@ class Localizacao extends Component {
 
     // voltar botao de menu e esconder botao de voltar
     getImageSource(
-      Platform.OS === "android" ? "md-menu" : "ios-menu",
+      // Platform.OS === "android" ? "md-menu" : "ios-menu",
+      "menu",
       30,
       "#425cf4"
     ).then(icon => {

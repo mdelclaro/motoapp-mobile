@@ -17,7 +17,8 @@ const ProfileImage = props => {
       <ImageBackground source={uri}>
         <Container>
           <TouchableOpacity onPress={this.handleBack}>
-            <CustomIcon icon={"arrow-back"} size={30} color="#f8f8f8" />
+            {/* <CustomIcon icon={"arrow-back"} size={30} color="#f8f8f8" /> */}
+            <CustomIcon icon={"arrow-left"} size={30} color="#f8f8f8" />
           </TouchableOpacity>
         </Container>
       </ImageBackground>

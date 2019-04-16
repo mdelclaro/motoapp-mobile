@@ -2,7 +2,7 @@ import React from "react";
 import { View, ActivityIndicator } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { Provider } from "react-redux";
-import { Provider as PaperProvider } from "react-native-paper";
+import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import { PersistGate } from "redux-persist/integration/react";
 
 import Auth from "./screens/Auth";
@@ -22,11 +22,20 @@ const loadingComponent = (
   </View>
 );
 
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: BASE_COLOR
+  }
+};
+
 const providerWrapper = (props, Component) => {
   return (
     <Provider store={store}>
       <PersistGate loading={loadingComponent} persistor={persistor}>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <Component {...props} />
         </PaperProvider>
       </PersistGate>

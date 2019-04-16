@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Appbar } from "react-native-paper";
 import {
   GiftedChat,
   Bubble,
@@ -6,10 +7,17 @@ import {
   LoadEarlier
 } from "react-native-gifted-chat";
 import { connect } from "react-redux";
+import { Navigation } from "react-native-navigation";
+import openSocket from "socket.io-client";
 import "moment/locale/pt-br";
 
 import { sendMessage, setChats, getChats } from "../../store/actions/";
-import { BASE_COLOR, IMAGES_URL } from "../../config";
+import {
+  BASE_COLOR,
+  IMAGES_URL,
+  SOCKET_URL,
+  BASE_COLOR_ERROR
+} from "../../config";
 
 class Chat extends Component {
   constructor(props) {
@@ -26,11 +34,12 @@ class Chat extends Component {
           : false
     };
     this.onLoadEarlier = this.onLoadEarlier.bind(this);
+    this.socket;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
-      messages: this.props.mensagens.map(mensagem => {
+      messages: this.props.chats[this.props.index].mensagens.map(mensagem => {
         return {
           _id: mensagem._id,
           text: mensagem.text,
@@ -46,6 +55,38 @@ class Chat extends Component {
         };
       })
     });
+    this.socket = openSocket(SOCKET_URL);
+    this.socket.emit("join", { id: this.props.idCliente });
+
+    this.socket.on("msgFromDriver", async data => {
+      console.log(data.mensagem);
+      const stateMessage = {
+        _id: data.mensagem._id,
+        text: data.mensagem.text,
+        createdAt: data.mensagem.createdAt,
+        user: {
+          _id: data.mensagem.sender,
+          avatar: IMAGES_URL + this.props.idMotoqueiro
+        },
+        sent: true
+      };
+      await this.setState(previousState => ({
+        skip: previousState.skip + 1,
+        messages: GiftedChat.append(previousState.messages, stateMessage)
+      }));
+
+      let chats = this.props.chats.slice();
+      chats[this.props.index].mensagens.unshift(data.mensagem);
+      this.props.setChats(chats);
+    });
+
+    this.socket.on("reconnect", () => {
+      this.socket.emit("join", { id: this.props.idCliente });
+    });
+  }
+
+  componentWillUnmount() {
+    this.socket.disconnect();
   }
 
   async onSend(messages = []) {
@@ -142,69 +183,81 @@ class Chat extends Component {
     }
   }
 
+  goBack = () => {
+    Navigation.dismissModal("chat");
+  };
+
   render() {
     return (
-      <GiftedChat
-        extraData={this.state.refresh}
-        messages={this.state.messages}
-        onSend={messages => this.onSend(messages)}
-        placeholder="Escrever..."
-        locale={"pt-br"}
-        minInputToolbarHeight={55}
-        loadEarlier={this.state.loadEarlier}
-        user={{
-          _id: this.props.idCliente
-        }}
-        renderLoadEarlier={props => {
-          return this.state.loadEarlier ? (
-            <LoadEarlier
-              {...props}
-              label={"Carregar mais"}
-              onLoadEarlier={this.onLoadEarlier}
-              isLoadingEarlier={this.state.isLoadingEarlier}
-            />
-          ) : null;
-        }}
-        renderSend={props => {
-          return (
-            <Send
-              {...props}
-              disabled={this.props.loading}
-              textStyle={{ color: BASE_COLOR }}
-              label={"Enviar"}
-            />
-          );
-        }}
-        renderBubble={props => {
-          return (
-            <Bubble
-              {...props}
-              textStyle={{
-                left: {
-                  color: "#FFF"
-                }
-              }}
-              wrapperStyle={{
-                left: {
-                  backgroundColor: BASE_COLOR
-                },
-                right: {
-                  // backgroundColor: !props.currentMessage.error
-                  //   ? "#3544b2"
-                  //   : "red"
-                  backgroundColor: "#3544b2"
-                }
-              }}
-            />
-          );
-        }}
-      />
+      <Fragment>
+        <Appbar.Header>
+          <Appbar.BackAction onPress={this.goBack} />
+          <Appbar.Content title={this.props.idMotoqueiro.nome} />
+        </Appbar.Header>
+        <GiftedChat
+          removeClippedSubviews={true}
+          extraData={this.state.refresh}
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          placeholder="Escrever..."
+          locale={"pt-br"}
+          minInputToolbarHeight={55}
+          loadEarlier={this.state.loadEarlier}
+          user={{
+            _id: this.props.idCliente
+          }}
+          renderLoadEarlier={props => {
+            return this.state.loadEarlier ? (
+              <LoadEarlier
+                {...props}
+                label={"Carregar mais"}
+                onLoadEarlier={this.onLoadEarlier}
+                isLoadingEarlier={this.state.isLoadingEarlier}
+              />
+            ) : null;
+          }}
+          renderSend={props => {
+            return (
+              <Send
+                {...props}
+                disabled={this.props.loading}
+                textStyle={{ color: BASE_COLOR }}
+                label={"Enviar"}
+              />
+            );
+          }}
+          renderBubble={props => {
+            return (
+              <Bubble
+                {...props}
+                textStyle={{
+                  left: {
+                    color: "#FFF"
+                  }
+                }}
+                wrapperStyle={{
+                  left: {
+                    backgroundColor: "#4e4e4f"
+                  },
+                  right: {
+                    // backgroundColor: !props.currentMessage.error
+                    //   ? "#3544b2"
+                    //   : "red"
+                    backgroundColor: "#3544b2"
+                  }
+                }}
+              />
+            );
+          }}
+        />
+      </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
+    idCliente: state.auth.userId,
     chats: state.chats.chats,
     isLoading: state.ui.isLoading
   };

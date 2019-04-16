@@ -1,6 +1,7 @@
 import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
-import { getImageSource } from "react-native-vector-icons/Ionicons";
+// import { getImageSource } from "react-native-vector-icons/Ionicons";
+import { getImageSource } from "react-native-vector-icons/Feather";
 import { store } from "./store/configureStore";
 import { uiStopLoading } from "./store/actions/UIAction";
 
@@ -19,7 +20,8 @@ Navigation.setDefaultOptions({
 const startApp = () => {
   Promise.all([
     getImageSource(
-      Platform.OS === "android" ? "md-pin" : "ios-pin",
+      // Platform.OS === "android" ? "md-pin" : "ios-pin",
+      "map-pin",
       35,
       BASE_COLOR
     ),
@@ -29,7 +31,8 @@ const startApp = () => {
       BASE_COLOR
     ),
     getImageSource(
-      Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
+      "arrow-left",
       35,
       BASE_COLOR
     )

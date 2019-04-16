@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   View,
   FlatList,
@@ -7,7 +7,7 @@ import {
   Text,
   ActivityIndicator
 } from "react-native";
-import { List } from "react-native-paper";
+import { List, Appbar } from "react-native-paper";
 import { Navigation } from "react-native-navigation";
 import { connect } from "react-redux";
 import FastImage from "react-native-fast-image";
@@ -27,7 +27,7 @@ class Chats extends Component {
     };
 
     this.modalDismissedListener = Navigation.events().registerModalDismissedListener(
-      ({ componentId, modalsDismissed }) => {
+      ({ componentId }) => {
         if (componentId === "chat") {
           this.setState(previousState => {
             refresh: !previousState.refresh;
@@ -97,40 +97,50 @@ class Chats extends Component {
     );
   }
 
+  goBack = () => {
+    Navigation.dismissModal("chats");
+  };
+
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignContent: "center",
-          backgroundColor: "#f8f8f8",
-          paddingTop: 40
-        }}
-      >
-        {this.props.isLoading ? (
-          <ActivityIndicator size="large" color={BASE_COLOR} />
-        ) : this.props.chats.length > 0 ? (
-          <FlatList
-            extraData={this.state}
-            data={this.props.chats}
-            renderItem={this.renderItem}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        ) : (
-          <Text
-            style={{
-              flex: 1,
-              fontSize: 20,
-              textAlign: "center",
-              marginTop: 100,
-              color: "#CCC"
-            }}
-          >
-            Nenhuma conversa...
-          </Text>
-        )}
-      </View>
+      <Fragment>
+        <Appbar.Header>
+          <Appbar.BackAction onPress={this.goBack} />
+          <Appbar.Content title="Mensagens" />
+        </Appbar.Header>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignContent: "center",
+            backgroundColor: "#f8f8f8"
+            // paddingTop: 40
+          }}
+        >
+          {this.props.isLoading ? (
+            <ActivityIndicator size="large" color={BASE_COLOR} />
+          ) : this.props.chats.length > 0 ? (
+            <FlatList
+              extraData={this.state}
+              data={this.props.chats}
+              renderItem={this.renderItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          ) : (
+            <Text
+              style={{
+                flex: 1,
+                fontSize: 20,
+                textAlign: "center",
+                marginTop: 100,
+                color: "#CCC"
+              }}
+            >
+              Nenhuma conversa...
+            </Text>
+          )}
+        </View>
+      </Fragment>
     );
   }
 }
