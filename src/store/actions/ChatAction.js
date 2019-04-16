@@ -4,13 +4,13 @@ import { authGetToken } from "./AuthAction";
 import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
-export const getChats = idCliente => {
+export const getChats = (idCliente, page) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     // const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
-        fetch(`${BASE_URL}chat/cliente/${idCliente}`, {
+        fetch(`${BASE_URL}chat/cliente/${idCliente}?page=${page}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -23,8 +23,11 @@ export const getChats = idCliente => {
         dispatch(uiStopLoading());
         const res = await result.json();
         console.log(res);
+        res.chat.forEach((item, index) => {
+          res.chat[index]["count"] = res.count[index];
+        });
         dispatch(setChats(res.chat));
-        return true;
+        return res.chat;
       } else {
         let res = await result.json();
         console.log(res);

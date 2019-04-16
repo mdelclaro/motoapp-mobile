@@ -66,19 +66,18 @@ class Chats extends Component {
               ]
             }
           });
-          console.log("foi?");
         }}
       >
         <View
           style={{
-            backgroundColor: "#f8f8f8",
-            borderBottomWidth: 1,
-            borderBottomColor: "#e4e4e4"
+            backgroundColor: "#f8f8f8"
+            // borderBottomWidth: 1,
+            // borderBottomColor: "#e4e4e4"
           }}
         >
           <List.Item
             title={idMotoqueiro.nome}
-            description={mensagens[mensagens.length - 1].text}
+            description={mensagens[0].text}
             left={() => (
               <FastImage
                 source={{ uri: IMAGES_URL + idMotoqueiro.imgPerfil }}
@@ -100,7 +99,8 @@ class Chats extends Component {
           flex: 1,
           justifyContent: "center",
           alignContent: "center",
-          backgroundColor: "#f8f8f8"
+          backgroundColor: "#f8f8f8",
+          paddingTop: 40
         }}
       >
         {this.props.isLoading ? (
@@ -110,7 +110,7 @@ class Chats extends Component {
             extraData={this.state.refresh}
             data={this.props.chats}
             renderItem={this.renderItem}
-            keyExtractor={this.props.chats._id}
+            keyExtractor={(item, index) => index.toString()}
           />
         ) : (
           <Text
@@ -150,7 +150,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getChats: idCliente => getChats(idCliente)
+  getChats: idCliente => getChats(idCliente, 0)
 };
 
 export default connect(
