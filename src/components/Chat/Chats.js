@@ -108,15 +108,7 @@ class Chats extends Component {
           <Appbar.BackAction onPress={this.goBack} />
           <Appbar.Content title="Mensagens" />
         </Appbar.Header>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignContent: "center",
-            backgroundColor: "#f8f8f8"
-            // paddingTop: 40
-          }}
-        >
+        <View style={styles.container}>
           {this.props.isLoading ? (
             <ActivityIndicator size="large" color={BASE_COLOR} />
           ) : this.props.chats.length > 0 ? (
@@ -127,17 +119,9 @@ class Chats extends Component {
               keyExtractor={(item, index) => index.toString()}
             />
           ) : (
-            <Text
-              style={{
-                flex: 1,
-                fontSize: 20,
-                textAlign: "center",
-                marginTop: 100,
-                color: "#CCC"
-              }}
-            >
-              Nenhuma conversa...
-            </Text>
+            <View style={{ paddingTop: 40 }}>
+              <Text style={styles.text}>Nenhuma conversa...</Text>
+            </View>
           )}
         </View>
       </Fragment>
@@ -146,12 +130,25 @@ class Chats extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    backgroundColor: "#f8f8f8"
+  },
   image: {
     alignSelf: "center",
     paddingBottom: 15,
     width: 55,
     height: 55,
     borderRadius: 100
+  },
+  text: {
+    flex: 1,
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 100,
+    color: "#CCC"
   }
 });
 

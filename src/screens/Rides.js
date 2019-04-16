@@ -1,0 +1,235 @@
+import React, { Component, Fragment } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet
+} from "react-native";
+import { Appbar, List } from "react-native-paper";
+import { connect } from "react-redux";
+import { Navigation } from "react-native-navigation";
+import moment from "moment";
+
+moment.locale("pt-br");
+
+import { getRides } from "../store/actions";
+
+import CustomIcon from "../components/UI/CustomIcon";
+import { BASE_COLOR } from "../config";
+
+class Rides extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      refresh: false
+    };
+  }
+
+  async componentDidMount() {
+    const { getRides, idCliente } = this.props;
+    await getRides(idCliente);
+  }
+
+  renderItem = ({ item }) => {
+    console.log(item);
+    const date = moment(item.createdAt).format("llll");
+    return (
+      <View
+        style={{
+          backgroundColor: "#f8f8f8"
+        }}
+      >
+        <List.Accordion
+          title={`${date}`}
+          left={props => (
+            <List.Icon
+              {...props}
+              icon={() => (
+                <CustomIcon icon={"calendar"} size={35} color={BASE_COLOR} />
+              )}
+            />
+          )}
+        >
+          <List.Item
+            title="Motoqueiro"
+            description={`${item.idMotoqueiro.nome} ${
+              item.idMotoqueiro.sobrenome
+            }`}
+            left={props => (
+              <List.Icon
+                color={BASE_COLOR}
+                {...props}
+                icon={() => (
+                  <CustomIcon icon={"user"} size={25} color={BASE_COLOR} />
+                )}
+              />
+            )}
+          />
+          <List.Item
+            title="Origem"
+            description={item.origem.local}
+            left={props => (
+              <List.Icon
+                color={BASE_COLOR}
+                {...props}
+                icon={() => (
+                  <CustomIcon icon={"map-pin"} size={25} color={BASE_COLOR} />
+                )}
+              />
+            )}
+          />
+          <List.Item
+            title="Destino"
+            description={item.destino.local}
+            left={props => (
+              <List.Icon
+                {...props}
+                icon={() => (
+                  <CustomIcon icon={"map-pin"} size={25} color={BASE_COLOR} />
+                )}
+              />
+            )}
+          />
+          <List.Item
+            title="Valor"
+            description={`R$${item.valor}`}
+            left={props => (
+              <List.Icon
+                {...props}
+                icon={() => (
+                  <CustomIcon
+                    icon={"dollar-sign"}
+                    size={25}
+                    color={BASE_COLOR}
+                  />
+                )}
+              />
+            )}
+          />
+        </List.Accordion>
+      </View>
+    );
+  };
+
+  goBack = () => {
+    Navigation.dismissModal("rides");
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <Appbar.Header>
+          <Appbar.BackAction onPress={this.goBack} />
+          <Appbar.Content title="Minhas viagens" />
+        </Appbar.Header>
+        <View style={styles.container}>
+          {this.props.isLoading ? (
+            <ActivityIndicator size="large" color={BASE_COLOR} />
+          ) : this.props.rides.length > 0 ? (
+            <FlatList
+              extraData={this.state}
+              data={this.props.rides}
+              // data={[
+              //   {
+              //     _id: "5ca39f9e2098fa1cd08d1f2e",
+              //     origem: {
+              //       lat: "-22.80014983",
+              //       long: "-47.56456563",
+              //       local: "R. Paraguai"
+              //     },
+              //     destino: {
+              //       lat: "-23.7851587",
+              //       long: "-45.5153302",
+              //       local: "Avenida João Pinheiro"
+              //     },
+              //     distancia: 3,
+              //     tempo: 8,
+              //     valor: 6,
+              //     status: 2,
+              //     createdAt: "2019-04-02T17:45:02.630+00:00"
+              //   },
+              //   {
+              //     _id: "5ca39f9e2098fa1cd08d1f2e",
+              //     origem: {
+              //       lat: "-22.80014983",
+              //       long: "-47.56456563",
+              //       local: "R. Paraguai"
+              //     },
+              //     destino: {
+              //       lat: "-23.7851587",
+              //       long: "-45.5153302",
+              //       local: "Avenida João Pinheiro"
+              //     },
+              //     distancia: 3,
+              //     tempo: 8,
+              //     valor: 6,
+              //     status: 2,
+              //     createdAt: "2019-04-02T17:45:02.630+00:00"
+              //   },
+              //   {
+              //     _id: "5ca39f9e2098fa1cd08d1f2e",
+              //     origem: {
+              //       lat: "-22.80014983",
+              //       long: "-47.56456563",
+              //       local: "R. Paraguai"
+              //     },
+              //     destino: {
+              //       lat: "-23.7851587",
+              //       long: "-45.5153302",
+              //       local: "Avenida João Pinheiro"
+              //     },
+              //     distancia: 3,
+              //     tempo: 8,
+              //     valor: 6,
+              //     status: 2,
+              //     createdAt: "2019-04-02T17:45:02.630+00:00"
+              //   }
+              // ]}
+              renderItem={this.renderItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          ) : (
+            <View style={{ paddingTop: 40 }}>
+              <Text style={styles.text}>Nenhuma viagem...</Text>
+            </View>
+          )}
+        </View>
+      </Fragment>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    backgroundColor: "#f8f8f8"
+  },
+  text: {
+    flex: 1,
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 100,
+    color: "#CCC"
+  }
+});
+
+mapStateToProps = state => {
+  return {
+    idCliente: state.auth.userId,
+    rides: state.rides.rides,
+    isLoading: state.ui.isLoading
+  };
+};
+
+const mapDispatchToProps = {
+  getRides: idCliente => getRides(idCliente)
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Rides);

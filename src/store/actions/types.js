@@ -20,3 +20,5 @@ export const UI_STOP_LOADING = "ui_stop_loading";
 export const INFO_UPDATE = "info_update";
 
 export const CHAT_SET = "chat_SET";
+
+export const RIDES_SET = "rides_set";

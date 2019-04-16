@@ -7,7 +7,7 @@ import { BASE_URL } from "../../config";
 export const getChats = (idCliente, page, skip, shouldSet = true) => {
   return async dispatch => {
     dispatch(uiStartLoading());
-    // const token = await dispatch(authGetToken());
+    const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
         fetch(
@@ -15,8 +15,8 @@ export const getChats = (idCliente, page, skip, shouldSet = true) => {
           {
             method: "GET",
             headers: {
-              "Content-Type": "application/json"
-              // Authorization: "Bearer " + token
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token
             }
           }
         )
@@ -49,7 +49,7 @@ export const getChats = (idCliente, page, skip, shouldSet = true) => {
 export const sendMessage = (idMotoqueiro, idCliente, text) => {
   return async dispatch => {
     dispatch(uiStartLoading());
-    // const token = await dispatch(authGetToken());
+    const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
         fetch(`${BASE_URL}mensagem/`, {
@@ -61,8 +61,8 @@ export const sendMessage = (idMotoqueiro, idCliente, text) => {
             text
           }),
           headers: {
-            "Content-Type": "application/json"
-            // Authorization: "Bearer " + token
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
           }
         })
       );
@@ -70,18 +70,15 @@ export const sendMessage = (idMotoqueiro, idCliente, text) => {
       if (result.ok) {
         dispatch(uiStopLoading());
         const res = await result.json();
-        // dispatch(setChats(res.chat));
         return res.mensagem;
       } else {
         let res = await result.json();
         console.log(res);
         dispatch(uiStopLoading());
-        // alert("Ocorreu um erro ao buscar as conversas");
         return false;
       }
     } catch (err) {
       dispatch(uiStopLoading());
-      // alert("Ocorreu um erro");
       console.log("Erro: " + err);
       return false;
     }

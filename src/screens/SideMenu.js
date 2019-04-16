@@ -84,6 +84,12 @@ class Menu extends Component {
     );
   };
 
+  handleUpload(uri, id = null) {
+    const { updateInfo, userId, imgPerfil } = this.props;
+    updateInfo(uri, userId);
+    this.setState({ uri: IMAGES_URL + imgPerfil });
+  }
+
   renderCamera = () => {
     Navigation.showModal({
       stack: {
@@ -144,11 +150,22 @@ class Menu extends Component {
     });
   };
 
-  handleUpload(uri, id = null) {
-    const { updateInfo, userId, imgPerfil } = this.props;
-    updateInfo(uri, userId);
-    this.setState({ uri: IMAGES_URL + imgPerfil });
-  }
+  renderRides = () => {
+    Navigation.showModal({
+      stack: {
+        id: "rides",
+        children: [
+          {
+            component: {
+              id: "rides",
+              name: "motoapp.Rides",
+              passProps: { rides: 1 }
+            }
+          }
+        ]
+      }
+    });
+  };
 
   render() {
     return (
@@ -162,11 +179,7 @@ class Menu extends Component {
           icon="message-circle"
           text="Mensagens"
         />
-        <MenuItem
-          onPress={this.props.onLogout}
-          icon="settings"
-          text="Configurações"
-        />
+        <MenuItem onPress={this.renderRides} icon="map" text="Minhas viagens" />
         <MenuItem onPress={this.props.onLogout} icon="log-out" text="Sair" />
       </View>
     );
