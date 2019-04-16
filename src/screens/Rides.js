@@ -33,7 +33,6 @@ class Rides extends Component {
   }
 
   renderItem = ({ item }) => {
-    console.log(item);
     const date = moment(item.createdAt).format("llll");
     return (
       <View
@@ -129,64 +128,7 @@ class Rides extends Component {
             <ActivityIndicator size="large" color={BASE_COLOR} />
           ) : this.props.rides.length > 0 ? (
             <FlatList
-              extraData={this.state}
               data={this.props.rides}
-              // data={[
-              //   {
-              //     _id: "5ca39f9e2098fa1cd08d1f2e",
-              //     origem: {
-              //       lat: "-22.80014983",
-              //       long: "-47.56456563",
-              //       local: "R. Paraguai"
-              //     },
-              //     destino: {
-              //       lat: "-23.7851587",
-              //       long: "-45.5153302",
-              //       local: "Avenida João Pinheiro"
-              //     },
-              //     distancia: 3,
-              //     tempo: 8,
-              //     valor: 6,
-              //     status: 2,
-              //     createdAt: "2019-04-02T17:45:02.630+00:00"
-              //   },
-              //   {
-              //     _id: "5ca39f9e2098fa1cd08d1f2e",
-              //     origem: {
-              //       lat: "-22.80014983",
-              //       long: "-47.56456563",
-              //       local: "R. Paraguai"
-              //     },
-              //     destino: {
-              //       lat: "-23.7851587",
-              //       long: "-45.5153302",
-              //       local: "Avenida João Pinheiro"
-              //     },
-              //     distancia: 3,
-              //     tempo: 8,
-              //     valor: 6,
-              //     status: 2,
-              //     createdAt: "2019-04-02T17:45:02.630+00:00"
-              //   },
-              //   {
-              //     _id: "5ca39f9e2098fa1cd08d1f2e",
-              //     origem: {
-              //       lat: "-22.80014983",
-              //       long: "-47.56456563",
-              //       local: "R. Paraguai"
-              //     },
-              //     destino: {
-              //       lat: "-23.7851587",
-              //       long: "-45.5153302",
-              //       local: "Avenida João Pinheiro"
-              //     },
-              //     distancia: 3,
-              //     tempo: 8,
-              //     valor: 6,
-              //     status: 2,
-              //     createdAt: "2019-04-02T17:45:02.630+00:00"
-              //   }
-              // ]}
               renderItem={this.renderItem}
               keyExtractor={(item, index) => index.toString()}
             />
