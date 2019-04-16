@@ -4,29 +4,31 @@ import { authGetToken } from "./AuthAction";
 import { timeout } from "../../utils";
 import { BASE_URL } from "../../config";
 
-export const getChats = (idCliente, page) => {
+export const getChats = (idCliente, page, skip, shouldSet = true) => {
   return async dispatch => {
     dispatch(uiStartLoading());
     // const token = await dispatch(authGetToken());
     try {
       const result = await timeout(
-        fetch(`${BASE_URL}chat/cliente/${idCliente}?page=${page}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-            // Authorization: "Bearer " + token
+        fetch(
+          `${BASE_URL}chat/cliente/${idCliente}?page=${page}&skip=${skip}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json"
+              // Authorization: "Bearer " + token
+            }
           }
-        })
+        )
       );
 
       if (result.ok) {
         dispatch(uiStopLoading());
         const res = await result.json();
-        console.log(res);
         res.chat.forEach((item, index) => {
           res.chat[index]["count"] = res.count[index];
         });
-        dispatch(setChats(res.chat));
+        if (shouldSet) dispatch(setChats(res.chat));
         return res.chat;
       } else {
         let res = await result.json();

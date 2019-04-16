@@ -21,17 +21,22 @@ import { BASE_COLOR, IMAGES_URL } from "../../config";
 class Chats extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      refresh: false
+    };
+
     this.modalDismissedListener = Navigation.events().registerModalDismissedListener(
       ({ componentId, modalsDismissed }) => {
-        if (componentId === "chat")
-          this.setState({ refresh: !this.state.refresh });
+        if (componentId === "chat") {
+          this.setState(previousState => {
+            refresh: !previousState.refresh;
+          });
+          console.log("coisou aqui");
+        }
       }
     );
   }
-
-  state = {
-    refresh: false
-  };
 
   async componentDidMount() {
     const { getChats, idCliente } = this.props;
@@ -71,8 +76,6 @@ class Chats extends Component {
         <View
           style={{
             backgroundColor: "#f8f8f8"
-            // borderBottomWidth: 1,
-            // borderBottomColor: "#e4e4e4"
           }}
         >
           <List.Item
@@ -85,7 +88,9 @@ class Chats extends Component {
                 fallback
               />
             )}
-            right={() => <Text>{moment(updatedAt).fromNow()}</Text>}
+            right={() => (
+              <Text>{moment(mensagens[0].updatedAt).fromNow()}</Text>
+            )}
           />
         </View>
       </TouchableOpacity>
@@ -107,7 +112,7 @@ class Chats extends Component {
           <ActivityIndicator size="large" color={BASE_COLOR} />
         ) : this.props.chats.length > 0 ? (
           <FlatList
-            extraData={this.state.refresh}
+            extraData={this.state}
             data={this.props.chats}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
@@ -117,7 +122,6 @@ class Chats extends Component {
             style={{
               flex: 1,
               fontSize: 20,
-              // alignSelf: "center",
               textAlign: "center",
               marginTop: 100,
               color: "#CCC"
@@ -150,7 +154,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getChats: idCliente => getChats(idCliente, 0)
+  getChats: idCliente => getChats(idCliente, 0, null)
 };
 
 export default connect(

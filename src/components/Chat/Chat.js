@@ -17,6 +17,8 @@ class Chat extends Component {
     this.state = {
       messages: [],
       page: 0,
+      skip: 0,
+      refresh: { refresh: true },
       isLoadingEarlier: false,
       loadEarlier:
         this.props.chats[this.props.index].count > this.props.mensagens.length
@@ -27,7 +29,6 @@ class Chat extends Component {
   }
 
   componentWillMount() {
-    // const messages = this.props.mensagens.reverse();
     this.setState({
       messages: this.props.mensagens.map(mensagem => {
         return {
@@ -77,24 +78,34 @@ class Chat extends Component {
         return message;
       });
     }
-    this.setState({ messages: newState });
-    let chats = this.props.chats.reverse();
-    chats[this.props.index].mensagens.push(exec);
+
+    this.setState(previousState => {
+      return {
+        skip: previousState.skip + 1,
+        messages: newState
+      };
+    });
+
+    let chats = this.props.chats.slice();
+    chats[this.props.index].mensagens.unshift(exec);
     this.props.setChats(chats);
   }
 
   async onLoadEarlier() {
     if (this.state.loadEarlier) {
-      await this.setState({
-        isLoadingEarlier: true,
-        page: this.state.page + 1
+      await this.setState(previousState => {
+        return {
+          page: previousState.page + 1,
+          isLoadingEarlier: true,
+          refresh: { refresh: !previousState.refresh.refresh }
+        };
       });
-
-      console.log(this.state);
 
       let newMessages = await this.props.getChats(
         this.props.idCliente,
-        this.state.page
+        this.state.page,
+        this.state.skip,
+        false
       );
       newMessages = newMessages[this.props.index].mensagens.map(mensagem => {
         return {
@@ -115,22 +126,26 @@ class Chat extends Component {
       await this.setState(previousState => {
         return {
           messages: GiftedChat.prepend(previousState.messages, newMessages),
-          // loadEarlier: false,
-          isLoadingEarlier: false
+          isLoadingEarlier: false,
+          refresh: { refresh: !previousState.refresh.refresh }
         };
       });
-      console.log(this.props.chats[this.props.index].count);
       if (
         this.state.messages.length >= this.props.chats[this.props.index].count
       )
-        this.setState({ loadEarlier: false });
+        this.setState(previousState => {
+          return {
+            loadEarlier: false,
+            refresh: { refresh: !previousState.refresh.refresh }
+          };
+        });
     }
   }
 
   render() {
     return (
       <GiftedChat
-        // inverted={false}
+        extraData={this.state.refresh}
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         placeholder="Escrever..."
@@ -141,16 +156,14 @@ class Chat extends Component {
           _id: this.props.idCliente
         }}
         renderLoadEarlier={props => {
-          return (
-            this.state.loadEarlier && (
-              <LoadEarlier
-                {...props}
-                label={"Carregar mais"}
-                onLoadEarlier={this.onLoadEarlier}
-                isLoadingEarlier={this.state.isLoadingEarlier}
-              />
-            )
-          );
+          return this.state.loadEarlier ? (
+            <LoadEarlier
+              {...props}
+              label={"Carregar mais"}
+              onLoadEarlier={this.onLoadEarlier}
+              isLoadingEarlier={this.state.isLoadingEarlier}
+            />
+          ) : null;
         }}
         renderSend={props => {
           return (
@@ -201,7 +214,8 @@ const mapDispatchToProps = {
   sendMessage: (idMotoqueiro, idCliente, text) =>
     sendMessage(idMotoqueiro, idCliente, text),
   setChats: chats => setChats(chats),
-  getChats: (idCliente, page) => getChats(idCliente, page)
+  getChats: (idCliente, page, skip, shouldSet) =>
+    getChats(idCliente, page, skip, shouldSet)
 };
 
 export default connect(
