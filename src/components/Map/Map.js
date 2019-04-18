@@ -9,7 +9,7 @@ import {
 import MapView, { Marker, AnimatedRegion } from "react-native-maps";
 import { Navigation } from "react-native-navigation";
 import GeoCoder from "react-native-geocoding";
-import { getImageSource } from "react-native-vector-icons/Ionicons";
+import { getImageSource } from "react-native-vector-icons/Feather";
 import geolib from "geolib";
 
 import { connect } from "react-redux";
@@ -278,7 +278,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       "arrow-left",
       35,
-      "#425cf4"
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {
@@ -327,7 +327,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
       "menu",
       30,
-      "#425cf4"
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {
@@ -356,7 +356,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       "arrow-left",
       35,
-      "#425cf4"
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {
@@ -388,7 +388,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
       "menu",
       30,
-      "#425cf4"
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions("Main", {
         topBar: {

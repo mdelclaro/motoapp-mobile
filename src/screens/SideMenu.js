@@ -117,7 +117,12 @@ class Menu extends Component {
           {
             component: {
               id: "chats",
-              name: "motoapp.Chats"
+              name: "motoapp.Chats",
+              options: {
+                topBar: {
+                  drawBehind: true
+                }
+              }
             }
           }
         ]
@@ -159,7 +164,12 @@ class Menu extends Component {
             component: {
               id: "rides",
               name: "motoapp.Rides",
-              passProps: { rides: 1 }
+              passProps: { rides: 1 },
+              options: {
+                topBar: {
+                  drawBehind: true
+                }
+              }
             }
           }
         ]

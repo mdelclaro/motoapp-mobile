@@ -119,7 +119,7 @@ class Chats extends Component {
               keyExtractor={(item, index) => index.toString()}
             />
           ) : (
-            <View style={{ paddingTop: 40 }}>
+            <View style={{ flex: 1, paddingTop: 40 }}>
               <Text style={styles.text}>Nenhuma conversa...</Text>
             </View>
           )}

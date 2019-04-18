@@ -8,6 +8,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { connect } from "react-redux";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -67,7 +68,7 @@ class LoginForm extends Component {
           isValid
         }) => (
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <KeyboardAvoidingView style={styles.container} behavior="height">
               {headingText}
               <View style={styles.inputContainer}>
                 <InputValidation
