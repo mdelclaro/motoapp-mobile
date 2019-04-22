@@ -19,23 +19,13 @@ Navigation.setDefaultOptions({
 
 const startApp = () => {
   Promise.all([
-    getImageSource(
-      // Platform.OS === "android" ? "md-pin" : "ios-pin",
-      "map-pin",
-      35,
-      BASE_COLOR
-    ),
+    getImageSource("map-pin", 35, BASE_COLOR),
     getImageSource(
       Platform.OS === "android" ? "md-paper-plane" : "ios-paper-plane",
       35,
       BASE_COLOR
     ),
-    getImageSource(
-      // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
-      "arrow-left",
-      35,
-      BASE_COLOR
-    )
+    getImageSource("arrow-left", 35, BASE_COLOR)
   ]).then(icons => {
     Navigation.setRoot({
       root: {

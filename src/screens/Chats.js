@@ -32,7 +32,6 @@ class Chats extends Component {
           this.setState(previousState => {
             refresh: !previousState.refresh;
           });
-          console.log("coisou aqui");
         }
       }
     );
@@ -48,7 +47,7 @@ class Chats extends Component {
   }
 
   renderItem(data) {
-    const { idMotoqueiro, mensagens, idCliente, updatedAt } = data.item;
+    const { idMotoqueiro, mensagens, idCliente } = data.item;
     return (
       <TouchableOpacity
         onPress={() => {

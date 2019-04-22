@@ -99,7 +99,7 @@ class Chat extends Component {
 
     const exec = await this.props.sendMessage(
       this.props.idMotoqueiro._id,
-      this.props.idCliente,
+      this.props.userId,
       messages[0].text
     );
 
@@ -143,7 +143,7 @@ class Chat extends Component {
       });
 
       let newMessages = await this.props.getChats(
-        this.props.idCliente,
+        this.props.userId,
         this.state.page,
         this.state.skip,
         false
@@ -257,7 +257,7 @@ class Chat extends Component {
 
 const mapStateToProps = state => {
   return {
-    idCliente: state.auth.userId,
+    userId: state.auth.userId,
     chats: state.chats.chats,
     isLoading: state.ui.isLoading
   };
