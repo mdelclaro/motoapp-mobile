@@ -15,8 +15,8 @@ import moment from "moment";
 
 moment.locale("pt-br");
 
-import { getChats } from "../../store/actions/";
-import { BASE_COLOR, IMAGES_URL } from "../../config";
+import { getChats } from "../store/actions/";
+import { BASE_COLOR, IMAGES_URL } from "../config";
 
 class Chats extends Component {
   constructor(props) {
