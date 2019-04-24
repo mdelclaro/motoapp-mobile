@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "./types";
+import { AUTH_SET_TOKEN, AUTH_LOGOUT } from "./types";
 import { uiStartLoading, uiStopLoading } from "./UIAction";
 import { BASE_URL } from "../../config";
 
@@ -131,24 +131,19 @@ export const authGetToken = () => {
   };
 };
 
-export const authClearStorage = () => {
-  return () => {
-    AsyncStorage.removeItem("ap:auth:token");
-    AsyncStorage.removeItem("ap:auth:expiryDate");
-    AsyncStorage.removeItem("ap:auth:refreshToken");
-    AsyncStorage.removeItem("ap:auth:userId");
-  };
-};
-
 export const authLogout = () => {
   return async dispatch => {
-    await dispatch(authClearStorage());
-    dispatch(authRemoveToken());
+    AsyncStorage.removeItem("persist:root");
+    AsyncStorage.removeItem("ap:auth:jwt");
+    AsyncStorage.removeItem("ap:auth:refreshToken");
+    AsyncStorage.removeItem("ap:auth:expiryDate");
+    AsyncStorage.removeItem("ap:auth:userId");
+    dispatch(logout());
   };
 };
 
-export const authRemoveToken = () => {
+export const logout = () => {
   return {
-    type: AUTH_REMOVE_TOKEN
+    type: AUTH_LOGOUT
   };
 };

@@ -1,5 +1,5 @@
 export const AUTH_SET_TOKEN = "auth_set_token";
-export const AUTH_REMOVE_TOKEN = "auth_remove_token";
+export const AUTH_LOGOUT = "auth_logout";
 
 export const SIGN_UP = "sign_up";
 

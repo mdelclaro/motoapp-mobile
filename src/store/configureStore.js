@@ -13,7 +13,7 @@ import {
   ChatReducer
 } from "./reducers/";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   corrida: RequestReducer,
   ui: UIReducer,
   motoqueiros: MotoqueirosReducer,
@@ -22,6 +22,13 @@ const rootReducer = combineReducers({
   info: InfoReducer,
   chats: ChatReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === "auth_logout") {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
 
 // redux-persist
 const persistConfig = {
