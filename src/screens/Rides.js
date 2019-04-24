@@ -13,7 +13,7 @@ import moment from "moment";
 
 moment.locale("pt-br");
 
-import { getDetails } from "../store/actions";
+import { getDetails, uiStartLoading, uiStopLoading } from "../store/actions";
 
 import CustomIcon from "../components/UI/CustomIcon";
 import ListItem from "../components/UI/ListItem";
@@ -29,8 +29,10 @@ class Rides extends Component {
   }
 
   async componentDidMount() {
-    const { getDetails, idCliente } = this.props;
+    const { getDetails, idCliente, uiStartLoading, uiStopLoading } = this.props;
+    uiStartLoading();
     await getDetails(idCliente);
+    uiStopLoading();
   }
 
   renderItem = ({ item }) => {
@@ -152,7 +154,9 @@ mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getDetails: idCliente => getDetails(idCliente)
+  getDetails: idCliente => getDetails(idCliente),
+  uiStartLoading: () => uiStartLoading(),
+  uiStopLoading: () => uiStopLoading()
 };
 
 export default connect(

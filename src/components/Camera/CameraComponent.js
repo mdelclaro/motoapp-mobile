@@ -11,13 +11,13 @@ import {
 } from "./styles";
 
 export default (CameraComponent = (props, { style }) => {
-  const { takePicture, myRef, switchCamera, cameraType, componentId } = props;
+  const { takePicture, myRef, switchCamera, cameraType } = props;
   return (
     <Fragment>
       <RNCamera
         ref={myRef}
         style={style}
-        type={RNCamera.Constants.Type.back}
+        type={RNCamera.Constants.Type[cameraType]}
         autoFocus={RNCamera.Constants.AutoFocus.on}
         flashMode={RNCamera.Constants.FlashMode.off}
         captureAudio={false}

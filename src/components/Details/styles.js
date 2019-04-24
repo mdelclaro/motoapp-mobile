@@ -46,7 +46,7 @@ export const RequestButton = styled.TouchableOpacity`
   margin-top: 10px;
   border-radius: 15;
 `;
-// #f46b42
+
 export const CancelButton = styled.TouchableOpacity`
   background: #f46b42;
   justify-content: center;

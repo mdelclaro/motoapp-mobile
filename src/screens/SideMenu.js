@@ -59,7 +59,7 @@ class Menu extends Component {
     );
   };
 
-  handleUpload(uri, id = null) {
+  handleUpload(uri) {
     const { updateInfo, userId, imgPerfil } = this.props;
     updateInfo(uri, userId);
     this.setState({ uri: IMAGES_URL + imgPerfil });
