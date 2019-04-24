@@ -34,10 +34,11 @@ export const Border = styled.View`
 `;
 
 export const Image = styled.Image`
+  flex: 1;
   width: 120px;
   height: 120px;
   border-radius: 100px;
-  resize-mode: center;
+  resize-mode: cover;
   align-self: center;
 `;
 

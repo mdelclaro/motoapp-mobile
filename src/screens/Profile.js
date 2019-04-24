@@ -28,6 +28,7 @@ class Profile extends Component {
             sobrenome={sobrenome}
             email={email}
             corridas={corridas}
+            imgPerfil={imgPerfil}
           />
         )}
       </View>
