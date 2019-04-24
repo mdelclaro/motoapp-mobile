@@ -10,8 +10,7 @@ import {
   AuthReducer,
   FormReducer,
   InfoReducer,
-  ChatReducer,
-  RidesReducer
+  ChatReducer
 } from "./reducers/";
 
 const rootReducer = combineReducers({
@@ -21,8 +20,7 @@ const rootReducer = combineReducers({
   auth: AuthReducer,
   form: FormReducer,
   info: InfoReducer,
-  chats: ChatReducer,
-  rides: RidesReducer
+  chats: ChatReducer
 });
 
 // redux-persist

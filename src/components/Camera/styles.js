@@ -44,6 +44,20 @@ export const CaptureButton = styled.TouchableOpacity`
   justify-content: center;
 `;
 
+export const SwitchButton = styled.TouchableOpacity`
+  flex: 0;
+  background-color: ${BASE_COLOR};
+  border-radius: 100px;
+  height: 55px;
+  width: 55px;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 5px;
+  top: 15px;
+`;
+
 export const CancelButton = styled(CaptureButton)`
   background-color: ${BASE_COLOR_ERROR};
 `;

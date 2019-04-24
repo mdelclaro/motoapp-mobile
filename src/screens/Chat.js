@@ -11,13 +11,8 @@ import { Navigation } from "react-native-navigation";
 import openSocket from "socket.io-client";
 import "moment/locale/pt-br";
 
-import { sendMessage, setChats, getChats } from "../../store/actions/";
-import {
-  BASE_COLOR,
-  IMAGES_URL,
-  SOCKET_URL,
-  BASE_COLOR_ERROR
-} from "../../config";
+import { sendMessage, setChats, getChats } from "../store/actions";
+import { BASE_COLOR, IMAGES_URL, SOCKET_URL } from "../config";
 
 class Chat extends Component {
   constructor(props) {

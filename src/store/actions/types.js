@@ -18,6 +18,7 @@ export const UI_START_LOADING = "ui_start_loading";
 export const UI_STOP_LOADING = "ui_stop_loading";
 
 export const INFO_UPDATE = "info_update";
+export const INFO_SET_DETAILS = "info_set_details";
 
 export const CHAT_SET = "chat_SET";
 

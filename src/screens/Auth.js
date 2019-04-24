@@ -12,6 +12,7 @@ import {
 
 import SignupForm from "../components/Auth/SignupForm";
 import LoginForm from "../components/Auth/LoginForm";
+import { BASE_COLOR } from "../config";
 
 class Auth extends Component {
   state = {
@@ -20,7 +21,6 @@ class Auth extends Component {
 
   componentDidMount() {
     this.props.authAutoSignIn();
-    // this.props.onTryAuth("matheus_delclaro@hotmail.com", "123456");
   }
 
   switchAuthModeHandler = () => {
@@ -54,7 +54,7 @@ class Auth extends Component {
   renderContent = () => {
     let content;
     if (this.props.isLoading) {
-      content = <ActivityIndicator size="large" />;
+      content = <ActivityIndicator size="large" color={BASE_COLOR} />;
     } else {
       content =
         this.state.authMode === "login" ? (

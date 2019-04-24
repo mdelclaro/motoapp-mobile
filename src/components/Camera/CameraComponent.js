@@ -3,10 +3,15 @@ import { RNCamera } from "react-native-camera";
 import CustomIcon from "../UI/CustomIcon";
 import { Navigation } from "react-native-navigation";
 
-import { ButtonContainer, CaptureButton, BackButton } from "./styles";
+import {
+  ButtonContainer,
+  CaptureButton,
+  BackButton,
+  SwitchButton
+} from "./styles";
 
 export default (CameraComponent = (props, { style }) => {
-  const { takePicture, myRef, componentId } = props;
+  const { takePicture, myRef, switchCamera, cameraType, componentId } = props;
   return (
     <Fragment>
       <RNCamera
@@ -27,9 +32,11 @@ export default (CameraComponent = (props, { style }) => {
           </CaptureButton>
         </ButtonContainer>
       </RNCamera>
+      <SwitchButton onPress={switchCamera}>
+        <CustomIcon icon={"refresh-ccw"} size={30} color="#FFF" />
+      </SwitchButton>
       <BackButton onPress={() => Navigation.dismissAllModals()}>
-        {/* <CustomIcon icon={"arrow-back"} size={32} color="#FFF" /> */}
-        <CustomIcon icon={"arrow-left"} size={32} color="#FFF" />
+        <CustomIcon icon={"arrow-left"} size={30} color="#FFF" />
       </BackButton>
     </Fragment>
   );
