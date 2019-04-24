@@ -263,8 +263,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  updateInfo: (imgPerfil, idMotoqueiro) =>
-    updateInfo(null, null, imgPerfil, idMotoqueiro),
+  updateInfo: (imgPerfil, idCliente) => updateInfo({ imgPerfil, idCliente }),
   authLogout: () => authLogout()
 };
 

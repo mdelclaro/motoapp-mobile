@@ -21,10 +21,13 @@ export default (CameraComponent = (props, { style }) => {
         autoFocus={RNCamera.Constants.AutoFocus.on}
         flashMode={RNCamera.Constants.FlashMode.off}
         captureAudio={false}
-        permissionDialogTitle={"Permissão para usar a câmera"}
-        permissionDialogMessage={
-          "Precisamos de sua permissão para usar a câmera do dispositivo"
-        }
+        androidCameraPermissionOptions={{
+          title: "Permissão para usar a câmera",
+          message:
+            "Precisamos de sua permissão para usar a câmera do dispositivo",
+          buttonPositive: "Ok",
+          buttonNegative: "Cancelar"
+        }}
       >
         <ButtonContainer>
           <CaptureButton onPress={takePicture}>

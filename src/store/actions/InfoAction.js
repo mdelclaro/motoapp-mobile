@@ -7,30 +7,30 @@ import { timeout } from "../../utils";
 
 export const updateInfo = data => {
   return async dispatch => {
-    const { email, senha, imgPerfil, idCliente } = data;
     dispatch(uiStartLoading());
     try {
+      console.log(data);
       const token = await dispatch(authGetToken());
       let formData = new FormData();
 
-      if (email) {
-        formData.append("email", email);
+      if (data.email) {
+        formData.append("email", data.email);
       }
 
-      if (senha) {
-        formData.append("senha", senha);
+      if (data.senha) {
+        formData.append("senha", data.senha);
       }
 
-      if (imgPerfil) {
+      if (data.imgPerfil) {
         formData.append("imgPerfil", {
-          uri: imgPerfil,
+          uri: data.imgPerfil,
           type: "image/jpg",
           name: "imgPerfil"
         });
       }
 
       const result = await timeout(
-        fetch(`${BASE_URL}usuario/cliente/${idCliente}`, {
+        fetch(`${BASE_URL}usuario/cliente/${data.idCliente}`, {
           method: "PUT",
           body: formData,
           headers: {

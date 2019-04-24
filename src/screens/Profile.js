@@ -15,7 +15,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { nome, sobrenome, email, corridas } = this.props.info;
+    const { nome, sobrenome, email, corridas, imgPerfil } = this.props.info;
     return (
       <View
         style={{ flex: 1, justifyContent: "center", alignContent: "center" }}

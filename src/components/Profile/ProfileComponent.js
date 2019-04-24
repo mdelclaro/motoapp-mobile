@@ -16,16 +16,20 @@ import {
 } from "./styles";
 import CustomIcon from "../UI/CustomIcon";
 import avatar from "../../assets/helmet/helmet.png";
-import { BASE_COLOR } from "../../config";
+import { BASE_COLOR, IMAGES_URL } from "../../config";
 
 const Profile = props => {
-  const { nome, sobrenome, email, corridas } = props;
+  const { nome, sobrenome, email, corridas, imgPerfil } = props;
+
   return (
     <Fragment>
       <Container>
         <ImageContainer>
           <Border>
-            <Image source={avatar} resizeMode="center" />
+            <Image
+              source={{ uri: IMAGES_URL + imgPerfil }}
+              resizeMode="center"
+            />
           </Border>
         </ImageContainer>
 
