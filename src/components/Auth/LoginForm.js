@@ -8,7 +8,6 @@ import {
   ActivityIndicator
 } from "react-native";
 import { connect } from "react-redux";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -18,7 +17,7 @@ import InputValidation from "../UI/InputValidation";
 import HeadingText from "../UI/HeadingText";
 import MainText from "../UI/MainText";
 
-import { BASE_COLOR } from "../../config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 
 class LoginForm extends Component {
   componentDidMount() {
@@ -136,11 +135,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  },
-  backgroundImage: {
-    width: "100%",
-    flex: 1
+    alignItems: "center",
+    backgroundColor: BACKGROUND_COLOR
   },
   input: {
     borderBottomColor: "#bbb"

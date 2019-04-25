@@ -16,7 +16,7 @@ import moment from "moment";
 moment.locale("pt-br");
 
 import { getChats } from "../store/actions/";
-import { BASE_COLOR, IMAGES_URL } from "../config";
+import { BASE_COLOR, BACKGROUND_COLOR, IMAGES_URL } from "../config";
 
 class Chats extends Component {
   constructor(props) {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    backgroundColor: "#f8f8f8"
+    backgroundColor: BACKGROUND_COLOR
   },
   image: {
     alignSelf: "center",

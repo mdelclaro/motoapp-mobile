@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Platform, Text, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_API, BASE_COLOR } from "../../config";
+import { GOOGLE_API, BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 
 import CustomIcon from "../UI/CustomIcon";
 
@@ -87,7 +87,7 @@ class Search extends Component {
             borderWidth: 1,
             borderColor: "#DDD",
             borderRadius: 20,
-            backgroundColor: "#FFF",
+            backgroundColor: BACKGROUND_COLOR,
             marginHorizontal: 20,
             elevation: 1,
             shadowColor: "#000",

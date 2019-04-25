@@ -18,7 +18,7 @@ import InputValidation from "../UI/InputValidation";
 import HeadingText from "../UI/HeadingText";
 import MainText from "../UI/MainText";
 
-import { BASE_COLOR } from "../../config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 
 class SignupForm extends Component {
   componentDidMount() {
@@ -198,31 +198,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  },
-  backgroundImage: {
-    width: "100%",
-    flex: 1
+    alignItems: "center",
+    backgroundColor: BACKGROUND_COLOR
   },
   input: {
     borderBottomColor: "#bbb"
   },
   inputContainer: {
     width: "80%"
-  },
-  landscapePasswordContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  portraitPasswordContainer: {
-    flexDirection: "column",
-    justifyContent: "flex-start"
-  },
-  landscapePasswordWrapper: {
-    width: "45%"
-  },
-  portraitPasswordWrapper: {
-    width: "100%"
   }
 });
 

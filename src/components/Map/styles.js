@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components/native";
 import { Platform } from "react-native";
+import { BACKGROUND_COLOR } from "../../config";
 
 export const LocationBox = styled.View`
-  background: #fff;
+  background: ${BACKGROUND_COLOR};
   shadow-color: #000;
   shadow-offset: 0 0;
   shadow-opacity: 0.1;
@@ -26,25 +27,6 @@ export const LocationText = styled.Text`
   margin: 8px 10px;
   font-size: 14px;
   color: #333;
-`;
-
-export const LocationTimeBox = styled.View`
-  background: #425cf4;
-  padding: 3px 8px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-`;
-
-export const LocationTimeText = styled.Text`
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-`;
-
-export const LocationTimeTextSmall = styled.Text`
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
 `;
 
 export const Back = styled.TouchableOpacity`

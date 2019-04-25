@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { BASE_COLOR } from "../../config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 import FastImage from "react-native-fast-image";
 
 export const Container = styled.View`
@@ -27,7 +27,7 @@ export const Border = styled.View`
   height: 120px;
   border: 4px solid;
   border-radius: 100px;
-  border-color: #f8f8f8;
+  border-color: ${BACKGROUND_COLOR};
   overflow: hidden;
   justify-content: center;
   align-content: center;
@@ -70,7 +70,7 @@ export const Footer = styled.View`
   width: 60px;
   height: 60px;
   border-radius: 100px;
-  background-color: #f8f8f8;
+  background-color: ${BACKGROUND_COLOR};
   margin-left: 5px;
   margin-right: 5px;
 `;

@@ -12,7 +12,7 @@ import {
 
 import SignupForm from "../components/Auth/SignupForm";
 import LoginForm from "../components/Auth/LoginForm";
-import { BASE_COLOR } from "../config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../config";
 
 class Auth extends Component {
   state = {
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: BACKGROUND_COLOR
   }
 });
 

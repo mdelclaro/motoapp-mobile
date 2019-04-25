@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
-import { BASE_COLOR, BASE_COLOR_ERROR } from "../../config";
+import { BASE_COLOR, BASE_COLOR_ERROR, BACKGROUND_COLOR } from "../../config";
 
 export const Container = styled.View`
-  background: #fff;
+  background: ${BACKGROUND_COLOR};
   height: 260px;
   width: 100%;
   position: absolute;
@@ -36,7 +36,7 @@ export const Image = styled.Image`
   height: 80px;
   margin: 10px 0;
 `;
-// background: #425cf4;
+
 export const RequestButton = styled.TouchableOpacity`
   background: ${BASE_COLOR};
   justify-content: center;
@@ -48,7 +48,7 @@ export const RequestButton = styled.TouchableOpacity`
 `;
 
 export const CancelButton = styled.TouchableOpacity`
-  background: #f46b42;
+  background: ${BASE_COLOR_ERROR};
   justify-content: center;
   align-items: center;
   height: 44px;

@@ -17,7 +17,7 @@ import { getDetails, uiStartLoading, uiStopLoading } from "../store/actions";
 
 import CustomIcon from "../components/UI/CustomIcon";
 import ListItem from "../components/UI/ListItem";
-import { BASE_COLOR, BASE_COLOR_ERROR } from "../config";
+import { BASE_COLOR, BASE_COLOR_ERROR, BACKGROUND_COLOR } from "../config";
 
 class Rides extends Component {
   constructor(props) {
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    backgroundColor: "#f8f8f8"
+    backgroundColor: BACKGROUND_COLOR
   },
   text: {
     flex: 1,

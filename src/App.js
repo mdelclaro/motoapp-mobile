@@ -3,7 +3,7 @@ import { getImageSource } from "react-native-vector-icons/Feather";
 import { store } from "./store/configureStore";
 import { uiStopLoading, getDetails } from "./store/actions/";
 
-import { BASE_COLOR } from "./config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "./config";
 
 console.disableYellowBox = true;
 
@@ -32,7 +32,7 @@ const startApp = async () => {
         center: {
           bottomTabs: {
             id: "bottomTabs",
-            backgroundColor: "white",
+            backgroundColor: BACKGROUND_COLOR,
             options: {
               topbar: {
                 visible: true,
@@ -57,10 +57,10 @@ const startApp = async () => {
                           },
                           bottomTab: {
                             text: "Corrida",
-                            textColor: "white",
-                            selectedTextColor: "white",
+                            textColor: BASE_COLOR,
+                            selectedTextColor: BASE_COLOR,
                             icon,
-                            iconColor: "white"
+                            iconColor: BASE_COLOR
                           }
                         }
                       }

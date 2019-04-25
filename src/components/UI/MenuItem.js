@@ -2,7 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 import CustomIcon from "../UI/CustomIcon";
-import { BASE_COLOR, BASE_COLOR_ERROR } from "../../config";
+import { BASE_COLOR, BASE_COLOR_ERROR, BACKGROUND_COLOR } from "../../config";
 
 const MenuItem = props => {
   const { icon, text, onPress } = props;
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: BACKGROUND_COLOR,
     borderBottomWidth: 1,
     borderBottomColor: "#e4e4e4"
   },
