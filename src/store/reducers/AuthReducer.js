@@ -1,4 +1,4 @@
-import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "../actions/types";
+import { AUTH_SET_TOKEN } from "../actions/types";
 
 const INITIAL_STATE = {
   jwt: null,
@@ -14,13 +14,6 @@ export default (state = INITIAL_STATE, action) => {
         jwt: action.payload.jwt,
         expiryDate: action.payload.expiryDate,
         userId: action.payload.userId
-      };
-    case AUTH_REMOVE_TOKEN:
-      return {
-        ...state,
-        jwt: null,
-        expiryDate: null,
-        userId: null
       };
     default:
       return state;

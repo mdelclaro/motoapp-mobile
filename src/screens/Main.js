@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Keyboard } from 'react-native';
+import { Platform, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 // import { getImageSource } from "react-native-vector-icons/Ionicons";
@@ -56,14 +56,8 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      this._keyboardDidShow
-    );
-    this.keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      this._keyboardDidHide
-    );
+    // this.keyboardDidShowListener = Keyboard.addListener(this.keyboardDidShow);
+    // this.keyboardDidHideListener = Keyboard.addListener(this.keyboardDidHide);
 
     //criar conexão com timeout
     this.socket = io(SOCKET_URL, {
@@ -100,8 +94,30 @@ class Main extends Component {
   }
 
   componentWillUnmount() {
+    // this.keyboardDidShowListener.remove();
+    // this.keyboardDidHideListener.remove();
     if (this.socket.connected) this.socket.disconnect();
   }
+
+  // keyboardDidShow() {
+  //   Navigation.mergeOptions(componentId, {
+  //     bottomTabs: {
+  //       visible: false,
+  //       animate: false,
+  //       ...Platform.select({ android: { drawBehind: true } })
+  //     }
+  //   });
+  // }
+
+  // keyboardDidHide() {
+  //   Navigation.mergeOptions(componentId, {
+  //     bottomTabs: {
+  //       visible: true,
+  //       animate: false,
+  //       ...Platform.select({ android: { drawBehind: false } })
+  //     }
+  //   });
+  // }
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'menuButton') {
@@ -129,9 +145,9 @@ class Main extends Component {
 
   render() {
     return (
-      <Fragment>
+      <KeyboardAvoidingView style={{ flex: 1 }} enabled>
         <Map motoqueiros={this.props.motoqueiros} />
-      </Fragment>
+      </KeyboardAvoidingView>
     );
   }
 }

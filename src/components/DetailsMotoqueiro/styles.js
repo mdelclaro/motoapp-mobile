@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 
 export const Container = styled.View`
   justify-content: space-around;
-  background: #fff;
+  background: ${BACKGROUND_COLOR};
   height: 240px;
   width: 100%;
   position: absolute;
@@ -38,7 +39,7 @@ export const Image = styled.Image`
 
 export const ActionButton = styled.TouchableOpacity`
   flex: 2;
-  background: #425cf4;
+  background: ${BASE_COLOR};
   justify-content: center;
   align-items: center;
   height: 44px;

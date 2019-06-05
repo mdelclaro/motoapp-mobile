@@ -1,46 +1,21 @@
 import React, { Component, Fragment } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Platform,
-  Alert,
-  ActivityIndicator
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { Navigation } from "react-native-navigation";
 import FastImage from "react-native-fast-image";
 import ImagePicker from "react-native-image-picker";
 import { connect } from "react-redux";
 
-import { updateInfo } from "../store/actions/";
+import { updateInfo, authLogout } from "../store/actions/";
 
 import MenuItem from "../components/UI/MenuItem";
 import CustomIcon from "../components/UI/CustomIcon";
 
-import { BASE_COLOR, IMAGES_URL } from "../config";
+import { BASE_COLOR, BACKGROUND_COLOR, IMAGES_URL } from "../config";
 
 class Menu extends Component {
   state = {
     uri: IMAGES_URL + this.props.imgPerfil
   };
-
-  renderImage() {
-    const uri = IMAGES_URL + this.props.imgPerfil;
-    return this.props.isLoading ? (
-      <ActivityIndicator size="large" color="#4e4e4f" />
-    ) : (
-      <Fragment>
-        <TouchableOpacity onPress={this.renderAvatar}>
-          <FastImage source={{ uri }} style={styles.image} fallback />
-        </TouchableOpacity>
-        <View style={styles.imageIconContainer}>
-          <TouchableOpacity style={styles.imageIcon} onPress={this.handleEdit}>
-            <CustomIcon icon={"edit-2"} size={25} color="#4e4e4f" />
-          </TouchableOpacity>
-        </View>
-      </Fragment>
-    );
-  }
 
   handleEdit = () => {
     Alert.alert(
@@ -84,10 +59,37 @@ class Menu extends Component {
     );
   };
 
-  handleUpload(uri, id = null) {
+  handleUpload(uri) {
     const { updateInfo, userId, imgPerfil } = this.props;
     updateInfo(uri, userId);
     this.setState({ uri: IMAGES_URL + imgPerfil });
+  }
+
+  handleLogout = async () => {
+    await this.props.authLogout();
+    Navigation.setRoot({
+      root: {
+        component: {
+          name: "motoapp.Auth"
+        }
+      }
+    });
+  };
+
+  renderImage() {
+    const uri = IMAGES_URL + this.props.imgPerfil;
+    return (
+      <Fragment>
+        <TouchableOpacity onPress={this.renderAvatar}>
+          <FastImage source={{ uri }} style={styles.image} fallback />
+        </TouchableOpacity>
+        <View style={styles.imageIconContainer}>
+          <TouchableOpacity style={styles.imageIcon} onPress={this.handleEdit}>
+            <CustomIcon icon={"edit-2"} size={25} color="#4e4e4f" />
+          </TouchableOpacity>
+        </View>
+      </Fragment>
+    );
   }
 
   renderCamera = () => {
@@ -117,7 +119,12 @@ class Menu extends Component {
           {
             component: {
               id: "chats",
-              name: "motoapp.Chats"
+              name: "motoapp.Chats",
+              options: {
+                topBar: {
+                  drawBehind: true
+                }
+              }
             }
           }
         ]
@@ -159,7 +166,33 @@ class Menu extends Component {
             component: {
               id: "rides",
               name: "motoapp.Rides",
-              passProps: { rides: 1 }
+              passProps: { rides: 1 },
+              options: {
+                topBar: {
+                  drawBehind: true
+                }
+              }
+            }
+          }
+        ]
+      }
+    });
+  };
+
+  renderProfile = () => {
+    Navigation.showModal({
+      stack: {
+        id: "profile",
+        children: [
+          {
+            component: {
+              id: "profile",
+              name: "motoapp.Profile",
+              options: {
+                topBar: {
+                  drawBehind: true
+                }
+              }
             }
           }
         ]
@@ -173,14 +206,14 @@ class Menu extends Component {
         <View style={{ flex: 0, justifyContent: "center" }}>
           {this.renderImage()}
         </View>
-        <MenuItem onPress={this.props.onLogout} icon="user" text="Perfil" />
+        <MenuItem onPress={this.renderProfile} icon="user" text="Perfil" />
         <MenuItem
           onPress={this.renderChat}
           icon="message-circle"
           text="Mensagens"
         />
         <MenuItem onPress={this.renderRides} icon="map" text="Minhas viagens" />
-        <MenuItem onPress={this.props.onLogout} icon="log-out" text="Sair" />
+        <MenuItem onPress={this.handleLogout} icon="log-out" text="Sair" />
       </View>
     );
   }
@@ -189,7 +222,7 @@ class Menu extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: BACKGROUND_COLOR,
     flex: 1
   },
   image: {
@@ -230,8 +263,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  updateInfo: (imgPerfil, idMotoqueiro) =>
-    updateInfo(null, null, imgPerfil, idMotoqueiro)
+  updateInfo: (imgPerfil, idCliente) => updateInfo({ imgPerfil, idCliente }),
+  authLogout: () => authLogout()
 };
 
 export default connect(

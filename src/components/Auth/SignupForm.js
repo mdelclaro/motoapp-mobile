@@ -5,7 +5,8 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -17,7 +18,7 @@ import InputValidation from "../UI/InputValidation";
 import HeadingText from "../UI/HeadingText";
 import MainText from "../UI/MainText";
 
-import { BASE_COLOR } from "../../config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "../../config";
 
 class SignupForm extends Component {
   componentDidMount() {
@@ -83,7 +84,7 @@ class SignupForm extends Component {
           isValid
         }) => (
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <KeyboardAvoidingView style={styles.container} behavior="height">
               {headingText}
               <View style={styles.inputContainer}>
                 <InputValidation
@@ -92,6 +93,7 @@ class SignupForm extends Component {
                   returnKeyType="next"
                   onSubmitEditing={() => this.sobrenomeInput.focus()}
                   autoCorrect={false}
+                  blurOnSubmit={false}
                   value={this.props.nome}
                   onChange={setFieldValue}
                   onTouch={setFieldTouched}
@@ -104,6 +106,7 @@ class SignupForm extends Component {
                   placeholder="Sobrenome"
                   autoCapitalize="words"
                   returnKeyType="next"
+                  blurOnSubmit={false}
                   onSubmitEditing={() => this.emailInput.focus()}
                   autoCorrect={false}
                   value={this.props.sobrenome}
@@ -119,6 +122,7 @@ class SignupForm extends Component {
                   keyboardType="email-address"
                   autoCapitalize="none"
                   returnKeyType="next"
+                  blurOnSubmit={false}
                   onSubmitEditing={() => this.senhaInput.focus()}
                   autoCorrect={false}
                   value={this.props.email}
@@ -128,60 +132,37 @@ class SignupForm extends Component {
                   error={touched.email && errors.email}
                   style={styles.input}
                 />
-                <View
-                  style={
-                    this.state.viewMode === "portrait" ||
-                    this.state.authMode === "login"
-                      ? styles.portraitPasswordContainer
-                      : styles.landscapePasswordContainer
-                  }
-                >
-                  <View
-                    style={
-                      this.state.viewMode === "portrait" ||
-                      this.state.authMode === "login"
-                        ? styles.portraitPasswordWrapper
-                        : styles.landscapePasswordWrapper
-                    }
-                  >
-                    <InputValidation
-                      myRef={ref => (this.senhaInput = ref)}
-                      placeholder="Senha"
-                      autoCapitalize="none"
-                      returnKeyType="next"
-                      onSubmitEditing={() => this.confirmarSenhaInput.focus()}
-                      secureTextEntry
-                      value={this.props.senha}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="senha"
-                      error={touched.senha && errors.senha}
-                      style={styles.input}
-                    />
-                  </View>
-                  <View
-                    style={
-                      this.state.viewMode === "portrait"
-                        ? styles.portraitPasswordWrapper
-                        : styles.landscapePasswordWrapper
-                    }
-                  >
-                    <InputValidation
-                      myRef={ref => (this.confirmarSenhaInput = ref)}
-                      placeholder="Confirmar senha"
-                      autoCapitalize="none"
-                      returnKeyType="send"
-                      secureTextEntry
-                      onSubmitEditing={handleSubmit}
-                      value={values.confirmPassword}
-                      onChange={setFieldValue}
-                      onTouch={setFieldTouched}
-                      name="confirmPassword"
-                      error={touched.confirmPassword && errors.confirmPassword}
-                      style={styles.input}
-                    />
-                  </View>
-                </View>
+
+                <InputValidation
+                  myRef={ref => (this.senhaInput = ref)}
+                  placeholder="Senha"
+                  autoCapitalize="none"
+                  returnKeyType="next"
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => this.confirmarSenhaInput.focus()}
+                  secureTextEntry
+                  value={this.props.senha}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="senha"
+                  error={touched.senha && errors.senha}
+                  style={styles.input}
+                />
+
+                <InputValidation
+                  myRef={ref => (this.confirmarSenhaInput = ref)}
+                  placeholder="Confirmar senha"
+                  autoCapitalize="none"
+                  returnKeyType="send"
+                  secureTextEntry
+                  onSubmitEditing={handleSubmit}
+                  value={values.confirmPassword}
+                  onChange={setFieldValue}
+                  onTouch={setFieldTouched}
+                  name="confirmPassword"
+                  error={touched.confirmPassword && errors.confirmPassword}
+                  style={styles.input}
+                />
               </View>
               {!this.props.isLoading ? (
                 <View style={{ width: "80%" }}>
@@ -217,31 +198,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  },
-  backgroundImage: {
-    width: "100%",
-    flex: 1
+    alignItems: "center",
+    backgroundColor: BACKGROUND_COLOR
   },
   input: {
     borderBottomColor: "#bbb"
   },
   inputContainer: {
     width: "80%"
-  },
-  landscapePasswordContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  portraitPasswordContainer: {
-    flexDirection: "column",
-    justifyContent: "flex-start"
-  },
-  landscapePasswordWrapper: {
-    width: "45%"
-  },
-  portraitPasswordWrapper: {
-    width: "100%"
   }
 });
 

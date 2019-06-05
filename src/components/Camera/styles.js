@@ -50,14 +50,19 @@ export const CancelButton = styled(CaptureButton)`
 
 export const BackButton = styled.TouchableOpacity`
   flex: 0;
-  background-color: ${BASE_COLOR};
   border-radius: 100px;
-  height: 55px;
-  width: 55px;
-  margin: 20px;
+  height: 40px;
+  width: 40px;
   align-items: center;
   justify-content: center;
   position: absolute;
   left: 5px;
   top: 15px;
+`;
+
+export const SwitchButton = styled(BackButton)`
+  left: null;
+  top: null;
+  bottom: 25px;
+  right: 35px;
 `;

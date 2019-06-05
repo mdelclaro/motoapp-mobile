@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Platform } from "react-native";
+import { Platform, Text, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_API } from "../../config";
+import { GOOGLE_API, BASE_COLOR, BACKGROUND_COLOR } from "../../config";
+
+import CustomIcon from "../UI/CustomIcon";
 
 class Search extends Component {
   state = {
@@ -14,11 +16,17 @@ class Search extends Component {
     return (
       <GooglePlacesAutocomplete
         placeholder="Para onde?"
-        placeholderTextColor="#333"
+        placeholderTextColor="#CCC"
         onPress={onLocationSelected}
+        listViewDisplayed={searchFocused}
+        fetchDetails
+        loaderRight={true}
+        enablePoweredByContainer={false}
+        numberOfLines={2}
         query={{
           key: GOOGLE_API,
-          language: "pt"
+          language: "pt",
+          region: "BR"
         }}
         textInputProps={{
           autoCapitalize: "none",
@@ -30,9 +38,18 @@ class Search extends Component {
             this.setState({ searchFocused: false });
           }
         }}
-        listViewDisplayed={searchFocused}
-        fetchDetails
-        enablePoweredByContainer={false}
+        renderRow={row => {
+          let text = row.terms[0].value;
+          let text2 = row.terms[1] ? row.terms[1].value : text;
+          text2 += row.terms[2] ? ` - ${row.terms[2].value}` : "";
+          return (
+            <Text>
+              <CustomIcon icon="map-pin" size={15} color={BASE_COLOR} />
+              <Text style={{ fontSize: 16 }}>{` ${text}\n`}</Text>
+              <Text style={{ color: "#b7b7b7" }}>{`${text2}`}</Text>
+            </Text>
+          );
+        }}
         styles={{
           container: {
             position: "absolute",
@@ -70,7 +87,7 @@ class Search extends Component {
             borderWidth: 1,
             borderColor: "#DDD",
             borderRadius: 20,
-            backgroundColor: "#FFF",
+            backgroundColor: BACKGROUND_COLOR,
             marginHorizontal: 20,
             elevation: 1,
             shadowColor: "#000",
@@ -79,11 +96,23 @@ class Search extends Component {
             marginTop: 10
           },
           description: {
-            fontSize: 16
+            // textAlign: "center",
+            fontSize: 14
           },
           row: {
-            padding: 20,
-            height: 58
+            padding: 10,
+            height: 60
+            // justifyContent: "center",
+            // alignContent: "center"
+          },
+          loader: {
+            justifyContent: "center",
+            alignContent: "center",
+            height: "100%"
+          },
+          activityIndicator: {
+            size: "large",
+            color: BASE_COLOR
           }
         }}
       />

@@ -6,20 +6,9 @@ const home = true;
  *  ---------
  */
 
-// export const BASE_URL = 'https://motoapp-backend.herokuapp.com/v1/';
-// export const SOCKET_URL = 'https://motoapp-backend.herokuapp.com/';
-// export const IMAGES_URL = 'https://motoapp-backend.herokuapp.com/images/';
-
-export const BASE_URL = home
-  ? 'http://192.168.2.107:8080/v1/'
-  : 'https://motoapp-backend.herokuapp.com/v1/';
-export const SOCKET_URL = home
-  ? 'http://192.168.2.107:8080'
-  : 'https://motoapp-backend.herokuapp.com/';
-export const IMAGES_URL = home
-  ? 'http://192.168.2.107:8080/images/'
-  : 'https://motoapp-backend.herokuapp.com/images/';
-
+export const BASE_URL = `${SERVER}/v1/`;
+export const SOCKET_URL = `${SERVER}/`;
+export const IMAGES_URL = `${SERVER}/images/`;
 export const FETCH_TIMEOUT = 3000;
 
 /**
@@ -28,15 +17,17 @@ export const FETCH_TIMEOUT = 3000;
  *  --------
  */
 
-export const GOOGLE_API = 'AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs';
+export const GOOGLE_API = GOOGLE_API_KEY;
 
 /**
  *  --------
  * |   UI   |
  *  --------
  */
+
 export const BASE_COLOR = '#5568f1';
 export const BASE_COLOR_ERROR = '#ff3907';
+export const BACKGROUND_COLOR = '#f4f2f2';
 export const MAP_STYLE = [
   {
     featureType: 'landscape.man_made',

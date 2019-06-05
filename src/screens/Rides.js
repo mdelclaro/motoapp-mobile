@@ -13,10 +13,11 @@ import moment from "moment";
 
 moment.locale("pt-br");
 
-import { getRides } from "../store/actions";
+import { getDetails, uiStartLoading, uiStopLoading } from "../store/actions";
 
 import CustomIcon from "../components/UI/CustomIcon";
-import { BASE_COLOR } from "../config";
+import ListItem from "../components/UI/ListItem";
+import { BASE_COLOR, BASE_COLOR_ERROR, BACKGROUND_COLOR } from "../config";
 
 class Rides extends Component {
   constructor(props) {
@@ -28,12 +29,15 @@ class Rides extends Component {
   }
 
   async componentDidMount() {
-    const { getRides, idCliente } = this.props;
-    await getRides(idCliente);
+    const { getDetails, idCliente, uiStartLoading, uiStopLoading } = this.props;
+    uiStartLoading();
+    await getDetails(idCliente);
+    uiStopLoading();
   }
 
   renderItem = ({ item }) => {
-    const date = moment(item.createdAt).format("llll");
+    const { createdAt, idMotoqueiro, valor, origem, destino, status } = item;
+    const date = moment(createdAt).format("llll");
     return (
       <View
         style={{
@@ -51,61 +55,43 @@ class Rides extends Component {
             />
           )}
         >
-          <List.Item
+          <ListItem
             title="Motoqueiro"
-            description={`${item.idMotoqueiro.nome} ${
-              item.idMotoqueiro.sobrenome
-            }`}
-            left={props => (
-              <List.Icon
-                color={BASE_COLOR}
-                {...props}
-                icon={() => (
-                  <CustomIcon icon={"user"} size={25} color={BASE_COLOR} />
-                )}
-              />
-            )}
+            description={`${idMotoqueiro.nome} ${idMotoqueiro.sobrenome}`}
+            icon="user"
+            size={25}
+            color={BASE_COLOR}
           />
-          <List.Item
+
+          <ListItem
             title="Origem"
-            description={item.origem.local}
-            left={props => (
-              <List.Icon
-                color={BASE_COLOR}
-                {...props}
-                icon={() => (
-                  <CustomIcon icon={"map-pin"} size={25} color={BASE_COLOR} />
-                )}
-              />
-            )}
+            description={origem.local}
+            icon="map-pin"
+            size={25}
+            color={BASE_COLOR}
           />
-          <List.Item
+
+          <ListItem
             title="Destino"
-            description={item.destino.local}
-            left={props => (
-              <List.Icon
-                {...props}
-                icon={() => (
-                  <CustomIcon icon={"map-pin"} size={25} color={BASE_COLOR} />
-                )}
-              />
-            )}
+            description={destino.local}
+            icon="map-pin"
+            size={25}
+            color={BASE_COLOR}
           />
-          <List.Item
+
+          <ListItem
             title="Valor"
-            description={`R$${item.valor}`}
-            left={props => (
-              <List.Icon
-                {...props}
-                icon={() => (
-                  <CustomIcon
-                    icon={"dollar-sign"}
-                    size={25}
-                    color={BASE_COLOR}
-                  />
-                )}
-              />
-            )}
+            description={`R$${valor}`}
+            icon="dollar-sign"
+            size={25}
+            color={BASE_COLOR}
+          />
+          <ListItem
+            title="Status"
+            description={`Corrida ${status === 3 ? "finalizada" : "cancelada"}`}
+            icon="info"
+            size={25}
+            color={status === 3 ? BASE_COLOR : BASE_COLOR_ERROR}
           />
         </List.Accordion>
       </View>
@@ -133,7 +119,7 @@ class Rides extends Component {
               keyExtractor={(item, index) => index.toString()}
             />
           ) : (
-            <View style={{ paddingTop: 40 }}>
+            <View style={{ flex: 1, paddingTop: 40 }}>
               <Text style={styles.text}>Nenhuma viagem...</Text>
             </View>
           )}
@@ -148,7 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    backgroundColor: "#f8f8f8"
+    backgroundColor: BACKGROUND_COLOR
   },
   text: {
     flex: 1,
@@ -162,13 +148,15 @@ const styles = StyleSheet.create({
 mapStateToProps = state => {
   return {
     idCliente: state.auth.userId,
-    rides: state.rides.rides,
+    rides: state.info.corridas,
     isLoading: state.ui.isLoading
   };
 };
 
 const mapDispatchToProps = {
-  getRides: idCliente => getRides(idCliente)
+  getDetails: idCliente => getDetails(idCliente),
+  uiStartLoading: () => uiStartLoading(),
+  uiStopLoading: () => uiStopLoading()
 };
 
 export default connect(

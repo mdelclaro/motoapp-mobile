@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
+import { BACKGROUND_COLOR } from "../../config";
 
 export const Container = styled.View`
-  background: #fff;
+  background: ${BACKGROUND_COLOR};
   height: 190px;
   width: 100%;
   position: absolute;
@@ -17,6 +18,14 @@ export const Container = styled.View`
   border-top-left-radius: 15;
   border-top-right-radius: 15;
 `;
+
+export const Image = style.Image`
+  padding-bottom: 3px;
+  width: 60px;
+  height: 60px;
+  resize-mode: center;
+  border-radius: 100px;
+`; 
 
 export const Title = styled.Text`
   font-size: 20px;

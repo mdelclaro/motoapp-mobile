@@ -11,13 +11,8 @@ import { Navigation } from "react-native-navigation";
 import openSocket from "socket.io-client";
 import "moment/locale/pt-br";
 
-import { sendMessage, setChats, getChats } from "../../store/actions/";
-import {
-  BASE_COLOR,
-  IMAGES_URL,
-  SOCKET_URL,
-  BASE_COLOR_ERROR
-} from "../../config";
+import { sendMessage, setChats, getChats } from "../store/actions";
+import { BASE_COLOR, IMAGES_URL, SOCKET_URL } from "../config";
 
 class Chat extends Component {
   constructor(props) {
@@ -99,7 +94,7 @@ class Chat extends Component {
 
     const exec = await this.props.sendMessage(
       this.props.idMotoqueiro._id,
-      this.props.idCliente,
+      this.props.userId,
       messages[0].text
     );
 
@@ -143,7 +138,7 @@ class Chat extends Component {
       });
 
       let newMessages = await this.props.getChats(
-        this.props.idCliente,
+        this.props.userId,
         this.state.page,
         this.state.skip,
         false
@@ -257,7 +252,7 @@ class Chat extends Component {
 
 const mapStateToProps = state => {
   return {
-    idCliente: state.auth.userId,
+    userId: state.auth.userId,
     chats: state.chats.chats,
     isLoading: state.ui.isLoading
   };

@@ -1,5 +1,5 @@
 export const AUTH_SET_TOKEN = "auth_set_token";
-export const AUTH_REMOVE_TOKEN = "auth_remove_token";
+export const AUTH_LOGOUT = "auth_logout";
 
 export const SIGN_UP = "sign_up";
 
@@ -18,6 +18,7 @@ export const UI_START_LOADING = "ui_start_loading";
 export const UI_STOP_LOADING = "ui_stop_loading";
 
 export const INFO_UPDATE = "info_update";
+export const INFO_SET_DETAILS = "info_set_details";
 
 export const CHAT_SET = "chat_SET";
 

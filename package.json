@@ -23,7 +23,7 @@
     "react-native-google-places": "^2.5.2",
     "react-native-google-places-autocomplete": "git+https://github.com/mdelclaro/react-native-google-places-autocomplete.git",
     "react-native-image-picker": "^0.28.1",
-    "react-native-keyboard-aware-scroll-view": "^0.7.0",
+    "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-maps": "^0.23.0",
     "react-native-maps-directions": "^1.6.0",
     "react-native-modal": "^6.5.0",
@@ -46,7 +46,8 @@
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "^0.45.0",
     "react-test-renderer": "16.6.3",
-    "reactotron-react-native": "^3.6.1"
+    "reactotron-react-native": "^3.6.1",
+    "react-native-dotenv": "^0.2.0"
   },
   "jest": {
     "preset": "react-native"

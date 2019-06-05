@@ -278,7 +278,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       'arrow-left',
       35,
-      '#425cf4'
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions('Main', {
         topBar: {
@@ -327,7 +327,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
       'menu',
       30,
-      '#425cf4'
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions('Main', {
         topBar: {
@@ -356,7 +356,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
       'arrow-left',
       35,
-      '#425cf4'
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions('Main', {
         topBar: {
@@ -388,7 +388,7 @@ class Localizacao extends Component {
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
       'menu',
       30,
-      '#425cf4'
+      BASE_COLOR
     ).then(icon => {
       Navigation.mergeOptions('Main', {
         topBar: {

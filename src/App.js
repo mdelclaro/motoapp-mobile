@@ -1,11 +1,9 @@
-import { Platform } from "react-native";
 import { Navigation } from "react-native-navigation";
-// import { getImageSource } from "react-native-vector-icons/Ionicons";
 import { getImageSource } from "react-native-vector-icons/Feather";
 import { store } from "./store/configureStore";
-import { uiStopLoading } from "./store/actions/UIAction";
+import { uiStopLoading, getDetails } from "./store/actions/";
 
-import { BASE_COLOR } from "./config";
+import { BASE_COLOR, BACKGROUND_COLOR } from "./config";
 
 console.disableYellowBox = true;
 
@@ -17,96 +15,74 @@ Navigation.setDefaultOptions({
   }
 });
 
-const startApp = () => {
-  Promise.all([
-    getImageSource(
-      // Platform.OS === "android" ? "md-pin" : "ios-pin",
-      "map-pin",
-      35,
-      BASE_COLOR
-    ),
-    getImageSource(
-      Platform.OS === "android" ? "md-paper-plane" : "ios-paper-plane",
-      35,
-      BASE_COLOR
-    ),
-    getImageSource(
-      // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
-      "arrow-left",
-      35,
-      BASE_COLOR
-    )
-  ]).then(icons => {
-    Navigation.setRoot({
-      root: {
-        sideMenu: {
-          right: {
-            component: {
-              id: "rightDrawer",
-              name: "motoapp.SideMenu"
-            }
-          },
-          center: {
-            bottomTabs: {
-              id: "bottomTabs",
-              backgroundColor: "white",
-              options: {
-                topbar: {
-                  visible: true,
-                  id: "topBar",
-                  title: {
-                    text: "Moto App"
-                  }
+const startApp = async () => {
+  await store.dispatch(getDetails(store.getState().auth.userId));
+
+  const icon = await getImageSource("map-pin", 35, BASE_COLOR);
+
+  await Navigation.setRoot({
+    root: {
+      sideMenu: {
+        right: {
+          component: {
+            id: "rightDrawer",
+            name: "motoapp.SideMenu"
+          }
+        },
+        center: {
+          bottomTabs: {
+            id: "bottomTabs",
+            backgroundColor: BACKGROUND_COLOR,
+            options: {
+              topbar: {
+                visible: true,
+                id: "topBar",
+                title: {
+                  text: "Moto App"
                 }
-              },
-              children: [
-                {
-                  stack: {
-                    id: "tab1",
-                    children: [
-                      {
-                        component: {
-                          id: "Main",
-                          name: "motoapp.Main",
-                          options: {
-                            topbar: {
-                              visible: true
-                              // leftButton: [
-                              //   {
-                              //     id: "backButton",
-                              //     icon: icons[2],
-                              //     visible: false
-                              //   }
-                              // ]
-                            },
-                            bottomTab: {
-                              text: "Corrida",
-                              textColor: "white",
-                              selectedTextColor: "white",
-                              icon: icons[0],
-                              iconColor: "white"
-                            }
+              }
+            },
+            children: [
+              {
+                stack: {
+                  id: "tab1",
+                  children: [
+                    {
+                      component: {
+                        id: "Main",
+                        name: "motoapp.Main",
+                        options: {
+                          topbar: {
+                            visible: true
+                          },
+                          bottomTab: {
+                            text: "Corrida",
+                            textColor: BASE_COLOR,
+                            selectedTextColor: BASE_COLOR,
+                            icon,
+                            iconColor: BASE_COLOR
                           }
                         }
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
-              ]
-            }
-          },
-          options: {
-            sideMenu: {
-              right: {
-                width: 260
               }
+            ]
+          }
+        },
+        options: {
+          sideMenu: {
+            right: {
+              width: 260
             }
           }
         }
       }
-    });
-    store.dispatch(uiStopLoading());
+    }
   });
+
+  store.dispatch(uiStopLoading());
 };
 
 export default startApp;

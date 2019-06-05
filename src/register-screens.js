@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { Auth, Main, SideMenu, Rides } from "./screens/";
-import { Chat, Chats, Camera, ProfileImage } from "./components/";
+import { Auth, Main, SideMenu, Rides, Chats, Chat, Profile } from "./screens/";
+import { Camera, ProfileImage } from "./components/";
 
 import { store, persistor } from "./store/configureStore";
 import { BASE_COLOR } from "./config";
@@ -68,6 +68,11 @@ const registerScreens = () => {
     "motoapp.Rides",
     () => props => providerWrapper(props, Rides),
     () => Rides
+  );
+  Navigation.registerComponent(
+    "motoapp.Profile",
+    () => props => providerWrapper(props, Profile),
+    () => Profile
   );
   Navigation.registerComponent("motoapp.Camera", () => Camera);
   Navigation.registerComponent("motoapp.ProfileImage", () => ProfileImage);

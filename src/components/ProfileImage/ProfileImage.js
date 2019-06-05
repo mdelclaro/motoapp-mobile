@@ -3,7 +3,7 @@ import { Navigation } from "react-native-navigation";
 
 import CustomIcon from "../UI/CustomIcon";
 
-import { View, Container, ImageBackground, TouchableOpacity } from "./styles";
+import { View, Container, ImageBackground, BackButton } from "./styles";
 
 const ProfileImage = props => {
   const { uri, componentId } = props;
@@ -14,12 +14,11 @@ const ProfileImage = props => {
 
   return (
     <View>
-      <ImageBackground source={uri}>
+      <ImageBackground source={uri} resizeMode="center">
         <Container>
-          <TouchableOpacity onPress={this.handleBack}>
-            {/* <CustomIcon icon={"arrow-back"} size={30} color="#f8f8f8" /> */}
+          <BackButton onPress={this.handleBack}>
             <CustomIcon icon={"arrow-left"} size={30} color="#f8f8f8" />
-          </TouchableOpacity>
+          </BackButton>
         </Container>
       </ImageBackground>
     </View>

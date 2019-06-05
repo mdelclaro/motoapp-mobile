@@ -8,26 +8,24 @@ export const View = styled.View`
 
 export const ImageBackground = styled.ImageBackground`
   flex: 1;
-  height: ${Dimensions.get("window").height}px;
-  width: ${Dimensions.get("window").width}px;
 `;
 
 export const Container = styled.View`
-  flex: 0;
+  flex: 1;
   flex-direction: row;
   justify-content: center;
+  align-items: flex-end;
 `;
 
-export const TouchableOpacity = styled.TouchableOpacity`
+export const BackButton = styled.TouchableOpacity`
   flex: 0;
   background-color: ${BASE_COLOR};
-  border-radius: 100;
+  border-radius: 100px;
   height: 55px;
   width: 55px;
   margin: 20px;
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 5px;
-  top: 15px;
+  bottom: 15px;
 `;

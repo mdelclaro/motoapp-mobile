@@ -15,8 +15,8 @@ import moment from "moment";
 
 moment.locale("pt-br");
 
-import { getChats } from "../../store/actions/";
-import { BASE_COLOR, IMAGES_URL } from "../../config";
+import { getChats } from "../store/actions/";
+import { BASE_COLOR, BACKGROUND_COLOR, IMAGES_URL } from "../config";
 
 class Chats extends Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class Chats extends Component {
           this.setState(previousState => {
             refresh: !previousState.refresh;
           });
-          console.log("coisou aqui");
         }
       }
     );
@@ -48,7 +47,7 @@ class Chats extends Component {
   }
 
   renderItem(data) {
-    const { idMotoqueiro, mensagens, idCliente, updatedAt } = data.item;
+    const { idMotoqueiro, mensagens, idCliente } = data.item;
     return (
       <TouchableOpacity
         onPress={() => {
@@ -119,7 +118,7 @@ class Chats extends Component {
               keyExtractor={(item, index) => index.toString()}
             />
           ) : (
-            <View style={{ paddingTop: 40 }}>
+            <View style={{ flex: 1, paddingTop: 40 }}>
               <Text style={styles.text}>Nenhuma conversa...</Text>
             </View>
           )}
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    backgroundColor: "#f8f8f8"
+    backgroundColor: BACKGROUND_COLOR
   },
   image: {
     alignSelf: "center",

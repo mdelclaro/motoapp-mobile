@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
-
-import { Container, Title, Description } from "./styles";
+import { Container, Title, Description, Image } from "./styles";
 import openSocket from "socket.io-client";
 import { SOCKET_URL } from "../../config";
 
@@ -31,16 +29,7 @@ class EnRoute extends Component {
         <Description>
           {motoqueiro.nome} {motoqueiro.sobrenome}
         </Description>
-        <Image
-          source={avatar}
-          style={{
-            paddingBottom: 3,
-            width: 60,
-            height: 60,
-            resizeMode: "center",
-            borderRadius: 100
-          }}
-        />
+        <Image source={avatar} />
         <Description>
           De {origem} para {destino}
         </Description>

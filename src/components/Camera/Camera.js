@@ -6,7 +6,8 @@ import PhotoPreview from "./PhotoPreview";
 
 class Camera extends Component {
   state = {
-    path: null
+    path: null,
+    cameraType: "back"
   };
 
   handleCancel = () => {
@@ -31,6 +32,11 @@ class Camera extends Component {
     Navigation.dismissModal(componentId);
   };
 
+  switchCamera = () => {
+    let cameraType = this.state.cameraType == "back" ? "front" : "back";
+    this.setState({ cameraType });
+  };
+
   render() {
     return (
       <Container>
@@ -44,6 +50,8 @@ class Camera extends Component {
           <StyledCamera
             myRef={ref => (this.camera = ref)}
             takePicture={this.takePicture}
+            switchCamera={this.switchCamera}
+            cameraType={this.state.cameraType}
           />
         )}
       </Container>

@@ -3,9 +3,8 @@ export { uiStartLoading, uiStopLoading } from "./UIAction";
 export { signUp } from "./SignUpAction";
 export { addRating } from "./RatingAction";
 export { updateMotoqueiros } from "./MotoqueirosAction";
-export { updateInfo } from "./InfoAction";
+export { updateInfo, getDetails } from "./InfoAction";
 export { getChats, sendMessage, setChats } from "./ChatAction";
-export { getRides } from "./RidesAction";
 export {
   tryAuth,
   authGetToken,

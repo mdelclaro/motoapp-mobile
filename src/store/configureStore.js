@@ -10,26 +10,32 @@ import {
   AuthReducer,
   FormReducer,
   InfoReducer,
-  ChatReducer,
-  RidesReducer
+  ChatReducer
 } from "./reducers/";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   corrida: RequestReducer,
   ui: UIReducer,
   motoqueiros: MotoqueirosReducer,
   auth: AuthReducer,
   form: FormReducer,
   info: InfoReducer,
-  chats: ChatReducer,
-  rides: RidesReducer
+  chats: ChatReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === "auth_logout") {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
 
 // redux-persist
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["ui", "form", "motoqueiros"]
+  blacklist: ["ui", "form", "motoqueiros"],
+  timeout: 0
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
