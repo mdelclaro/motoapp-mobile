@@ -21,7 +21,7 @@
     "react-native-geocoding": "^0.3.0",
     "react-native-gifted-chat": "^0.7.3",
     "react-native-google-places": "^2.5.2",
-    "react-native-google-places-autocomplete": "^1.3.9",
+    "react-native-google-places-autocomplete": "git+https://github.com/mdelclaro/react-native-google-places-autocomplete.git",
     "react-native-image-picker": "^0.28.1",
     "react-native-keyboard-aware-scroll-view": "^0.7.0",
     "react-native-maps": "^0.23.0",
@@ -40,12 +40,13 @@
     "yup": "^0.26.6"
   },
   "devDependencies": {
-    "babel-jest": "23.6.0",
-    "metro-react-native-babel-preset": "^0.45.0",
     "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
     "eslint-plugin-import": "^2.16.0",
     "jest": "23.6.0",
-    "react-test-renderer": "16.6.3"
+    "metro-react-native-babel-preset": "^0.45.0",
+    "react-test-renderer": "16.6.3",
+    "reactotron-react-native": "^3.6.1"
   },
   "jest": {
     "preset": "react-native"

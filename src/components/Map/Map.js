@@ -1,38 +1,38 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 import {
   View,
   Dimensions,
   Platform,
   PermissionsAndroid,
   ActivityIndicator
-} from "react-native";
-import MapView, { Marker, AnimatedRegion } from "react-native-maps";
-import { Navigation } from "react-native-navigation";
-import GeoCoder from "react-native-geocoding";
-import { getImageSource } from "react-native-vector-icons/Ionicons";
-import geolib from "geolib";
+} from 'react-native';
+import MapView, { Marker, AnimatedRegion } from 'react-native-maps';
+import { Navigation } from 'react-native-navigation';
+import GeoCoder from 'react-native-geocoding';
+import { getImageSource } from 'react-native-vector-icons/Feather';
+import geolib from 'geolib';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import {
   addCorrida,
   cancelCorrida,
   addRating
-} from "../../store/actions/index";
+} from '../../store/actions/index';
 
-import Search from "../Search/Search";
-import Directions from "../Directions/Directions";
-import Details from "../Details/Details";
-import DetailsMotoqueiro from "../DetailsMotoqueiro/DetailsMotoqueiro";
-import EnRoute from "../EnRoute/EnRoute";
-import Rating from "../Rating/Rating";
+import Search from '../Search/Search';
+import Directions from '../Directions/Directions';
+import Details from '../Details/Details';
+import DetailsMotoqueiro from '../DetailsMotoqueiro/DetailsMotoqueiro';
+import EnRoute from '../EnRoute/EnRoute';
+import Rating from '../Rating/Rating';
 
-import { getPixelSize } from "../../utils";
-import { GOOGLE_API, BASE_COLOR } from "../../config";
+import { getPixelSize } from '../../utils';
+import { GOOGLE_API, BASE_COLOR } from '../../config';
 
-import pin from "../../assets/destination_pin/pin.png";
-import user from "../../assets/user/user.png";
-import helmet from "../../assets/helmet/helmet.png";
+import pin from '../../assets/destination_pin/pin.png';
+import user from '../../assets/user/user.png';
+import helmet from '../../assets/helmet/helmet.png';
 
 // const width = Dimensions.get("window").width;
 // const height = Dimensions.get("window").height;
@@ -42,7 +42,7 @@ GeoCoder.init(GOOGLE_API);
 class Localizacao extends Component {
   constructor(props) {
     super(props);
-    Navigation.events().bindComponent(this, "Main");
+    Navigation.events().bindComponent(this, 'Main');
     this.watchID = null;
   }
 
@@ -55,7 +55,7 @@ class Localizacao extends Component {
       longitude: 0,
       latitudeDelta: 0.0122,
       longitudeDelta:
-        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        (Dimensions.get('window').width / Dimensions.get('window').height) *
         0.0122
     },
     destination: null, // destino
@@ -68,7 +68,7 @@ class Localizacao extends Component {
       longitude: null,
       latitudeDelta: 0.0122,
       longitudeDelta:
-        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        (Dimensions.get('window').width / Dimensions.get('window').height) *
         0.0122
     }),
     motoqueiroLocation: new AnimatedRegion({
@@ -76,7 +76,7 @@ class Localizacao extends Component {
       longitude: null,
       latitudeDelta: 0.0122,
       longitudeDelta:
-        (Dimensions.get("window").width / Dimensions.get("window").height) *
+        (Dimensions.get('window').width / Dimensions.get('window').height) *
         0.0122
     }),
     showRate: false
@@ -90,7 +90,7 @@ class Localizacao extends Component {
         longitude: 0,
         latitudeDelta: 0.0122,
         longitudeDelta:
-          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          (Dimensions.get('window').width / Dimensions.get('window').height) *
           0.0122
       }, // localizacao atual
       destination: null, // destino
@@ -102,7 +102,7 @@ class Localizacao extends Component {
         longitude: null,
         latitudeDelta: 0.0122,
         longitudeDelta:
-          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          (Dimensions.get('window').width / Dimensions.get('window').height) *
           0.0122
       }),
       motoqueiroLocation: new AnimatedRegion({
@@ -110,7 +110,7 @@ class Localizacao extends Component {
         longitude: null,
         latitudeDelta: 0.0122,
         longitudeDelta:
-          (Dimensions.get("window").width / Dimensions.get("window").height) *
+          (Dimensions.get('window').width / Dimensions.get('window').height) *
           0.0122
       }),
       showRate: false
@@ -123,7 +123,7 @@ class Localizacao extends Component {
 
   // pedir permissao de localizacao
   async componentDidMount() {
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       try {
         // Checa se ja deu permissao
         const isGranted = await PermissionsAndroid.check(
@@ -152,8 +152,8 @@ class Localizacao extends Component {
   }
 
   navigationButtonPressed({ buttonId }) {
-    if (buttonId === "backButton") {
-      Navigation.mergeOptions("Main", {
+    if (buttonId === 'backButton') {
+      Navigation.mergeOptions('Main', {
         topBar: {
           leftButtons: []
         }
@@ -170,13 +170,13 @@ class Localizacao extends Component {
         try {
           const response = await GeoCoder.from({ latitude, longitude });
           const address = response.results[0].formatted_address;
-          location = address.substring(0, address.indexOf(","));
+          location = address.substring(0, address.indexOf(','));
         } catch (err) {
           console.log(err);
         }
-        if (!location || location === "Unnamed Road") {
-          location = "Localização desconhecida";
-          alert("Localização desconhecida");
+        if (!location || location === 'Unnamed Road') {
+          location = 'Localização desconhecida';
+          alert('Localização desconhecida');
         }
         this.setState({
           location,
@@ -185,8 +185,8 @@ class Localizacao extends Component {
             longitude,
             latitudeDelta: 0.0122,
             longitudeDelta:
-              (Dimensions.get("window").width /
-                Dimensions.get("window").height) *
+              (Dimensions.get('window').width /
+                Dimensions.get('window').height) *
               0.0122
           },
           clienteLocation: {
@@ -219,13 +219,13 @@ class Localizacao extends Component {
         try {
           const response = await GeoCoder.from({ latitude, longitude });
           address = response.results[0].formatted_address;
-          address = address.substring(0, address.indexOf(","));
+          address = address.substring(0, address.indexOf(','));
         } catch (err) {
           console.log(err);
         }
 
-        if (!address || address === "Unnamed Road") {
-          address = "Localização desconhecida";
+        if (!address || address === 'Unnamed Road') {
+          address = 'Localização desconhecida';
         }
 
         this.setState(prevState => {
@@ -243,7 +243,7 @@ class Localizacao extends Component {
           };
         });
 
-        if (Platform.OS === "android") {
+        if (Platform.OS === 'android') {
           if (this.clienteMarker) {
             this.clienteMarker._component.animateMarkerToCoordinate(
               location,
@@ -276,11 +276,11 @@ class Localizacao extends Component {
 
     getImageSource(
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
-      "arrow-left",
+      'arrow-left',
       35,
-      "#425cf4"
+      '#425cf4'
     ).then(icon => {
-      Navigation.mergeOptions("Main", {
+      Navigation.mergeOptions('Main', {
         topBar: {
           rightButtons: [
             {
@@ -289,7 +289,7 @@ class Localizacao extends Component {
           ],
           leftButtons: [
             {
-              id: "backButton",
+              id: 'backButton',
               icon
             }
           ]
@@ -325,15 +325,15 @@ class Localizacao extends Component {
     // tirar botao de voltar, e colocar menu
     getImageSource(
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
-      "menu",
+      'menu',
       30,
-      "#425cf4"
+      '#425cf4'
     ).then(icon => {
-      Navigation.mergeOptions("Main", {
+      Navigation.mergeOptions('Main', {
         topBar: {
           rightButtons: [
             {
-              id: "menuButton",
+              id: 'menuButton',
               icon
             }
           ],
@@ -354,11 +354,11 @@ class Localizacao extends Component {
 
     getImageSource(
       // Platform.OS === "android" ? "md-arrow-back" : "ios-arrow-back",
-      "arrow-left",
+      'arrow-left',
       35,
-      "#425cf4"
+      '#425cf4'
     ).then(icon => {
-      Navigation.mergeOptions("Main", {
+      Navigation.mergeOptions('Main', {
         topBar: {
           rightButtons: [
             {
@@ -367,7 +367,7 @@ class Localizacao extends Component {
           ],
           leftButtons: [
             {
-              id: "backButton",
+              id: 'backButton',
               icon
             }
           ]
@@ -386,15 +386,15 @@ class Localizacao extends Component {
     // voltar botao de menu e esconder botao de voltar
     getImageSource(
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
-      "menu",
+      'menu',
       30,
-      "#425cf4"
+      '#425cf4'
     ).then(icon => {
-      Navigation.mergeOptions("Main", {
+      Navigation.mergeOptions('Main', {
         topBar: {
           rightButtons: [
             {
-              id: "menuButton",
+              id: 'menuButton',
               icon
             }
           ]
@@ -441,7 +441,7 @@ class Localizacao extends Component {
       longitude: parseFloat(coords.long)
     };
 
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       this.motoqueiroMarker._component.animateMarkerToCoordinate(
         coordinates,
         500
@@ -454,12 +454,12 @@ class Localizacao extends Component {
     const distance = geolib.getDistance(coordinates, this.state.region, 1);
     // motoqueiro chegou - em viagem agora
     if (distance <= 20) {
-      alert("Motoqueiro ja deve estar na sua localizacao");
+      alert('Motoqueiro ja deve estar na sua localizacao');
     }
   };
 
   handleStartCorrida = () => {
-    alert("em viagem!");
+    alert('em viagem!');
 
     this.setState({
       step: 3
@@ -514,7 +514,7 @@ class Localizacao extends Component {
       <View style={{ flex: 1 }}>
         {showRate && <Rating handleRating={this.submitRating} />}
         {this.state.isLoading ? (
-          <View style={{ flex: 1, justifyContent: "center" }}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <ActivityIndicator size="large" color={BASE_COLOR} />
           </View>
         ) : (
@@ -574,7 +574,7 @@ class Localizacao extends Component {
           </MapView>
         )}
         {step == 0
-          ? this.state.location !== "Localização desconhecida" && (
+          ? this.state.location !== 'Localização desconhecida' && (
               <Search onLocationSelected={this.handleLocationSelected} />
             )
           : null}

@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from "react";
-import { Platform } from "react-native";
-import { Navigation } from "react-native-navigation";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { Keyboard } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { connect } from 'react-redux';
 // import { getImageSource } from "react-native-vector-icons/Ionicons";
-import { getImageSource } from "react-native-vector-icons/Feather";
-import io from "socket.io-client";
+import { getImageSource } from 'react-native-vector-icons/Feather';
+import io from 'socket.io-client';
 
-import { updateMotoqueiros } from "../store/actions";
+import { updateMotoqueiros } from '../store/actions';
 
-import { BASE_COLOR, SOCKET_URL } from "../config";
-import Map from "../components/Map/Map";
+import { BASE_COLOR, SOCKET_URL } from '../config';
+import Map from '../components/Map/Map';
 
 class Main extends Component {
   static get options() {
@@ -21,7 +21,7 @@ class Main extends Component {
         translucent: true,
         noBorder: true,
         elevation: 0,
-        background: { color: "transparent" }
+        background: { color: 'transparent' }
       }
     };
   }
@@ -31,16 +31,16 @@ class Main extends Component {
     Navigation.events().bindComponent(this);
     getImageSource(
       // Platform.OS === "android" ? "md-menu" : "ios-menu",
-      "menu",
+      'menu',
       30,
       BASE_COLOR
     ).then(icon => {
-      Navigation.mergeOptions("Main", {
+      Navigation.mergeOptions('Main', {
         topBar: {
           visible: true,
           rightButtons: [
             {
-              id: "menuButton",
+              id: 'menuButton',
               icon
             }
           ]
@@ -56,13 +56,22 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this._keyboardDidShow
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide
+    );
+
     //criar conexão com timeout
     this.socket = io(SOCKET_URL, {
       timeout: 3000
     });
 
     //tratar evento
-    this.socket.on("fetchMotoqueiros", data => {
+    this.socket.on('fetchMotoqueiros', data => {
       this.props.updateMotoqueiros(data.motoqueiros);
       // this.props.updateMotoqueiros([
       //   {
@@ -95,8 +104,8 @@ class Main extends Component {
   }
 
   navigationButtonPressed({ buttonId }) {
-    if (buttonId === "menuButton") {
-      Navigation.mergeOptions("Main", {
+    if (buttonId === 'menuButton') {
+      Navigation.mergeOptions('Main', {
         sideMenu: {
           right: {
             visible: true
@@ -104,6 +113,18 @@ class Main extends Component {
         }
       });
     }
+  }
+
+  _keyboardDidShow() {
+    //   Navigation.mergeOptions('Main', {
+    //     bottomTabs: { visible: false, drawBehind: true, animated: false }
+    //   });
+  }
+
+  _keyboardDidHide() {
+    //   Navigation.mergeOptions('Main', {
+    //     bottomTabs: { visible: true, drawBehind: false, animated: false }
+    //   });
   }
 
   render() {

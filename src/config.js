@@ -1,4 +1,4 @@
-const home = false;
+const home = true;
 
 /**
  *  ---------
@@ -6,15 +6,19 @@ const home = false;
  *  ---------
  */
 
+// export const BASE_URL = 'https://motoapp-backend.herokuapp.com/v1/';
+// export const SOCKET_URL = 'https://motoapp-backend.herokuapp.com/';
+// export const IMAGES_URL = 'https://motoapp-backend.herokuapp.com/images/';
+
 export const BASE_URL = home
-  ? "http://192.168.2.107:8080/v1/"
-  : "http://192.168.1.13:8080/v1/";
+  ? 'http://192.168.2.107:8080/v1/'
+  : 'https://motoapp-backend.herokuapp.com/v1/';
 export const SOCKET_URL = home
-  ? "http://192.168.2.107:8080"
-  : "http://192.168.1.13:8080";
+  ? 'http://192.168.2.107:8080'
+  : 'https://motoapp-backend.herokuapp.com/';
 export const IMAGES_URL = home
-  ? "http://192.168.2.107:8080/images/"
-  : "http://192.168.1.13:8080/images/";
+  ? 'http://192.168.2.107:8080/images/'
+  : 'https://motoapp-backend.herokuapp.com/images/';
 
 export const FETCH_TIMEOUT = 3000;
 
@@ -24,22 +28,22 @@ export const FETCH_TIMEOUT = 3000;
  *  --------
  */
 
-export const GOOGLE_API = "AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs";
+export const GOOGLE_API = 'AIzaSyBtJI4iAvzXZw9o5k2Ee9UwgVyR0vX0vPs';
 
 /**
  *  --------
  * |   UI   |
  *  --------
  */
-export const BASE_COLOR = "#5568f1";
-export const BASE_COLOR_ERROR = "#ff3907";
+export const BASE_COLOR = '#5568f1';
+export const BASE_COLOR_ERROR = '#ff3907';
 export const MAP_STYLE = [
   {
-    featureType: "landscape.man_made",
-    elementType: "geometry",
+    featureType: 'landscape.man_made',
+    elementType: 'geometry',
     stylers: [
       {
-        hue: "#C3E0B0"
+        hue: '#C3E0B0'
       },
       {
         saturation: 23
@@ -48,16 +52,16 @@ export const MAP_STYLE = [
         lightness: -12
       },
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "landscape.natural",
-    elementType: "geometry",
+    featureType: 'landscape.natural',
+    elementType: 'geometry',
     stylers: [
       {
-        hue: "#7DC45C"
+        hue: '#7DC45C'
       },
       {
         saturation: 37
@@ -66,15 +70,15 @@ export const MAP_STYLE = [
         lightness: -41
       },
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "poi",
+    featureType: 'poi',
     stylers: [
       {
-        hue: "#a19fa0"
+        hue: '#a19fa0'
       },
       {
         saturation: -100
@@ -83,48 +87,48 @@ export const MAP_STYLE = [
         lightness: -20
       },
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "poi.attraction",
+    featureType: 'poi.attraction',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "poi.business",
+    featureType: 'poi.business',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "poi.government",
+    featureType: 'poi.government',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "road",
+    featureType: 'road',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "road",
-    elementType: "geometry",
+    featureType: 'road',
+    elementType: 'geometry',
     stylers: [
       {
-        hue: "#FFFFFF"
+        hue: '#FFFFFF'
       },
       {
         saturation: -100
@@ -133,42 +137,42 @@ export const MAP_STYLE = [
         lightness: 100
       },
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "road.highway",
+    featureType: 'road.highway',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "road.highway",
-    elementType: "labels",
+    featureType: 'road.highway',
+    elementType: 'labels',
     stylers: [
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   },
   {
-    featureType: "road.highway",
-    elementType: "labels.icon",
+    featureType: 'road.highway',
+    elementType: 'labels.icon',
     stylers: [
       {
-        visibility: "off"
+        visibility: 'off'
       }
     ]
   },
   {
-    featureType: "water",
-    elementType: "geometry",
+    featureType: 'water',
+    elementType: 'geometry',
     stylers: [
       {
-        hue: "#71ABC3"
+        hue: '#71ABC3'
       },
       {
         saturation: -10
@@ -177,7 +181,7 @@ export const MAP_STYLE = [
         lightness: -21
       },
       {
-        visibility: "simplified"
+        visibility: 'simplified'
       }
     ]
   }
